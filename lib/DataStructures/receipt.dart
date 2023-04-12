@@ -1,5 +1,7 @@
 import "dart:typed_data";
 
+import "package:bona2/DataStructures/shopping-item.dart";
+
 import "receipt-item.dart";
 
 class Receipt {
@@ -9,22 +11,23 @@ class Receipt {
   final double totalPrice;
   final String currency;
   final String country;
-  final String street;
+  final String address;
   final String postalCode;
   final String city;
+  final String paymentType;
   final Uint8List uuid;
 
-  Receipt(
-      {required this.receiptItemsList,
-      required this.shopName,
-      required this.dateTime,
-      required this.totalPrice,
-      required this.currency,
-      required this.country,
-      required this.city,
-      required this.street,
-      required this.postalCode,
-      required this.uuid});
+  Receipt({required this.receiptItemsList,
+    required this.shopName,
+    required this.dateTime,
+    required this.totalPrice,
+    required this.currency,
+    required this.country,
+    required this.city,
+    required this.address,
+    required this.postalCode,
+    required this.paymentType,
+    required this.uuid});
 
   int get numberOfItems => receiptItemsList.length;
 
@@ -33,7 +36,8 @@ class Receipt {
     String itemsWithPrices = "";
     for (int i = 0; i < receiptItemsList.length; ++i) {
       itemsWithPrices +=
-          "${receiptItemsList[i].shoppingItem.itemName}: ${receiptItemsList[i].totalPrice}, ";
+      "${receiptItemsList[i].shoppingItem.itemName}: ${receiptItemsList[i]
+          .totalPrice}, ";
     }
     return "Date: $dateTime, Shop: $shopName: $itemsWithPrices"; //TODO: add uuid
   }
@@ -53,7 +57,8 @@ class Receipt {
       'country': country,
       'city': city,
       'postalCode': postalCode,
-      'street': street,
+      'address': address,
+      'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
     };
   }
@@ -69,8 +74,33 @@ class Receipt {
       'country': country,
       'city': city,
       'postalCode': postalCode,
-      'street': street,
+      'address': address,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
     };
   }
+
+  factory Receipt.fromMap(Map<String, dynamic> map) =>
+      Receipt(
+        receiptItemsList: [
+          ReceiptItem(
+              shoppingItem: ShoppingItem(
+                itemName: "asd",
+              ),
+              rawText: 'asd',
+              totalPrice: 1.0,
+              uuid: map["uuid"],
+              unit: "ml",
+              quantity: 500)
+        ],
+        shopName: map["shopname"],
+        dateTime: DateTime.fromMillisecondsSinceEpoch(map["datetime"]),
+        totalPrice: map["totalprice"],
+        currency: map["currency"],
+        country: map["country"],
+        city: map["city"],
+        address: map["address"],
+        postalCode: map["postalcode"],
+        uuid: map["uuid"],
+        paymentType: map["paymenttype"],
+      );
 }

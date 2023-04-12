@@ -4,7 +4,6 @@ import 'package:bona2/constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bona2/DataStructures/receipt.dart';
 
-
 void main() {
   group("test getNumberItems", () {
     test("test getNumberItems for empty Receipt", () {
@@ -24,46 +23,48 @@ void main() {
       assert(receiptItem1 == receiptItem2);
     });
   });
+
   /// The following groups test toMap(), essential for saving receipts and items
   /// to SQLite database
   group("test ReceiptItem toMap()", () {
     test("test ReceiptItem toMap() with null rawText", () {
       final ReceiptItem receiptItem = createReceiptItem();
       final Map<String, dynamic> map = receiptItem.toMap();
-      expect(map['rawText'], kNullStringValue); // if rawText is null, check default value
+      expect(map['rawText'],
+          kNullStringValue); // if rawText is null, check default value
       expect(map['uuid'], receiptItem.uuid);
       // ShoppingItem cannot be written directly to SQL, save its itemName
       expect(map['shoppingItem'], shoppingItem.itemName);
       expect(map['totalPrice'], receiptItem.totalPrice);
     });
   });
-  group("test Receipt toMap()", (){
-    test("test Receipt toMap() with single ReceiptItem", (){
+  group("test Receipt toMap()", () {
+    test("test Receipt toMap() with single ReceiptItem", () {
       final Receipt receipt = createReceiptSingleItem();
       final Map<String, dynamic> map = receipt.toMap();
       expect(map['receiptItemsList'], receipt.receiptItemsList);
-      expect(map['shopName'],receipt.shopName);
+      expect(map['shopName'], receipt.shopName);
       expect(map['dateTime'], receipt.dateTime.millisecondsSinceEpoch);
       expect(map['totalPrice'], receipt.totalPrice);
       expect(map['currency'], receipt.currency);
       expect(map['country'], receipt.country);
       expect(map['city'], receipt.city);
       expect(map['postalCode'], receipt.postalCode);
-      expect(map['street'], receipt.street);
+      expect(map['address'], receipt.address);
       expect(map['uuid'], receipt.uuid);
     });
-    test("test Receipt toMap() with single ReceiptItem", (){
+    test("test Receipt toMap() with single ReceiptItem", () {
       final Receipt receipt = createReceiptEmpty();
       final Map<String, dynamic> map = receipt.toMap();
       expect(map['receiptItemsList'], receipt.receiptItemsList);
-      expect(map['shopName'],receipt.shopName);
+      expect(map['shopName'], receipt.shopName);
       expect(map['dateTime'], receipt.dateTime.millisecondsSinceEpoch);
       expect(map['totalPrice'], receipt.totalPrice);
       expect(map['currency'], receipt.currency);
       expect(map['country'], receipt.country);
       expect(map['city'], receipt.city);
       expect(map['postalCode'], receipt.postalCode);
-      expect(map['street'], receipt.street);
+      expect(map['address'], receipt.address);
       expect(map['uuid'], receipt.uuid);
     });
   });

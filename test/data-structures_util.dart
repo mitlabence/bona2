@@ -12,7 +12,7 @@ final ShoppingItem shoppingItem = ShoppingItem(itemName: "Nothing");
 
 ReceiptItem createReceiptItem({String? rawText}) {
   return ReceiptItem(
-      shoppingItem: shoppingItem, rawText: rawText, totalPrice: 0.49, uuid: uuid);
+      shoppingItem: shoppingItem, rawText: rawText, totalPrice: 0.49, uuid: uuid, quantity: 500, unit: "g");
 }
 
 
@@ -26,8 +26,9 @@ Receipt createReceiptSingleItem() {
       currency: "EUR",
       country: "Deutschland",
       city: "Berlin",
-      street: "Axel-Springer-Straße 11",
+      address: "Axel-Springer-Straße 11, 10001 Berlin, Deutschland",
       postalCode: "10969",
+      paymentType: "cash",
       uuid: uuid);
 }
 
@@ -40,7 +41,8 @@ Receipt createReceiptEmpty() {
       currency: "EUR",
       country: "Deutschland",
       city: "Berlin",
-      street: "Axel-Springer-Straße 11",
+      address: "Axel-Springer-Straße 11, 10001 Berlin, Deutschland",
       postalCode: "10969",
-      uuid: uuid);
+      uuid: uuid,
+      paymentType: 'cash');
 }
