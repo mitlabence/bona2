@@ -1,0 +1,1258 @@
+{
+  "location": {
+    "city": {
+      "geoname_id": 2946447,
+      "names": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "ja": "ボン",
+        "pt-BR": "Bona",
+        "ru": "Бонн",
+        "zh-CN": "波恩"
+      }
+    },
+    "continent": {
+      "code": "EU",
+      "geoname_id": 6255148,
+      "names": {
+        "de": "Europa",
+        "en": "Europe",
+        "es": "Europa",
+        "fr": "Europe",
+        "ja": "ヨーロッパ",
+        "pt-BR": "Europa",
+        "ru": "Европа",
+        "zh-CN": "欧洲"
+      }
+    },
+    "country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "location": {
+      "accuracy_radius": 1,
+      "latitude": 50.7362,
+      "longitude": 7.1002,
+      "time_zone": "Europe/Berlin"
+    },
+    "postal": {
+      "code": "53111"
+    },
+    "registered_country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "subdivisions": [
+      {
+        "geoname_id": 2861876,
+        "iso_code": "NW",
+        "names": {
+          "de": "Nordrhein-Westfalen",
+          "en": "North Rhine-Westphalia",
+          "es": "Renania del Norte-Westfalia",
+          "fr": "Rhénanie du Nord-Westphalie",
+          "ru": "Северный Рейн-Вестфалия"
+        }
+      }
+    ]
+  },
+  "totalAmount": {
+    "confidenceLevel": 0.99,
+    "index": 5,
+    "data": 1.09,
+    "text": "709070 GL  Laktosefreie H 1,09 A",
+    "regions": [
+      [
+        {
+          "x": 901,
+          "y": 888
+        },
+        {
+          "x": 2107,
+          "y": 876
+        },
+        {
+          "x": 2111,
+          "y": 945
+        },
+        {
+          "x": 902,
+          "y": 953
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "keyword": "709070 GL  Laktosefreie H 1,09 A"
+  },
+  "taxAmount": {
+    "confidenceLevel": 0
+  },
+  "confidenceLevel": 0.9346229362487792,
+  "date": {
+    "data": "2021-01-23T10:26:00.000Z",
+    "confidenceLevel": 0.99,
+    "text": "*5478 035/059/002/005 23.01.21 10:26",
+    "index": 32,
+    "regions": [
+      [
+        {
+          "x": 743,
+          "y": 3403
+        },
+        {
+          "x": 925,
+          "y": 3401
+        },
+        {
+          "x": 923,
+          "y": 3478
+        },
+        {
+          "x": 741,
+          "y": 3475
+        }
+      ],
+      [
+        {
+          "x": 942,
+          "y": 3401
+        },
+        {
+          "x": 1496,
+          "y": 3401
+        },
+        {
+          "x": 1494,
+          "y": 3485
+        },
+        {
+          "x": 941,
+          "y": 3478
+        }
+      ],
+      [
+        {
+          "x": 1524,
+          "y": 3401
+        },
+        {
+          "x": 1829,
+          "y": 3405
+        },
+        {
+          "x": 1827,
+          "y": 3488
+        },
+        {
+          "x": 1522,
+          "y": 3485
+        }
+      ],
+      [
+        {
+          "x": 1852,
+          "y": 3405
+        },
+        {
+          "x": 2033,
+          "y": 3408
+        },
+        {
+          "x": 2030,
+          "y": 3489
+        },
+        {
+          "x": 1849,
+          "y": 3488
+        }
+      ]
+    ]
+  },
+  "text": {
+    "text": "ALDI SÜD\nErich-Hoffmann-Straße 12\n53121 Bonn-Endenich EUR\n709070 GL: Laktosefreie H 1,09 A\n709070 GL: Laktosefreie H 1,09 A\n709070 GL: Laktosefreie H 1,09 A\n51523 Bauernschnitten .ГГ00,69 А 2\n+ KUNDEN BELEG +\nTerminalnummer 65443091\nDatum 23.01.2021\nUhrzeit 10:26:52\nBeleg-Nr. nlabne 6842 W\nTransaktions-Nr. 75803\nKartenzahlung\ngirocard\nBetrag 3.96 EUR\nKarte ###############9007\nKartenfolgenummer 01\nVertragsnummer 1079443091 2\nEMV-AID A0000003591010028001\nGenehmigungs-Nr. 629720\nEMV-DATA:\n0000000000/E800/3900/004B/A00000035910\n10028001/00/0002/0280/605048/440302/22\n/R/194F8BFE/075803\n**************************************\nZahlung erfolgt\n**************************************\nSum m e 3,96 ,\n4 Artikel\ngirocard EUR 3,96\nA 07,0% Netto 3,70 MwSt 0,26\n*5478 035/059/002/005 23.01.21 10:26\nUnsere Öffnungszeiten nsr niW\nMo - Sa: 8:00 Uhr - 21:00 Uhr\nUst .- ID-Nr .: DE 813192189",
+    "regions": [
+      {
+        "x": 741,
+        "y": 340
+      },
+      {
+        "x": 2306,
+        "y": 341
+      },
+      {
+        "x": 2305,
+        "y": 3978
+      },
+      {
+        "x": 741,
+        "y": 3975
+      }
+    ]
+  },
+  "amounts": [
+    {
+      "data": 1.09,
+      "index": 3,
+      "regions": [
+        [
+          {
+            "x": 899,
+            "y": 726
+          },
+          {
+            "x": 2099,
+            "y": 724
+          },
+          {
+            "x": 2101,
+            "y": 791
+          },
+          {
+            "x": 899,
+            "y": 796
+          }
+        ]
+      ],
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 4,
+      "regions": [
+        [
+          {
+            "x": 899,
+            "y": 811
+          },
+          {
+            "x": 2105,
+            "y": 797
+          },
+          {
+            "x": 2105,
+            "y": 868
+          },
+          {
+            "x": 897,
+            "y": 873
+          }
+        ]
+      ],
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 5,
+      "regions": [
+        [
+          {
+            "x": 901,
+            "y": 888
+          },
+          {
+            "x": 2107,
+            "y": 876
+          },
+          {
+            "x": 2111,
+            "y": 945
+          },
+          {
+            "x": 902,
+            "y": 953
+          }
+        ]
+      ],
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.96,
+      "index": 15,
+      "regions": [
+        [
+          {
+            "x": 808,
+            "y": 1783
+          },
+          {
+            "x": 2109,
+            "y": 1769
+          },
+          {
+            "x": 2105,
+            "y": 1833
+          },
+          {
+            "x": 806,
+            "y": 1849
+          }
+        ]
+      ],
+      "text": "Betrag 3.96 EUR",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.96,
+      "index": 28,
+      "regions": [
+        [
+          {
+            "x": 785,
+            "y": 2969
+          },
+          {
+            "x": 2250,
+            "y": 2952
+          },
+          {
+            "x": 2252,
+            "y": 3025
+          },
+          {
+            "x": 783,
+            "y": 3026
+          }
+        ]
+      ],
+      "text": "Sum m e 3,96 ,",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.96,
+      "index": 30,
+      "regions": [
+        [
+          {
+            "x": 789,
+            "y": 3138
+          },
+          {
+            "x": 2134,
+            "y": 3127
+          },
+          {
+            "x": 2134,
+            "y": 3207
+          },
+          {
+            "x": 787,
+            "y": 3210
+          }
+        ]
+      ],
+      "text": "girocard EUR 3,96",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.7,
+      "index": 31,
+      "regions": [
+        [
+          {
+            "x": 785,
+            "y": 3308
+          },
+          {
+            "x": 2138,
+            "y": 3316
+          },
+          {
+            "x": 2137,
+            "y": 3392
+          },
+          {
+            "x": 783,
+            "y": 3385
+          }
+        ]
+      ],
+      "text": "A 07,0% Netto 3,70 MwSt 0,26",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.26,
+      "index": 31,
+      "regions": [
+        [
+          {
+            "x": 785,
+            "y": 3308
+          },
+          {
+            "x": 2138,
+            "y": 3316
+          },
+          {
+            "x": 2137,
+            "y": 3392
+          },
+          {
+            "x": 783,
+            "y": 3385
+          }
+        ]
+      ],
+      "text": "A 07,0% Netto 3,70 MwSt 0,26",
+      "currencyCode": "EUR"
+    }
+  ],
+  "numbers": [
+    {
+      "data": 12,
+      "text": "Erich-Hoffmann-Straße 12",
+      "regions": [
+        [
+          {
+            "x": 1029,
+            "y": 413
+          },
+          {
+            "x": 1828,
+            "y": 415
+          },
+          {
+            "x": 1823,
+            "y": 487
+          },
+          {
+            "x": 1028,
+            "y": 486
+          }
+        ]
+      ],
+      "index": 1
+    },
+    {
+      "data": 53121,
+      "text": "53121 Bonn-Endenich EUR",
+      "regions": [
+        [
+          {
+            "x": 1095,
+            "y": 491
+          },
+          {
+            "x": 1995,
+            "y": 648
+          },
+          {
+            "x": 1995,
+            "y": 712
+          },
+          {
+            "x": 1095,
+            "y": 560
+          }
+        ]
+      ],
+      "index": 2
+    },
+    {
+      "data": 709070,
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "regions": [
+        [
+          {
+            "x": 899,
+            "y": 726
+          },
+          {
+            "x": 2099,
+            "y": 724
+          },
+          {
+            "x": 2101,
+            "y": 791
+          },
+          {
+            "x": 899,
+            "y": 796
+          }
+        ]
+      ],
+      "index": 3,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 709070,
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "regions": [
+        [
+          {
+            "x": 899,
+            "y": 811
+          },
+          {
+            "x": 2105,
+            "y": 797
+          },
+          {
+            "x": 2105,
+            "y": 868
+          },
+          {
+            "x": 897,
+            "y": 873
+          }
+        ]
+      ],
+      "index": 4,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 709070,
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "regions": [
+        [
+          {
+            "x": 901,
+            "y": 888
+          },
+          {
+            "x": 2107,
+            "y": 876
+          },
+          {
+            "x": 2111,
+            "y": 945
+          },
+          {
+            "x": 902,
+            "y": 953
+          }
+        ]
+      ],
+      "index": 5,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 51523,
+      "text": "51523 Bauernschnitten .ГГ00,69 А 2",
+      "regions": [
+        [
+          {
+            "x": 934,
+            "y": 971
+          },
+          {
+            "x": 2164,
+            "y": 970
+          },
+          {
+            "x": 2164,
+            "y": 1043
+          },
+          {
+            "x": 934,
+            "y": 1037
+          }
+        ]
+      ],
+      "index": 6
+    },
+    {
+      "data": 2,
+      "text": "51523 Bauernschnitten .ГГ00,69 А 2",
+      "regions": [
+        [
+          {
+            "x": 934,
+            "y": 971
+          },
+          {
+            "x": 2164,
+            "y": 970
+          },
+          {
+            "x": 2164,
+            "y": 1043
+          },
+          {
+            "x": 934,
+            "y": 1037
+          }
+        ]
+      ],
+      "index": 6
+    },
+    {
+      "data": 65443091,
+      "text": "Terminalnummer 65443091",
+      "regions": [
+        [
+          {
+            "x": 809,
+            "y": 1218
+          },
+          {
+            "x": 2081,
+            "y": 1208
+          },
+          {
+            "x": 2081,
+            "y": 1266
+          },
+          {
+            "x": 809,
+            "y": 1283
+          }
+        ]
+      ],
+      "index": 8
+    },
+    {
+      "data": 6842,
+      "text": "Beleg-Nr. nlabne 6842 W",
+      "regions": [
+        [
+          {
+            "x": 813,
+            "y": 1457
+          },
+          {
+            "x": 2153,
+            "y": 1438
+          },
+          {
+            "x": 2160,
+            "y": 1508
+          },
+          {
+            "x": 810,
+            "y": 1525
+          }
+        ]
+      ],
+      "index": 11
+    },
+    {
+      "data": 75803,
+      "text": "Transaktions-Nr. 75803",
+      "regions": [
+        [
+          {
+            "x": 813,
+            "y": 1543
+          },
+          {
+            "x": 2099,
+            "y": 1522
+          },
+          {
+            "x": 2101,
+            "y": 1593
+          },
+          {
+            "x": 812,
+            "y": 1606
+          }
+        ]
+      ],
+      "index": 12
+    },
+    {
+      "data": 1079443091,
+      "text": "Vertragsnummer 1079443091 2",
+      "regions": [
+        [
+          {
+            "x": 816,
+            "y": 2030
+          },
+          {
+            "x": 2204,
+            "y": 2004
+          },
+          {
+            "x": 2206,
+            "y": 2072
+          },
+          {
+            "x": 816,
+            "y": 2094
+          }
+        ]
+      ],
+      "index": 18
+    },
+    {
+      "data": 2,
+      "text": "Vertragsnummer 1079443091 2",
+      "regions": [
+        [
+          {
+            "x": 816,
+            "y": 2030
+          },
+          {
+            "x": 2204,
+            "y": 2004
+          },
+          {
+            "x": 2206,
+            "y": 2072
+          },
+          {
+            "x": 816,
+            "y": 2094
+          }
+        ]
+      ],
+      "index": 18
+    },
+    {
+      "data": 629720,
+      "text": "Genehmigungs-Nr. 629720",
+      "regions": [
+        [
+          {
+            "x": 817,
+            "y": 2203
+          },
+          {
+            "x": 2121,
+            "y": 2188
+          },
+          {
+            "x": 2120,
+            "y": 2249
+          },
+          {
+            "x": 819,
+            "y": 2263
+          }
+        ]
+      ],
+      "index": 20
+    },
+    {
+      "data": 4,
+      "text": "4 Artikel",
+      "regions": [
+        [
+          {
+            "x": 782,
+            "y": 3049
+          },
+          {
+            "x": 1100,
+            "y": 3048
+          },
+          {
+            "x": 1097,
+            "y": 3114
+          },
+          {
+            "x": 779,
+            "y": 3115
+          }
+        ]
+      ],
+      "index": 29
+    },
+    {
+      "data": 813192189,
+      "text": "Ust .- ID-Nr .  DE 813192189",
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 3891
+          },
+          {
+            "x": 1958,
+            "y": 3899
+          },
+          {
+            "x": 1953,
+            "y": 3974
+          },
+          {
+            "x": 1013,
+            "y": 3972
+          }
+        ]
+      ],
+      "index": 35,
+      "classifyResult": "primaryTax"
+    }
+  ],
+  "lineAmounts": [],
+  "itemsCount": {
+    "data": 0,
+    "confidenceLevel": 0
+  },
+  "entities": {
+    "invoiceNumber": {
+      "data": "65443091",
+      "text": " 65443091",
+      "confidenceLevel": 0.51,
+      "keyword": "Terminalnummer 65443091"
+    },
+    "receiptNumber": {
+      "data": "75803",
+      "confidenceLevel": 0.5650000000000001,
+      "text": "Transaktions-Nr. 75803",
+      "keyword": "Beleg-Nr",
+      "index": 12,
+      "regions": [
+        [
+          {
+            "x": 813,
+            "y": 1543
+          },
+          {
+            "x": 1349,
+            "y": 1538
+          },
+          {
+            "x": 1351,
+            "y": 1606
+          },
+          {
+            "x": 812,
+            "y": 1606
+          }
+        ],
+        [
+          {
+            "x": 1925,
+            "y": 1527
+          },
+          {
+            "x": 2099,
+            "y": 1522
+          },
+          {
+            "x": 2101,
+            "y": 1593
+          },
+          {
+            "x": 1928,
+            "y": 1600
+          }
+        ]
+      ]
+    },
+    "merchantVerification": {
+      "data": {
+        "verificationId": "DE813192189",
+        "countryCode": "DE",
+        "vatNo": "813192189",
+        "vies": {
+          "name": "---",
+          "address": "---",
+          "valid": true,
+          "countryCode": "DE",
+          "vatNumber": "813192189"
+        }
+      },
+      "confidenceLevel": 0.99,
+      "text": "Ust .- ID-Nr .: DE 813192189",
+      "index": 35,
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 3891
+          },
+          {
+            "x": 1107,
+            "y": 3892
+          },
+          {
+            "x": 1108,
+            "y": 3975
+          },
+          {
+            "x": 1013,
+            "y": 3972
+          }
+        ],
+        [
+          {
+            "x": 1123,
+            "y": 3892
+          },
+          {
+            "x": 1177,
+            "y": 3892
+          },
+          {
+            "x": 1177,
+            "y": 3976
+          },
+          {
+            "x": 1124,
+            "y": 3975
+          }
+        ],
+        [
+          {
+            "x": 1193,
+            "y": 3893
+          },
+          {
+            "x": 1370,
+            "y": 3894
+          },
+          {
+            "x": 1369,
+            "y": 3978
+          },
+          {
+            "x": 1193,
+            "y": 3976
+          }
+        ],
+        [
+          {
+            "x": 1386,
+            "y": 3894
+          },
+          {
+            "x": 1471,
+            "y": 3895
+          },
+          {
+            "x": 1469,
+            "y": 3978
+          },
+          {
+            "x": 1385,
+            "y": 3978
+          }
+        ],
+        [
+          {
+            "x": 1488,
+            "y": 3895
+          },
+          {
+            "x": 1578,
+            "y": 3895
+          },
+          {
+            "x": 1575,
+            "y": 3978
+          },
+          {
+            "x": 1486,
+            "y": 3978
+          }
+        ],
+        [
+          {
+            "x": 1606,
+            "y": 3896
+          },
+          {
+            "x": 1958,
+            "y": 3899
+          },
+          {
+            "x": 1953,
+            "y": 3974
+          },
+          {
+            "x": 1603,
+            "y": 3978
+          }
+        ]
+      ]
+    }
+  },
+  "merchantName": {
+    "data": "ALDI SÜD",
+    "confidenceLevel": 0.9606146812438965,
+    "text": "ALDI SÜD",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1289,
+          "y": 340
+        },
+        {
+          "x": 1430,
+          "y": 341
+        },
+        {
+          "x": 1428,
+          "y": 401
+        },
+        {
+          "x": 1286,
+          "y": 401
+        }
+      ],
+      [
+        {
+          "x": 1451,
+          "y": 341
+        },
+        {
+          "x": 1557,
+          "y": 342
+        },
+        {
+          "x": 1555,
+          "y": 402
+        },
+        {
+          "x": 1449,
+          "y": 402
+        }
+      ]
+    ]
+  },
+  "merchantAddress": {
+    "data": "Erich-Hoffmann-Straße, 53121, Bonn, Endenich, Nordrhein-Westfalen",
+    "confidenceLevel": 0.99,
+    "text": "Erich Hoffmann-Straße, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1029,
+          "y": 413
+        },
+        {
+          "x": 1731,
+          "y": 415
+        },
+        {
+          "x": 1726,
+          "y": 486
+        },
+        {
+          "x": 1028,
+          "y": 486
+        }
+      ],
+      [
+        {
+          "x": 1760,
+          "y": 415
+        },
+        {
+          "x": 1828,
+          "y": 415
+        },
+        {
+          "x": 1823,
+          "y": 487
+        },
+        {
+          "x": 1755,
+          "y": 486
+        }
+      ]
+    ]
+  },
+  "merchantCity": {
+    "data": "Endenich, Bonn",
+    "confidenceLevel": 0.99,
+    "text": "Erich Hoffmann-Straße, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1029,
+          "y": 413
+        },
+        {
+          "x": 1731,
+          "y": 415
+        },
+        {
+          "x": 1726,
+          "y": 486
+        },
+        {
+          "x": 1028,
+          "y": 486
+        }
+      ],
+      [
+        {
+          "x": 1760,
+          "y": 415
+        },
+        {
+          "x": 1828,
+          "y": 415
+        },
+        {
+          "x": 1823,
+          "y": 487
+        },
+        {
+          "x": 1755,
+          "y": 486
+        }
+      ]
+    ]
+  },
+  "merchantState": {
+    "data": "Bonn, Nordrhein-Westfalen",
+    "confidenceLevel": 0.99,
+    "text": "Erich Hoffmann-Straße, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1029,
+          "y": 413
+        },
+        {
+          "x": 1731,
+          "y": 415
+        },
+        {
+          "x": 1726,
+          "y": 486
+        },
+        {
+          "x": 1028,
+          "y": 486
+        }
+      ],
+      [
+        {
+          "x": 1760,
+          "y": 415
+        },
+        {
+          "x": 1828,
+          "y": 415
+        },
+        {
+          "x": 1823,
+          "y": 487
+        },
+        {
+          "x": 1755,
+          "y": 486
+        }
+      ]
+    ]
+  },
+  "merchantCountryCode": {
+    "data": "DE",
+    "confidenceLevel": 0.99,
+    "text": "Erich Hoffmann-Straße, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1029,
+          "y": 413
+        },
+        {
+          "x": 1731,
+          "y": 415
+        },
+        {
+          "x": 1726,
+          "y": 486
+        },
+        {
+          "x": 1028,
+          "y": 486
+        }
+      ],
+      [
+        {
+          "x": 1760,
+          "y": 415
+        },
+        {
+          "x": 1828,
+          "y": 415
+        },
+        {
+          "x": 1823,
+          "y": 487
+        },
+        {
+          "x": 1755,
+          "y": 486
+        }
+      ]
+    ]
+  },
+  "merchantTypes": {
+    "confidenceLevel": 0
+  },
+  "merchantPostalCode": {
+    "data": "53121",
+    "confidenceLevel": 0.99,
+    "text": "Erich Hoffmann-Straße, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1029,
+          "y": 413
+        },
+        {
+          "x": 1731,
+          "y": 415
+        },
+        {
+          "x": 1726,
+          "y": 486
+        },
+        {
+          "x": 1028,
+          "y": 486
+        }
+      ],
+      [
+        {
+          "x": 1760,
+          "y": 415
+        },
+        {
+          "x": 1828,
+          "y": 415
+        },
+        {
+          "x": 1823,
+          "y": 487
+        },
+        {
+          "x": 1755,
+          "y": 486
+        }
+      ]
+    ]
+  },
+  "elapsed": 4532.991300582886
+}

@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:bona2/DataStructures/receipt-item.dart';
+import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/utils/utils.dart';
@@ -40,7 +40,7 @@ class DataBaseHelper {
 
   Future<List<Receipt>> getReceipts() async {
     Database db = await instance.db;
-    var receipts = await db.query(kTestReceiptDatabaseName, orderBy: 'uuid');
+    var receipts = await db.query(kReceiptDatabaseName, orderBy: 'uuid');
     List<Receipt> receiptsList = receipts.isNotEmpty
         ? receipts.map((item) => Receipt.fromMap(item)).toList()
         : [];
@@ -48,24 +48,26 @@ class DataBaseHelper {
   }
 
   Future<int> addReceipt(Receipt receipt) async {
+    //TODO: misleading, as this function does not add the items in the receipt.
+    // Change the name or impelment alternative function which adds the items as well.
+    // TODO: handle re-adding same receipt: should not add duplicate. Use datetime, total price to compare.
     Database db = await instance.db;
     print("Receipt:");
     print(hex(receipt.uuid));
-    return await db.insert(kTestReceiptDatabaseName, receipt.toMapSQL());
+    return await db.insert(kReceiptDatabaseName, receipt.toMapSQL());
   }
 
   Future<int> addReceiptItem(ReceiptItem receiptItem) async {
+    //TODO: handle re-adding same receipt item: do not add duplicate. What if two items bought in same session?
     Database db = await instance.db;
-    return await db.insert(kTestReceiptItemDatabaseName, receiptItem.toMap());
+    return await db.insert(kReceiptItemDatabaseName, receiptItem.toMap());
   }
 
   Future<int> addReceiptItems(List<ReceiptItem> receiptItemsList) async {
     Database db = await instance.db;
     int i = -1;
-    print("ReceiptItems:");
     for (var element in receiptItemsList) {
-      print(hex(element.uuid));
-      i = await db.insert(kTestReceiptItemDatabaseName, element.toMap());
+      i = await db.insert(kReceiptItemDatabaseName, element.toMap());
     }
     return i;
   }
@@ -73,27 +75,41 @@ class DataBaseHelper {
   Future<int> deleteTable() async {
     // TODO: make it selectable once more tables exist
     Database db = await instance.db;
-    return await db.delete(kTestReceiptDatabaseName);
+    return await db.delete(kReceiptDatabaseName);
   }
 
   Future clearTable() async {
     // TODO: make it selectable once more tables exist
     Database db = await instance.db;
-    await db.execute("DROP TABLE IF EXISTS $kTestReceiptDatabaseName");
+    await db.execute("DROP TABLE IF EXISTS $kReceiptDatabaseName");
     await db.execute(kCreateReceiptDatabaseCommand);
-    await db.execute("DROP TABLE IF EXISTS $kTestReceiptItemDatabaseName");
+    await db.execute("DROP TABLE IF EXISTS $kReceiptItemDatabaseName");
     await db.execute(kCreateReceiptItemDatabaseCommand);
   }
 
   Future<List<ReceiptItem>> getReceiptItems(Uint8List uuid) async {
     String uuidString = hex(uuid).toUpperCase();
-    print(uuidString);
     Database db = await instance.db;
-    var receiptItems =
-        await db.query(kTestReceiptItemDatabaseName, where: "uuid = x'$uuidString'", orderBy: 'uuid');
+    var receiptItems = await db.query(kReceiptItemDatabaseName,
+        where: "uuid = x'$uuidString'", orderBy: 'uuid');
     List<ReceiptItem> receiptItemsList = receiptItems.isNotEmpty
         ? receiptItems.map((item) => ReceiptItem.fromMap(item)).toList()
         : [];
     return receiptItemsList;
+  }
+
+  Future<void> removeReceiptAndItemsByUUID(Uint8List uuid) async {
+    String uuidString = hex(uuid).toUpperCase();
+    Database db = await instance.db;
+    // TODO: make sure that where is never null and other dangers
+    int countReceipts =
+        await db.delete(kReceiptDatabaseName, where: "uuid = x'$uuidString'");
+    int countReceiptItems = await db.delete(kReceiptItemDatabaseName,
+        where: "uuid = x'$uuidString'");
+    if (countReceipts > 1) {
+      // TODO: get rid of this exception.
+      throw Exception(
+          "removeReceiptByUUID(): more receipts were deleted: $countReceipts");
+    }
   }
 }

@@ -1,10 +1,19 @@
-import 'data-structures_util.dart';
-import 'package:bona2/DataStructures/receipt-item.dart';
+import 'data_structures_util.dart';
+import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:bona2/constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bona2/DataStructures/receipt.dart';
 
 void main() {
+  group("test receipt creation functions for testing", () {
+    test("test receipt creation functions for testing", (){
+      final ReceiptItem receiptItem1 = createReceiptItem(rawText: "item1");
+      final ReceiptItem receiptItem2 = createReceiptItem(rawText: "item2");
+      assert(receiptItem1.rawText == "item1");
+      assert(receiptItem2.rawText == "item2");
+    });
+  });
+
   group("test getNumberItems", () {
     test("test getNumberItems for empty Receipt", () {
       final Receipt emptyReceipt = createReceiptEmpty();
@@ -21,6 +30,30 @@ void main() {
       final ReceiptItem receiptItem1 = createReceiptItem();
       final ReceiptItem receiptItem2 = createReceiptItem();
       assert(receiptItem1 == receiptItem2);
+    });
+  });
+
+  group("test ReceiptItem + operator", () {
+    test("test ReceiptItem + operator", () {
+      final ReceiptItem receiptItem1 = createReceiptItem(rawText: "item1");
+      final ReceiptItem receiptItem2 = createReceiptItem(rawText: "item2");
+      final ReceiptItem receiptItem3 =
+          receiptItem1 + receiptItem2; // TODO: add these in setUp()
+      assert(receiptItem1.rawText == "item1");
+      assert(receiptItem2.rawText == "item2");
+      assert(receiptItem3.rawText == "item1${kReceiptItemAdditionSeparator}item2");
+    });
+  });
+
+  group("test ReceiptItem - operator", () {
+    test("test ReceiptItem - operator", () {
+      final ReceiptItem receiptItem1 = createReceiptItem(rawText: "item1");
+      final ReceiptItem receiptItem2 = createReceiptItem(rawText: "item2");
+      // simulate two receiptItems added
+      final ReceiptItem receiptItem3 =
+          createReceiptItem(rawText: "item1${kReceiptItemAdditionSeparator}item2");
+      final ReceiptItem receiptItem4 = receiptItem3 - receiptItem2;
+      assert(receiptItem4.rawText == receiptItem1.rawText);
     });
   });
 
@@ -81,5 +114,21 @@ void main() {
       final Receipt receipt2 = createReceiptSingleItem();
       assert(receipt1 == receipt2);
     });
+  });
+
+  /// Test addition operator
+  group("test Receipt + operator", () {
+    // TODO: implement tests! + and - defined for ReceiptItem and ShoppingItem
+    assert(1 == 1);
+  });
+
+  /// Test subtraction operator
+  group("test Receipt - operator", () {
+    assert(1 == 1);
+  });
+
+  /// Test getters and setters
+  group("test Receipt getters and setters", () {
+    assert(1 == 1);
   });
 }

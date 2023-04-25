@@ -1,0 +1,1882 @@
+{
+  "location": {
+    "city": {
+      "geoname_id": 2946447,
+      "names": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "ja": "ボン",
+        "pt-BR": "Bona",
+        "ru": "Бонн",
+        "zh-CN": "波恩"
+      }
+    },
+    "continent": {
+      "code": "EU",
+      "geoname_id": 6255148,
+      "names": {
+        "de": "Europa",
+        "en": "Europe",
+        "es": "Europa",
+        "fr": "Europe",
+        "ja": "ヨーロッパ",
+        "pt-BR": "Europa",
+        "ru": "Европа",
+        "zh-CN": "欧洲"
+      }
+    },
+    "country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "location": {
+      "accuracy_radius": 1,
+      "latitude": 50.7362,
+      "longitude": 7.1002,
+      "time_zone": "Europe/Berlin"
+    },
+    "postal": {
+      "code": "53111"
+    },
+    "registered_country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "subdivisions": [
+      {
+        "geoname_id": 2861876,
+        "iso_code": "NW",
+        "names": {
+          "de": "Nordrhein-Westfalen",
+          "en": "North Rhine-Westphalia",
+          "es": "Renania del Norte-Westfalia",
+          "fr": "Rhénanie du Nord-Westphalie",
+          "ru": "Северный Рейн-Вестфалия"
+        }
+      }
+    ]
+  },
+  "totalAmount": {
+    "confidenceLevel": 0.916,
+    "index": 60,
+    "data": 36.88,
+    "text": "Summe 36,88",
+    "regions": [
+      [
+        {
+          "x": 974,
+          "y": 3636
+        },
+        {
+          "x": 1896,
+          "y": 3625
+        },
+        {
+          "x": 1896,
+          "y": 3676
+        },
+        {
+          "x": 971,
+          "y": 3686
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "keyword": "Summe 36,88"
+  },
+  "taxAmount": {
+    "index": 64,
+    "data": 0.02,
+    "text": "B 19,0% Netto 0,02 MwSt 0,00",
+    "regions": [
+      [
+        {
+          "x": 980,
+          "y": 3917
+        },
+        {
+          "x": 1870,
+          "y": 3913
+        },
+        {
+          "x": 1870,
+          "y": 3957
+        },
+        {
+          "x": 980,
+          "y": 3964
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "confidenceLevel": 0.68,
+    "keyword": "B 19,0% Netto 0,02 MwSt 0,00"
+  },
+  "confidenceLevel": 0.859445205479452,
+  "date": {
+    "data": "2021-01-02T12:21:29.000Z",
+    "confidenceLevel": 0.7497808219178081,
+    "text": "Datum 02.01.2021",
+    "index": 40,
+    "regions": [
+      [
+        {
+          "x": 1006,
+          "y": 2480
+        },
+        {
+          "x": 1119,
+          "y": 2480
+        },
+        {
+          "x": 1115,
+          "y": 2527
+        },
+        {
+          "x": 1006,
+          "y": 2524
+        }
+      ],
+      [
+        {
+          "x": 1657,
+          "y": 2489
+        },
+        {
+          "x": 1885,
+          "y": 2497
+        },
+        {
+          "x": 1881,
+          "y": 2544
+        },
+        {
+          "x": 1657,
+          "y": 2534
+        }
+      ]
+    ]
+  },
+  "text": {
+    "text": "Erich-Hoffmann-Straße 12\n53121 Bonn-Endenich EUR\n55363 Pasta/Gnocchi 0,69 A\n55363 Pasta/Gnocchi 0,69 A\n43865 griech. Jogh. 1kg 1,99 A\n701865 MR Dunkles Sortime 1,09 A\n785095 Kart. Vwfk 2.5kg 0,99 A\n781459 Birnen grün 1kg 1,49 A\n781819 Champ. Braun 400g 1,79 A\n48974 Laktof. H-Mil 3,8 1,09 A\n48974 Laktof. H-Mil 3,8 1,09 A\n12267 Irischer Cheddar 1,99 A\n782027 Clementinen 1kg 1,19 A\n55801 Pesto, cremig 0,99 A\n11718 Norw. Lachsfilet X 6,99 A\n706051 Gour . Tortelloni 1,79 A\n39510 Koch-Hinterschinke 1,49 A\n783582 Lauchzwiebeln 0,59 A\n700671 Obstknotenbeutel 0,01 B\n783758 Karotten 0,47 A\n0,478 kg × 0,99 EUR/kg\n784829 Rosenkohl QS 750g 0,89 A\n45305 Vital & Fit 0,99 A\n783676 Bananen RFA lose 1,00 A\n1,014 kg x 0,99 EUR/kg\n782935 Kaki Stück 0,59 A\n782935 Kaki Stück 0,59 A\n700558 Walnusbrötchen 0,49 A\n700558 Walnusbrötchen 0,49 A\n785397 Salatherzen 2er 0,89 A\nRabatt 30,0% -0,27 A\n781687 Brokkoli 500g 0,99 A\n783802 Rispentomaten lose 0,86 A\n0,392 kg × 2,19 EUR/kg\n700671 Obstknotenbeutel 0,01 B\n2723 Körn. Frischkäse 0,65 A\nRabatt 30,0% -0,20 A\n6124 Walnusskerne 2,49 A\n+ K U N D E N B E L E G +\nTerminalnummer 65443020\nDatum 02.01.2021\nUhrzeit 12:21:29\nBeleg-Nr.\n3895\nTransaktions-Nr. 166771\nKartenzahlung\ngirocard\nBetrag 36.88 EUR\nKarte ###############9007\nKartenfolgenummer 0\nVertragsnummer 1079443020\nEMV-AID A0000003591010028001\nGenehmigungs-Nr. 301576\nEMV-DATA:\n0000000000/E800/3900/0046/A00000035910\n10028001/00/0002/0280/605048/440302/22\n/R/192803E1/166771\n**************************** ***\nZahlung erfolgt\n**************************************\nSumme 36,88\n31 Artikel\ngirocard EUR 36,88\nA 07,0% Netto 34,45 MwSt 2,41\nB 19,0% Netto 0,02 MwSt 0,00\n8 02 01.21 12:20",
+    "regions": [
+      {
+        "x": 970,
+        "y": 28
+      },
+      {
+        "x": 1929,
+        "y": 30
+      },
+      {
+        "x": 1929,
+        "y": 3995
+      },
+      {
+        "x": 970,
+        "y": 3997
+      }
+    ]
+  },
+  "amounts": [
+    {
+      "data": 0.69,
+      "index": 2,
+      "regions": [
+        [
+          {
+            "x": 1094,
+            "y": 267
+          },
+          {
+            "x": 1918,
+            "y": 258
+          },
+          {
+            "x": 1920,
+            "y": 305
+          },
+          {
+            "x": 1094,
+            "y": 316
+          }
+        ]
+      ],
+      "text": "55363 Pasta/Gnocchi 0,69 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.69,
+      "index": 3,
+      "regions": [
+        [
+          {
+            "x": 1095,
+            "y": 328
+          },
+          {
+            "x": 1920,
+            "y": 314
+          },
+          {
+            "x": 1918,
+            "y": 367
+          },
+          {
+            "x": 1095,
+            "y": 371
+          }
+        ]
+      ],
+      "text": "55363 Pasta/Gnocchi 0,69 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.99,
+      "index": 4,
+      "regions": [
+        [
+          {
+            "x": 1096,
+            "y": 384
+          },
+          {
+            "x": 1917,
+            "y": 374
+          },
+          {
+            "x": 1916,
+            "y": 424
+          },
+          {
+            "x": 1095,
+            "y": 425
+          }
+        ]
+      ],
+      "text": "43865 griech. Jogh. 1kg 1,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 5,
+      "regions": [
+        [
+          {
+            "x": 1076,
+            "y": 435
+          },
+          {
+            "x": 1919,
+            "y": 432
+          },
+          {
+            "x": 1919,
+            "y": 481
+          },
+          {
+            "x": 1075,
+            "y": 485
+          }
+        ]
+      ],
+      "text": "701865 MR Dunkles Sortime 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 6,
+      "regions": [
+        [
+          {
+            "x": 1078,
+            "y": 492
+          },
+          {
+            "x": 1916,
+            "y": 492
+          },
+          {
+            "x": 1915,
+            "y": 538
+          },
+          {
+            "x": 1077,
+            "y": 540
+          }
+        ]
+      ],
+      "text": "785095 Kart. Vwfk 2.5kg 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.49,
+      "index": 7,
+      "regions": [
+        [
+          {
+            "x": 1081,
+            "y": 551
+          },
+          {
+            "x": 1914,
+            "y": 550
+          },
+          {
+            "x": 1917,
+            "y": 598
+          },
+          {
+            "x": 1078,
+            "y": 599
+          }
+        ]
+      ],
+      "text": "781459 Birnen grün 1kg 1,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.79,
+      "index": 8,
+      "regions": [
+        [
+          {
+            "x": 1074,
+            "y": 605
+          },
+          {
+            "x": 1913,
+            "y": 607
+          },
+          {
+            "x": 1915,
+            "y": 656
+          },
+          {
+            "x": 1072,
+            "y": 650
+          }
+        ]
+      ],
+      "text": "781819 Champ. Braun 400g 1,79 A",
+      "currencyCode": "AUD"
+    },
+    {
+      "data": 3.8,
+      "index": 9,
+      "regions": [
+        [
+          {
+            "x": 1102,
+            "y": 663
+          },
+          {
+            "x": 1914,
+            "y": 663
+          },
+          {
+            "x": 1914,
+            "y": 708
+          },
+          {
+            "x": 1099,
+            "y": 704
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 9,
+      "regions": [
+        [
+          {
+            "x": 1102,
+            "y": 663
+          },
+          {
+            "x": 1914,
+            "y": 663
+          },
+          {
+            "x": 1914,
+            "y": 708
+          },
+          {
+            "x": 1099,
+            "y": 704
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.8,
+      "index": 10,
+      "regions": [
+        [
+          {
+            "x": 1100,
+            "y": 717
+          },
+          {
+            "x": 1918,
+            "y": 721
+          },
+          {
+            "x": 1917,
+            "y": 773
+          },
+          {
+            "x": 1097,
+            "y": 757
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 10,
+      "regions": [
+        [
+          {
+            "x": 1100,
+            "y": 717
+          },
+          {
+            "x": 1918,
+            "y": 721
+          },
+          {
+            "x": 1917,
+            "y": 773
+          },
+          {
+            "x": 1097,
+            "y": 757
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.99,
+      "index": 11,
+      "regions": [
+        [
+          {
+            "x": 1098,
+            "y": 772
+          },
+          {
+            "x": 1912,
+            "y": 777
+          },
+          {
+            "x": 1912,
+            "y": 824
+          },
+          {
+            "x": 1098,
+            "y": 817
+          }
+        ]
+      ],
+      "text": "12267 Irischer Cheddar 1,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.19,
+      "index": 12,
+      "regions": [
+        [
+          {
+            "x": 1074,
+            "y": 832
+          },
+          {
+            "x": 1914,
+            "y": 837
+          },
+          {
+            "x": 1913,
+            "y": 882
+          },
+          {
+            "x": 1074,
+            "y": 876
+          }
+        ]
+      ],
+      "text": "782027 Clementinen 1kg 1,19 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 13,
+      "regions": [
+        [
+          {
+            "x": 1093,
+            "y": 887
+          },
+          {
+            "x": 1915,
+            "y": 895
+          },
+          {
+            "x": 1913,
+            "y": 941
+          },
+          {
+            "x": 1093,
+            "y": 931
+          }
+        ]
+      ],
+      "text": "55801 Pesto, cremig 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 6.99,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 1094,
+            "y": 939
+          },
+          {
+            "x": 1915,
+            "y": 949
+          },
+          {
+            "x": 1911,
+            "y": 993
+          },
+          {
+            "x": 1094,
+            "y": 991
+          }
+        ]
+      ],
+      "text": "11718 Norw. Lachsfilet X 6,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.79,
+      "index": 15,
+      "regions": [
+        [
+          {
+            "x": 1077,
+            "y": 1001
+          },
+          {
+            "x": 1913,
+            "y": 1005
+          },
+          {
+            "x": 1915,
+            "y": 1053
+          },
+          {
+            "x": 1076,
+            "y": 1049
+          }
+        ]
+      ],
+      "text": "706051 Gour . Tortelloni 1,79 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.49,
+      "index": 16,
+      "regions": [
+        [
+          {
+            "x": 1096,
+            "y": 1058
+          },
+          {
+            "x": 1916,
+            "y": 1063
+          },
+          {
+            "x": 1913,
+            "y": 1112
+          },
+          {
+            "x": 1095,
+            "y": 1106
+          }
+        ]
+      ],
+      "text": "39510 Koch-Hinterschinke 1,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.59,
+      "index": 17,
+      "regions": [
+        [
+          {
+            "x": 1076,
+            "y": 1117
+          },
+          {
+            "x": 1911,
+            "y": 1122
+          },
+          {
+            "x": 1911,
+            "y": 1164
+          },
+          {
+            "x": 1077,
+            "y": 1162
+          }
+        ]
+      ],
+      "text": "783582 Lauchzwiebeln 0,59 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.01,
+      "index": 18,
+      "regions": [
+        [
+          {
+            "x": 1075,
+            "y": 1175
+          },
+          {
+            "x": 1912,
+            "y": 1178
+          },
+          {
+            "x": 1912,
+            "y": 1228
+          },
+          {
+            "x": 1074,
+            "y": 1222
+          }
+        ]
+      ],
+      "text": "700671 Obstknotenbeutel 0,01 B",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.47,
+      "index": 19,
+      "regions": [
+        [
+          {
+            "x": 1071,
+            "y": 1233
+          },
+          {
+            "x": 1913,
+            "y": 1232
+          },
+          {
+            "x": 1912,
+            "y": 1284
+          },
+          {
+            "x": 1071,
+            "y": 1276
+          }
+        ]
+      ],
+      "text": "783758 Karotten 0,47 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 20,
+      "regions": [
+        [
+          {
+            "x": 1157,
+            "y": 1288
+          },
+          {
+            "x": 1727,
+            "y": 1291
+          },
+          {
+            "x": 1726,
+            "y": 1342
+          },
+          {
+            "x": 1157,
+            "y": 1331
+          }
+        ]
+      ],
+      "text": "0,478 kg × 0,99 EUR/kg",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.89,
+      "index": 21,
+      "regions": [
+        [
+          {
+            "x": 1079,
+            "y": 1341
+          },
+          {
+            "x": 1911,
+            "y": 1350
+          },
+          {
+            "x": 1910,
+            "y": 1396
+          },
+          {
+            "x": 1079,
+            "y": 1386
+          }
+        ]
+      ],
+      "text": "784829 Rosenkohl QS 750g 0,89 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 22,
+      "regions": [
+        [
+          {
+            "x": 1099,
+            "y": 1403
+          },
+          {
+            "x": 1913,
+            "y": 1405
+          },
+          {
+            "x": 1913,
+            "y": 1455
+          },
+          {
+            "x": 1097,
+            "y": 1445
+          }
+        ]
+      ],
+      "text": "45305 Vital & Fit 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1,
+      "index": 23,
+      "regions": [
+        [
+          {
+            "x": 1071,
+            "y": 1459
+          },
+          {
+            "x": 1912,
+            "y": 1463
+          },
+          {
+            "x": 1911,
+            "y": 1512
+          },
+          {
+            "x": 1071,
+            "y": 1502
+          }
+        ]
+      ],
+      "text": "783676 Bananen RFA lose 1,00 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 24,
+      "regions": [
+        [
+          {
+            "x": 1175,
+            "y": 1516
+          },
+          {
+            "x": 1728,
+            "y": 1522
+          },
+          {
+            "x": 1725,
+            "y": 1572
+          },
+          {
+            "x": 1175,
+            "y": 1559
+          }
+        ]
+      ],
+      "text": "1,014 kg x 0,99 EUR/kg",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.59,
+      "index": 25,
+      "regions": [
+        [
+          {
+            "x": 1077,
+            "y": 1574
+          },
+          {
+            "x": 1912,
+            "y": 1577
+          },
+          {
+            "x": 1911,
+            "y": 1624
+          },
+          {
+            "x": 1076,
+            "y": 1617
+          }
+        ]
+      ],
+      "text": "782935 Kaki Stück 0,59 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.59,
+      "index": 26,
+      "regions": [
+        [
+          {
+            "x": 1078,
+            "y": 1629
+          },
+          {
+            "x": 1910,
+            "y": 1634
+          },
+          {
+            "x": 1907,
+            "y": 1678
+          },
+          {
+            "x": 1077,
+            "y": 1675
+          }
+        ]
+      ],
+      "text": "782935 Kaki Stück 0,59 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 27,
+      "regions": [
+        [
+          {
+            "x": 1078,
+            "y": 1686
+          },
+          {
+            "x": 1914,
+            "y": 1692
+          },
+          {
+            "x": 1912,
+            "y": 1741
+          },
+          {
+            "x": 1076,
+            "y": 1731
+          }
+        ]
+      ],
+      "text": "700558 Walnusbrötchen 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 28,
+      "regions": [
+        [
+          {
+            "x": 1078,
+            "y": 1742
+          },
+          {
+            "x": 1913,
+            "y": 1748
+          },
+          {
+            "x": 1911,
+            "y": 1797
+          },
+          {
+            "x": 1077,
+            "y": 1788
+          }
+        ]
+      ],
+      "text": "700558 Walnusbrötchen 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.89,
+      "index": 29,
+      "regions": [
+        [
+          {
+            "x": 1078,
+            "y": 1797
+          },
+          {
+            "x": 1912,
+            "y": 1805
+          },
+          {
+            "x": 1912,
+            "y": 1853
+          },
+          {
+            "x": 1075,
+            "y": 1842
+          }
+        ]
+      ],
+      "text": "785397 Salatherzen 2er 0,89 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 31,
+      "regions": [
+        [
+          {
+            "x": 1078,
+            "y": 1913
+          },
+          {
+            "x": 1914,
+            "y": 1915
+          },
+          {
+            "x": 1915,
+            "y": 1965
+          },
+          {
+            "x": 1076,
+            "y": 1956
+          }
+        ]
+      ],
+      "text": "781687 Brokkoli 500g 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.86,
+      "index": 32,
+      "regions": [
+        [
+          {
+            "x": 1079,
+            "y": 1966
+          },
+          {
+            "x": 1916,
+            "y": 1969
+          },
+          {
+            "x": 1912,
+            "y": 2023
+          },
+          {
+            "x": 1079,
+            "y": 2010
+          }
+        ]
+      ],
+      "text": "783802 Rispentomaten lose 0,86 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.19,
+      "index": 33,
+      "regions": [
+        [
+          {
+            "x": 1164,
+            "y": 2025
+          },
+          {
+            "x": 1728,
+            "y": 2031
+          },
+          {
+            "x": 1724,
+            "y": 2081
+          },
+          {
+            "x": 1163,
+            "y": 2072
+          }
+        ]
+      ],
+      "text": "0,392 kg × 2,19 EUR/kg",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.01,
+      "index": 34,
+      "regions": [
+        [
+          {
+            "x": 1074,
+            "y": 2081
+          },
+          {
+            "x": 1913,
+            "y": 2085
+          },
+          {
+            "x": 1911,
+            "y": 2134
+          },
+          {
+            "x": 1073,
+            "y": 2127
+          }
+        ]
+      ],
+      "text": "700671 Obstknotenbeutel 0,01 B",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.65,
+      "index": 35,
+      "regions": [
+        [
+          {
+            "x": 1128,
+            "y": 2138
+          },
+          {
+            "x": 1913,
+            "y": 2148
+          },
+          {
+            "x": 1912,
+            "y": 2192
+          },
+          {
+            "x": 1124,
+            "y": 2185
+          }
+        ]
+      ],
+      "text": "2723 Körn. Frischkäse 0,65 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.49,
+      "index": 37,
+      "regions": [
+        [
+          {
+            "x": 1126,
+            "y": 2251
+          },
+          {
+            "x": 1914,
+            "y": 2258
+          },
+          {
+            "x": 1913,
+            "y": 2306
+          },
+          {
+            "x": 1123,
+            "y": 2298
+          }
+        ]
+      ],
+      "text": "6124 Walnusskerne 2,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 36.88,
+      "index": 47,
+      "regions": [
+        [
+          {
+            "x": 995,
+            "y": 2822
+          },
+          {
+            "x": 1893,
+            "y": 2836
+          },
+          {
+            "x": 1891,
+            "y": 2884
+          },
+          {
+            "x": 995,
+            "y": 2869
+          }
+        ]
+      ],
+      "text": "Betrag 36.88 EUR",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 36.88,
+      "index": 60,
+      "regions": [
+        [
+          {
+            "x": 974,
+            "y": 3636
+          },
+          {
+            "x": 1896,
+            "y": 3625
+          },
+          {
+            "x": 1896,
+            "y": 3676
+          },
+          {
+            "x": 971,
+            "y": 3686
+          }
+        ]
+      ],
+      "text": "Summe 36,88",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 36.88,
+      "index": 62,
+      "regions": [
+        [
+          {
+            "x": 972,
+            "y": 3752
+          },
+          {
+            "x": 1876,
+            "y": 3740
+          },
+          {
+            "x": 1875,
+            "y": 3787
+          },
+          {
+            "x": 975,
+            "y": 3799
+          }
+        ]
+      ],
+      "text": "girocard EUR 36,88",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 34.45,
+      "index": 63,
+      "regions": [
+        [
+          {
+            "x": 973,
+            "y": 3862
+          },
+          {
+            "x": 1872,
+            "y": 3859
+          },
+          {
+            "x": 1871,
+            "y": 3900
+          },
+          {
+            "x": 973,
+            "y": 3908
+          }
+        ]
+      ],
+      "text": "A 07,0% Netto 34,45 MwSt 2,41",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.41,
+      "index": 63,
+      "regions": [
+        [
+          {
+            "x": 973,
+            "y": 3862
+          },
+          {
+            "x": 1872,
+            "y": 3859
+          },
+          {
+            "x": 1871,
+            "y": 3900
+          },
+          {
+            "x": 973,
+            "y": 3908
+          }
+        ]
+      ],
+      "text": "A 07,0% Netto 34,45 MwSt 2,41",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.02,
+      "index": 64,
+      "regions": [
+        [
+          {
+            "x": 980,
+            "y": 3917
+          },
+          {
+            "x": 1870,
+            "y": 3913
+          },
+          {
+            "x": 1870,
+            "y": 3957
+          },
+          {
+            "x": 980,
+            "y": 3964
+          }
+        ]
+      ],
+      "text": "B 19,0% Netto 0,02 MwSt 0,00",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0,
+      "index": 64,
+      "regions": [
+        [
+          {
+            "x": 980,
+            "y": 3917
+          },
+          {
+            "x": 1870,
+            "y": 3913
+          },
+          {
+            "x": 1870,
+            "y": 3957
+          },
+          {
+            "x": 980,
+            "y": 3964
+          }
+        ]
+      ],
+      "text": "B 19,0% Netto 0,02 MwSt 0,00",
+      "currencyCode": "EUR"
+    }
+  ],
+  "numbers": [
+    {
+      "data": 12,
+      "text": "Erich-Hoffmann-Straße 12",
+      "regions": [
+        [
+          {
+            "x": 1171,
+            "y": 28
+          },
+          {
+            "x": 1736,
+            "y": 33
+          },
+          {
+            "x": 1733,
+            "y": 88
+          },
+          {
+            "x": 1171,
+            "y": 88
+          }
+        ]
+      ],
+      "index": 0
+    },
+    {
+      "data": 53121,
+      "text": "53121 Bonn-Endenich EUR",
+      "regions": [
+        [
+          {
+            "x": 1210,
+            "y": 93
+          },
+          {
+            "x": 1847,
+            "y": 204
+          },
+          {
+            "x": 1846,
+            "y": 250
+          },
+          {
+            "x": 1209,
+            "y": 143
+          }
+        ]
+      ],
+      "index": 1
+    },
+    {
+      "data": 1014,
+      "text": "1,014 kg x 0,99 EUR/kg",
+      "regions": [
+        [
+          {
+            "x": 1175,
+            "y": 1516
+          },
+          {
+            "x": 1728,
+            "y": 1522
+          },
+          {
+            "x": 1725,
+            "y": 1572
+          },
+          {
+            "x": 1175,
+            "y": 1559
+          }
+        ]
+      ],
+      "index": 24
+    },
+    {
+      "data": 2723,
+      "text": "2723 Körn. Frischkäse 0,65 A",
+      "regions": [
+        [
+          {
+            "x": 1128,
+            "y": 2138
+          },
+          {
+            "x": 1913,
+            "y": 2148
+          },
+          {
+            "x": 1912,
+            "y": 2192
+          },
+          {
+            "x": 1124,
+            "y": 2185
+          }
+        ]
+      ],
+      "index": 35,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 65443020,
+      "text": "Terminalnummer 65443020",
+      "regions": [
+        [
+          {
+            "x": 1014,
+            "y": 2422
+          },
+          {
+            "x": 1891,
+            "y": 2440
+          },
+          {
+            "x": 1887,
+            "y": 2483
+          },
+          {
+            "x": 1013,
+            "y": 2467
+          }
+        ]
+      ],
+      "index": 39
+    },
+    {
+      "data": 3895,
+      "text": "3895",
+      "regions": [
+        [
+          {
+            "x": 1798,
+            "y": 2614
+          },
+          {
+            "x": 1893,
+            "y": 2617
+          },
+          {
+            "x": 1891,
+            "y": 2661
+          },
+          {
+            "x": 1797,
+            "y": 2658
+          }
+        ]
+      ],
+      "index": 43
+    },
+    {
+      "data": 166771,
+      "text": "Transaktions-Nr. 166771",
+      "regions": [
+        [
+          {
+            "x": 1003,
+            "y": 2651
+          },
+          {
+            "x": 1889,
+            "y": 2669
+          },
+          {
+            "x": 1884,
+            "y": 2712
+          },
+          {
+            "x": 999,
+            "y": 2696
+          }
+        ]
+      ],
+      "index": 44
+    },
+    {
+      "data": 1079443020,
+      "text": "Vertragsnummer 1079443020",
+      "regions": [
+        [
+          {
+            "x": 1005,
+            "y": 2996
+          },
+          {
+            "x": 1888,
+            "y": 3004
+          },
+          {
+            "x": 1888,
+            "y": 3054
+          },
+          {
+            "x": 1005,
+            "y": 3039
+          }
+        ]
+      ],
+      "index": 50
+    },
+    {
+      "data": 301576,
+      "text": "Genehmigungs-Nr. 301576",
+      "regions": [
+        [
+          {
+            "x": 999,
+            "y": 3109
+          },
+          {
+            "x": 1893,
+            "y": 3121
+          },
+          {
+            "x": 1890,
+            "y": 3167
+          },
+          {
+            "x": 999,
+            "y": 3155
+          }
+        ]
+      ],
+      "index": 52
+    },
+    {
+      "data": 31,
+      "text": "31 Artikel",
+      "regions": [
+        [
+          {
+            "x": 975,
+            "y": 3688
+          },
+          {
+            "x": 1218,
+            "y": 3677
+          },
+          {
+            "x": 1218,
+            "y": 3725
+          },
+          {
+            "x": 973,
+            "y": 3737
+          }
+        ]
+      ],
+      "index": 61
+    },
+    {
+      "data": 8,
+      "text": "8 02 01.21 12 20",
+      "regions": [
+        [
+          {
+            "x": 1426,
+            "y": 3963
+          },
+          {
+            "x": 1795,
+            "y": 3961
+          },
+          {
+            "x": 1796,
+            "y": 3996
+          },
+          {
+            "x": 1429,
+            "y": 3998
+          }
+        ]
+      ],
+      "index": 65
+    }
+  ],
+  "lineAmounts": [],
+  "itemsCount": {
+    "data": 0,
+    "confidenceLevel": 0
+  },
+  "entities": {
+    "invoiceNumber": {
+      "data": "65443020",
+      "text": " 65443020",
+      "confidenceLevel": 0.51,
+      "keyword": "Terminalnummer 65443020"
+    }
+  },
+  "merchantName": {
+    "data": "Erich-Hoffmann-Straße 12",
+    "confidenceLevel": 0.9,
+    "text": "Erich-Hoffmann-Straße 12",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1171,
+          "y": 28
+        },
+        {
+          "x": 1668,
+          "y": 34
+        },
+        {
+          "x": 1666,
+          "y": 88
+        },
+        {
+          "x": 1171,
+          "y": 88
+        }
+      ],
+      [
+        {
+          "x": 1684,
+          "y": 33
+        },
+        {
+          "x": 1736,
+          "y": 33
+        },
+        {
+          "x": 1733,
+          "y": 88
+        },
+        {
+          "x": 1681,
+          "y": 88
+        }
+      ]
+    ]
+  },
+  "merchantAddress": {
+    "data": "Erich-Hoffmann-Straße, 53121, Bonn, Endenich, Nordrhein-Westfalen",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1171,
+          "y": 28
+        },
+        {
+          "x": 1668,
+          "y": 34
+        },
+        {
+          "x": 1666,
+          "y": 88
+        },
+        {
+          "x": 1171,
+          "y": 88
+        }
+      ],
+      [
+        {
+          "x": 1684,
+          "y": 33
+        },
+        {
+          "x": 1736,
+          "y": 33
+        },
+        {
+          "x": 1733,
+          "y": 88
+        },
+        {
+          "x": 1681,
+          "y": 88
+        }
+      ]
+    ]
+  },
+  "merchantCity": {
+    "data": "Endenich, Bonn",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1171,
+          "y": 28
+        },
+        {
+          "x": 1668,
+          "y": 34
+        },
+        {
+          "x": 1666,
+          "y": 88
+        },
+        {
+          "x": 1171,
+          "y": 88
+        }
+      ],
+      [
+        {
+          "x": 1684,
+          "y": 33
+        },
+        {
+          "x": 1736,
+          "y": 33
+        },
+        {
+          "x": 1733,
+          "y": 88
+        },
+        {
+          "x": 1681,
+          "y": 88
+        }
+      ]
+    ]
+  },
+  "merchantState": {
+    "data": "Bonn, Nordrhein-Westfalen",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1171,
+          "y": 28
+        },
+        {
+          "x": 1668,
+          "y": 34
+        },
+        {
+          "x": 1666,
+          "y": 88
+        },
+        {
+          "x": 1171,
+          "y": 88
+        }
+      ],
+      [
+        {
+          "x": 1684,
+          "y": 33
+        },
+        {
+          "x": 1736,
+          "y": 33
+        },
+        {
+          "x": 1733,
+          "y": 88
+        },
+        {
+          "x": 1681,
+          "y": 88
+        }
+      ]
+    ]
+  },
+  "merchantCountryCode": {
+    "data": "DE",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1171,
+          "y": 28
+        },
+        {
+          "x": 1668,
+          "y": 34
+        },
+        {
+          "x": 1666,
+          "y": 88
+        },
+        {
+          "x": 1171,
+          "y": 88
+        }
+      ],
+      [
+        {
+          "x": 1684,
+          "y": 33
+        },
+        {
+          "x": 1736,
+          "y": 33
+        },
+        {
+          "x": 1733,
+          "y": 88
+        },
+        {
+          "x": 1681,
+          "y": 88
+        }
+      ]
+    ]
+  },
+  "merchantTypes": {
+    "confidenceLevel": 0
+  },
+  "merchantPostalCode": {
+    "data": "53121",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1171,
+          "y": 28
+        },
+        {
+          "x": 1668,
+          "y": 34
+        },
+        {
+          "x": 1666,
+          "y": 88
+        },
+        {
+          "x": 1171,
+          "y": 88
+        }
+      ],
+      [
+        {
+          "x": 1684,
+          "y": 33
+        },
+        {
+          "x": 1736,
+          "y": 33
+        },
+        {
+          "x": 1733,
+          "y": 88
+        },
+        {
+          "x": 1681,
+          "y": 88
+        }
+      ]
+    ]
+  },
+  "elapsed": 5686.752952575684
+}

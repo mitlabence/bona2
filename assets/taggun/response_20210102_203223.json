@@ -1,0 +1,1122 @@
+{
+  "location": {
+    "city": {
+      "geoname_id": 2946447,
+      "names": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "ja": "ボン",
+        "pt-BR": "Bona",
+        "ru": "Бонн",
+        "zh-CN": "波恩"
+      }
+    },
+    "continent": {
+      "code": "EU",
+      "geoname_id": 6255148,
+      "names": {
+        "de": "Europa",
+        "en": "Europe",
+        "es": "Europa",
+        "fr": "Europe",
+        "ja": "ヨーロッパ",
+        "pt-BR": "Europa",
+        "ru": "Европа",
+        "zh-CN": "欧洲"
+      }
+    },
+    "country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "location": {
+      "accuracy_radius": 1,
+      "latitude": 50.7362,
+      "longitude": 7.1002,
+      "time_zone": "Europe/Berlin"
+    },
+    "postal": {
+      "code": "53111"
+    },
+    "registered_country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "subdivisions": [
+      {
+        "geoname_id": 2861876,
+        "iso_code": "NW",
+        "names": {
+          "de": "Nordrhein-Westfalen",
+          "en": "North Rhine-Westphalia",
+          "es": "Renania del Norte-Westfalia",
+          "fr": "Rhénanie du Nord-Westphalie",
+          "ru": "Северный Рейн-Вестфалия"
+        }
+      }
+    ]
+  },
+  "totalAmount": {
+    "confidenceLevel": 0.916,
+    "index": 11,
+    "data": 11.72,
+    "text": "SUMME EUR 11,72",
+    "regions": [
+      [
+        {
+          "x": 88,
+          "y": 1828
+        },
+        {
+          "x": 1619,
+          "y": 1819
+        },
+        {
+          "x": 1618,
+          "y": 1953
+        },
+        {
+          "x": 91,
+          "y": 1959
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "keyword": "SUMME EUR 11,72"
+  },
+  "taxAmount": {
+    "confidenceLevel": 0
+  },
+  "confidenceLevel": 0.8990350829735398,
+  "date": {
+    "data": "2020-12-12T08:40:00.000Z",
+    "confidenceLevel": 0.99,
+    "text": "12.12.20 12:40 0000931 008 008 6296",
+    "index": 17,
+    "regions": [
+      [
+        {
+          "x": 76,
+          "y": 2904
+        },
+        {
+          "x": 388,
+          "y": 2892
+        },
+        {
+          "x": 391,
+          "y": 2959
+        },
+        {
+          "x": 80,
+          "y": 2968
+        }
+      ],
+      [
+        {
+          "x": 433,
+          "y": 2891
+        },
+        {
+          "x": 628,
+          "y": 2886
+        },
+        {
+          "x": 630,
+          "y": 2954
+        },
+        {
+          "x": 435,
+          "y": 2958
+        }
+      ],
+      [
+        {
+          "x": 664,
+          "y": 2885
+        },
+        {
+          "x": 942,
+          "y": 2882
+        },
+        {
+          "x": 944,
+          "y": 2950
+        },
+        {
+          "x": 666,
+          "y": 2953
+        }
+      ],
+      [
+        {
+          "x": 978,
+          "y": 2882
+        },
+        {
+          "x": 1099,
+          "y": 2882
+        },
+        {
+          "x": 1101,
+          "y": 2949
+        },
+        {
+          "x": 980,
+          "y": 2950
+        }
+      ],
+      [
+        {
+          "x": 1135,
+          "y": 2882
+        },
+        {
+          "x": 1256,
+          "y": 2883
+        },
+        {
+          "x": 1257,
+          "y": 2949
+        },
+        {
+          "x": 1137,
+          "y": 2949
+        }
+      ],
+      [
+        {
+          "x": 1288,
+          "y": 2883
+        },
+        {
+          "x": 1453,
+          "y": 2886
+        },
+        {
+          "x": 1453,
+          "y": 2949
+        },
+        {
+          "x": 1289,
+          "y": 2949
+        }
+      ]
+    ]
+  },
+  "text": {
+    "text": "EDEKA\nEDEKA E-Center Vogl OHG\nBasketsring 3\n53123 Bonn-Hardtberg\nTel. 0228 / 41076777\nwww.edeka-vogl.de EUR\n2 x 2,93\nWEETABIX FR/NUSS M 5,86 B\n2 x 2.93\nWEETABIX SCHOKO MI 5,86 B\"\nPosten: 4 ----------\nSUMME EUR 11,72\nEC-Cash EUR 11,72\nMwSt NETTO MwSt UMSATZ\nB 5% 11,16 0,56 11,72\n0 01093112122000800629 6\nDatum Uhrzeit Filiale Pos Bed Bon\n12.12.20 12:40 0000931 008 008 6296\nSteuernummer: 206/5804/0249\nVielen Dank für Ihren Einkauf!\nUnsere Öffnungszeiten:\nMo - Sa: 8:00 - 22:00 Uhr\nUst-ID: DE122261187",
+    "regions": [
+      {
+        "x": 74,
+        "y": 549
+      },
+      {
+        "x": 1710,
+        "y": 546
+      },
+      {
+        "x": 1710,
+        "y": 3536
+      },
+      {
+        "x": 75,
+        "y": 3561
+      }
+    ]
+  },
+  "amounts": [
+    {
+      "data": 2.93,
+      "index": 6,
+      "regions": [
+        [
+          {
+            "x": 95,
+            "y": 1410
+          },
+          {
+            "x": 1202,
+            "y": 1410
+          },
+          {
+            "x": 1203,
+            "y": 1489
+          },
+          {
+            "x": 93,
+            "y": 1492
+          }
+        ]
+      ],
+      "text": "2 x 2,93",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 5.86,
+      "index": 7,
+      "regions": [
+        [
+          {
+            "x": 97,
+            "y": 1491
+          },
+          {
+            "x": 1648,
+            "y": 1492
+          },
+          {
+            "x": 1650,
+            "y": 1567
+          },
+          {
+            "x": 96,
+            "y": 1573
+          }
+        ]
+      ],
+      "text": "WEETABIX FR/NUSS M 5,86 B",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.93,
+      "index": 8,
+      "regions": [
+        [
+          {
+            "x": 97,
+            "y": 1579
+          },
+          {
+            "x": 1196,
+            "y": 1578
+          },
+          {
+            "x": 1196,
+            "y": 1653
+          },
+          {
+            "x": 94,
+            "y": 1650
+          }
+        ]
+      ],
+      "text": "2 x 2.93",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 5.86,
+      "index": 9,
+      "regions": [
+        [
+          {
+            "x": 93,
+            "y": 1662
+          },
+          {
+            "x": 1677,
+            "y": 1639
+          },
+          {
+            "x": 1677,
+            "y": 1730
+          },
+          {
+            "x": 91,
+            "y": 1733
+          }
+        ]
+      ],
+      "text": "WEETABIX SCHOKO MI 5,86 B\"",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 11.72,
+      "index": 11,
+      "regions": [
+        [
+          {
+            "x": 88,
+            "y": 1828
+          },
+          {
+            "x": 1619,
+            "y": 1819
+          },
+          {
+            "x": 1618,
+            "y": 1953
+          },
+          {
+            "x": 91,
+            "y": 1959
+          }
+        ]
+      ],
+      "text": "SUMME EUR 11,72",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 11.72,
+      "index": 12,
+      "regions": [
+        [
+          {
+            "x": 87,
+            "y": 2051
+          },
+          {
+            "x": 1537,
+            "y": 2045
+          },
+          {
+            "x": 1537,
+            "y": 2119
+          },
+          {
+            "x": 88,
+            "y": 2119
+          }
+        ]
+      ],
+      "text": "EC-Cash EUR 11,72",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 11.16,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 83,
+            "y": 2286
+          },
+          {
+            "x": 1684,
+            "y": 2283
+          },
+          {
+            "x": 1684,
+            "y": 2352
+          },
+          {
+            "x": 83,
+            "y": 2354
+          }
+        ]
+      ],
+      "text": "B 5% 11,16 0,56 11,72",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.56,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 83,
+            "y": 2286
+          },
+          {
+            "x": 1684,
+            "y": 2283
+          },
+          {
+            "x": 1684,
+            "y": 2352
+          },
+          {
+            "x": 83,
+            "y": 2354
+          }
+        ]
+      ],
+      "text": "B 5% 11,16 0,56 11,72",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 11.72,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 83,
+            "y": 2286
+          },
+          {
+            "x": 1684,
+            "y": 2283
+          },
+          {
+            "x": 1684,
+            "y": 2352
+          },
+          {
+            "x": 83,
+            "y": 2354
+          }
+        ]
+      ],
+      "text": "B 5% 11,16 0,56 11,72",
+      "currencyCode": "EUR"
+    }
+  ],
+  "numbers": [
+    {
+      "data": 3,
+      "text": "Basketsring 3",
+      "regions": [
+        [
+          {
+            "x": 629,
+            "y": 907
+          },
+          {
+            "x": 1179,
+            "y": 903
+          },
+          {
+            "x": 1179,
+            "y": 982
+          },
+          {
+            "x": 626,
+            "y": 994
+          }
+        ]
+      ],
+      "index": 2
+    },
+    {
+      "data": 53123,
+      "text": "53123 Bonn-Hardtberg",
+      "regions": [
+        [
+          {
+            "x": 508,
+            "y": 998
+          },
+          {
+            "x": 1349,
+            "y": 993
+          },
+          {
+            "x": 1352,
+            "y": 1069
+          },
+          {
+            "x": 509,
+            "y": 1073
+          }
+        ]
+      ],
+      "index": 3
+    },
+    {
+      "data": 41076777,
+      "text": "Tel. 0228 / 41076777",
+      "regions": [
+        [
+          {
+            "x": 522,
+            "y": 1082
+          },
+          {
+            "x": 1341,
+            "y": 1075
+          },
+          {
+            "x": 1343,
+            "y": 1153
+          },
+          {
+            "x": 523,
+            "y": 1157
+          }
+        ]
+      ],
+      "index": 4
+    },
+    {
+      "data": 2,
+      "text": "2 x 2,93",
+      "regions": [
+        [
+          {
+            "x": 95,
+            "y": 1410
+          },
+          {
+            "x": 1202,
+            "y": 1410
+          },
+          {
+            "x": 1203,
+            "y": 1489
+          },
+          {
+            "x": 93,
+            "y": 1492
+          }
+        ]
+      ],
+      "index": 6
+    },
+    {
+      "data": 2,
+      "text": "2 x 2.93",
+      "regions": [
+        [
+          {
+            "x": 97,
+            "y": 1579
+          },
+          {
+            "x": 1196,
+            "y": 1578
+          },
+          {
+            "x": 1196,
+            "y": 1653
+          },
+          {
+            "x": 94,
+            "y": 1650
+          }
+        ]
+      ],
+      "index": 8
+    },
+    {
+      "data": 4,
+      "text": "Posten  4 ----------",
+      "regions": [
+        [
+          {
+            "x": 89,
+            "y": 1743
+          },
+          {
+            "x": 1577,
+            "y": 1765
+          },
+          {
+            "x": 1573,
+            "y": 1782
+          },
+          {
+            "x": 90,
+            "y": 1813
+          }
+        ]
+      ],
+      "index": 10
+    },
+    {
+      "data": 6,
+      "text": "0 01093112122000800629 6",
+      "regions": [
+        [
+          {
+            "x": 221,
+            "y": 2517
+          },
+          {
+            "x": 1695,
+            "y": 2512
+          },
+          {
+            "x": 1696,
+            "y": 2585
+          },
+          {
+            "x": 222,
+            "y": 2584
+          }
+        ]
+      ],
+      "index": 15
+    },
+    {
+      "data": 6296,
+      "text": "12.12.20 12 40 0000931 008 008 6296",
+      "regions": [
+        [
+          {
+            "x": 76,
+            "y": 2904
+          },
+          {
+            "x": 1453,
+            "y": 2886
+          },
+          {
+            "x": 1453,
+            "y": 2949
+          },
+          {
+            "x": 80,
+            "y": 2968
+          }
+        ]
+      ],
+      "index": 17
+    }
+  ],
+  "lineAmounts": [],
+  "itemsCount": {
+    "data": 1,
+    "confidenceLevel": 0.3064
+  },
+  "entities": {
+    "invoiceNumber": {
+      "data": "41076777",
+      "text": " 41076777",
+      "confidenceLevel": 0.51,
+      "keyword": "Tel. 0228 / 41076777"
+    },
+    "merchantVerification": {
+      "data": {
+        "verificationId": "DE122261187",
+        "countryCode": "DE",
+        "vatNo": "122261187",
+        "vies": {
+          "name": "---",
+          "address": "---",
+          "valid": true,
+          "countryCode": "DE",
+          "vatNumber": "122261187"
+        }
+      },
+      "confidenceLevel": 0.99,
+      "text": "Ust-ID: DE122261187",
+      "index": 22,
+      "regions": [
+        [
+          {
+            "x": 452,
+            "y": 3497
+          },
+          {
+            "x": 729,
+            "y": 3487
+          },
+          {
+            "x": 729,
+            "y": 3556
+          },
+          {
+            "x": 452,
+            "y": 3561
+          }
+        ],
+        [
+          {
+            "x": 757,
+            "y": 3486
+          },
+          {
+            "x": 1196,
+            "y": 3464
+          },
+          {
+            "x": 1197,
+            "y": 3534
+          },
+          {
+            "x": 757,
+            "y": 3555
+          }
+        ]
+      ]
+    }
+  },
+  "paymentType": {
+    "data": "cash",
+    "confidenceLevel": 0.99,
+    "text": "EC Cash EUR 11,72",
+    "index": 12,
+    "regions": [
+      [
+        {
+          "x": 87,
+          "y": 2051
+        },
+        {
+          "x": 368,
+          "y": 2054
+        },
+        {
+          "x": 367,
+          "y": 2120
+        },
+        {
+          "x": 88,
+          "y": 2119
+        }
+      ],
+      [
+        {
+          "x": 933,
+          "y": 2045
+        },
+        {
+          "x": 1051,
+          "y": 2045
+        },
+        {
+          "x": 1051,
+          "y": 2111
+        },
+        {
+          "x": 933,
+          "y": 2112
+        }
+      ],
+      [
+        {
+          "x": 1337,
+          "y": 2045
+        },
+        {
+          "x": 1537,
+          "y": 2045
+        },
+        {
+          "x": 1537,
+          "y": 2119
+        },
+        {
+          "x": 1337,
+          "y": 2119
+        }
+      ]
+    ]
+  },
+  "merchantName": {
+    "data": "E-Center",
+    "confidenceLevel": 0.9676754148676991,
+    "text": "EDEKA E-Center Vogl OHG",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 403,
+          "y": 675
+        },
+        {
+          "x": 535,
+          "y": 678
+        },
+        {
+          "x": 533,
+          "y": 740
+        },
+        {
+          "x": 403,
+          "y": 735
+        }
+      ],
+      [
+        {
+          "x": 552,
+          "y": 820
+        },
+        {
+          "x": 889,
+          "y": 819
+        },
+        {
+          "x": 891,
+          "y": 905
+        },
+        {
+          "x": 554,
+          "y": 908
+        }
+      ],
+      [
+        {
+          "x": 924,
+          "y": 818
+        },
+        {
+          "x": 1104,
+          "y": 816
+        },
+        {
+          "x": 1107,
+          "y": 901
+        },
+        {
+          "x": 927,
+          "y": 904
+        }
+      ],
+      [
+        {
+          "x": 1134,
+          "y": 816
+        },
+        {
+          "x": 1274,
+          "y": 813
+        },
+        {
+          "x": 1277,
+          "y": 897
+        },
+        {
+          "x": 1136,
+          "y": 900
+        }
+      ]
+    ]
+  },
+  "merchantAddress": {
+    "data": "Basketsring, 53123, Bonn, Duisdorf, Nordrhein-Westfalen",
+    "confidenceLevel": 0.874,
+    "text": "Vogl, Basketsring, Bonn-Hardtberg, Bon",
+    "index": 2,
+    "regions": [
+      [
+        {
+          "x": 629,
+          "y": 907
+        },
+        {
+          "x": 1101,
+          "y": 903
+        },
+        {
+          "x": 1101,
+          "y": 985
+        },
+        {
+          "x": 626,
+          "y": 994
+        }
+      ],
+      [
+        {
+          "x": 1130,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 982
+        },
+        {
+          "x": 1130,
+          "y": 984
+        }
+      ]
+    ]
+  },
+  "merchantCity": {
+    "data": "Duisdorf, Bonn",
+    "confidenceLevel": 0.874,
+    "text": "Vogl, Basketsring, Bonn-Hardtberg, Bon",
+    "index": 2,
+    "regions": [
+      [
+        {
+          "x": 629,
+          "y": 907
+        },
+        {
+          "x": 1101,
+          "y": 903
+        },
+        {
+          "x": 1101,
+          "y": 985
+        },
+        {
+          "x": 626,
+          "y": 994
+        }
+      ],
+      [
+        {
+          "x": 1130,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 982
+        },
+        {
+          "x": 1130,
+          "y": 984
+        }
+      ]
+    ]
+  },
+  "merchantState": {
+    "data": "Bonn, Nordrhein-Westfalen",
+    "confidenceLevel": 0.874,
+    "text": "Vogl, Basketsring, Bonn-Hardtberg, Bon",
+    "index": 2,
+    "regions": [
+      [
+        {
+          "x": 629,
+          "y": 907
+        },
+        {
+          "x": 1101,
+          "y": 903
+        },
+        {
+          "x": 1101,
+          "y": 985
+        },
+        {
+          "x": 626,
+          "y": 994
+        }
+      ],
+      [
+        {
+          "x": 1130,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 982
+        },
+        {
+          "x": 1130,
+          "y": 984
+        }
+      ]
+    ]
+  },
+  "merchantCountryCode": {
+    "data": "DE",
+    "confidenceLevel": 0.874,
+    "text": "Vogl, Basketsring, Bonn-Hardtberg, Bon",
+    "index": 2,
+    "regions": [
+      [
+        {
+          "x": 629,
+          "y": 907
+        },
+        {
+          "x": 1101,
+          "y": 903
+        },
+        {
+          "x": 1101,
+          "y": 985
+        },
+        {
+          "x": 626,
+          "y": 994
+        }
+      ],
+      [
+        {
+          "x": 1130,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 982
+        },
+        {
+          "x": 1130,
+          "y": 984
+        }
+      ]
+    ]
+  },
+  "merchantTypes": {
+    "confidenceLevel": 0
+  },
+  "merchantPostalCode": {
+    "data": "53123",
+    "confidenceLevel": 0.874,
+    "text": "Vogl, Basketsring, Bonn-Hardtberg, Bon",
+    "index": 2,
+    "regions": [
+      [
+        {
+          "x": 629,
+          "y": 907
+        },
+        {
+          "x": 1101,
+          "y": 903
+        },
+        {
+          "x": 1101,
+          "y": 985
+        },
+        {
+          "x": 626,
+          "y": 994
+        }
+      ],
+      [
+        {
+          "x": 1130,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 903
+        },
+        {
+          "x": 1179,
+          "y": 982
+        },
+        {
+          "x": 1130,
+          "y": 984
+        }
+      ]
+    ]
+  },
+  "elapsed": 3551.624090194702
+}

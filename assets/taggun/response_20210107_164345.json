@@ -1,0 +1,1725 @@
+{
+  "location": {
+    "city": {
+      "geoname_id": 2946447,
+      "names": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "ja": "ボン",
+        "pt-BR": "Bona",
+        "ru": "Бонн",
+        "zh-CN": "波恩"
+      }
+    },
+    "continent": {
+      "code": "EU",
+      "geoname_id": 6255148,
+      "names": {
+        "de": "Europa",
+        "en": "Europe",
+        "es": "Europa",
+        "fr": "Europe",
+        "ja": "ヨーロッパ",
+        "pt-BR": "Europa",
+        "ru": "Европа",
+        "zh-CN": "欧洲"
+      }
+    },
+    "country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "location": {
+      "accuracy_radius": 1,
+      "latitude": 50.7362,
+      "longitude": 7.1002,
+      "time_zone": "Europe/Berlin"
+    },
+    "postal": {
+      "code": "53111"
+    },
+    "registered_country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "subdivisions": [
+      {
+        "geoname_id": 2861876,
+        "iso_code": "NW",
+        "names": {
+          "de": "Nordrhein-Westfalen",
+          "en": "North Rhine-Westphalia",
+          "es": "Renania del Norte-Westfalia",
+          "fr": "Rhénanie du Nord-Westphalie",
+          "ru": "Северный Рейн-Вестфалия"
+        }
+      }
+    ]
+  },
+  "totalAmount": {
+    "confidenceLevel": 0.916,
+    "index": 44,
+    "data": 22.03,
+    "text": "Summ ℮ 22,03",
+    "regions": [
+      [
+        {
+          "x": 888,
+          "y": 2822
+        },
+        {
+          "x": 1804,
+          "y": 2853
+        },
+        {
+          "x": 1800,
+          "y": 2905
+        },
+        {
+          "x": 885,
+          "y": 2870
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "keyword": "Summ ℮ 22,03"
+  },
+  "taxAmount": {
+    "index": 48,
+    "data": 0.3,
+    "text": "B 19,0% Netto 1,60 MwSt 0,30",
+    "regions": [
+      [
+        {
+          "x": 887,
+          "y": 3107
+        },
+        {
+          "x": 1768,
+          "y": 3150
+        },
+        {
+          "x": 1764,
+          "y": 3198
+        },
+        {
+          "x": 882,
+          "y": 3158
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "confidenceLevel": 0.68,
+    "keyword": "B 19,0% Netto 1,60 MwSt 0,30"
+  },
+  "confidenceLevel": 0.9375,
+  "date": {
+    "data": "2021-01-07T16:09:00.000Z",
+    "confidenceLevel": 0.99,
+    "text": "*8990 035/059/002/009 07.01.21 16:09",
+    "index": 49,
+    "regions": [
+      [
+        {
+          "x": 857,
+          "y": 3168
+        },
+        {
+          "x": 981,
+          "y": 3171
+        },
+        {
+          "x": 977,
+          "y": 3216
+        },
+        {
+          "x": 855,
+          "y": 3211
+        }
+      ],
+      [
+        {
+          "x": 994,
+          "y": 3171
+        },
+        {
+          "x": 1352,
+          "y": 3183
+        },
+        {
+          "x": 1347,
+          "y": 3231
+        },
+        {
+          "x": 991,
+          "y": 3216
+        }
+      ],
+      [
+        {
+          "x": 1369,
+          "y": 3184
+        },
+        {
+          "x": 1568,
+          "y": 3192
+        },
+        {
+          "x": 1561,
+          "y": 3242
+        },
+        {
+          "x": 1363,
+          "y": 3232
+        }
+      ],
+      [
+        {
+          "x": 1587,
+          "y": 3193
+        },
+        {
+          "x": 1706,
+          "y": 3199
+        },
+        {
+          "x": 1700,
+          "y": 3249
+        },
+        {
+          "x": 1581,
+          "y": 3243
+        }
+      ]
+    ]
+  },
+  "text": {
+    "text": "ALDI SÜD\nErich-Hoffmann-Straße 12\n53121 Bonn-Endenich IEUR\n8234 Parboiled Reis 0,99 A\n36989 Kosmetik-Müllb. 0,75 B\n48974 Laktof. H-Mil 3,8 1,09 A\n48974 Laktof. H-Mil 3,8 1,09 A\n704067 Rhein. Saaten 1,39 A\n51891 Bio-Honig im Dosie 2,69 A\n2723 Körn. Frischkäse 0,65 A\n6124 Walnusskerne 2,49 A\n704514 Fettred. Gefl. Sal 0,99\n6645 Schwein Gulasch 3,49 A\n783749 Fenchel 1,02 A\n0,514 kg × 1,99 EUR/kg ,99 A\n54226 Vollkorn-Sandwich\n0\n46722 Weltmeister-Chia-B 0,29 A\n46722 Weltmeister-Chia-B 0,29 A\n700558 Walnusbrötchen 0,49 A\n700558 Walnusbrötchen 0,49 A\n706562 Freiland-Eier DD 1,69 A\n10856 blend-a-med Zahnc. 1,15 B\n+ KUNDEN B E L E G +\nTerminalnummer 65443091\nDatum 07.01.2021\nUhrzeit 16:09:30\nBeleg-Nr. 4332\nTransaktions-Nr 73151\nKartenzahlung\ngirocard\nBetrag 22.03 EUR\nKarte ###############9007\n2 Kartenfolgenummer 0\nVertragsnummer 1079443091\nEMV-AID A000000359101002800\nGenehmigungs-Nr. 182936\nEMV-DATA:\n0000000000/E800/3900/0047/A00000035910\n10028001/00/0002/0280/605048/440302/22\n/R/194F8BFE/073151\n**************************************\nZahlung erfolgt\n**************************************\nSumm ℮ 22,03\n18 Artikel\ngirocard EUR 22,03\nA 07,0% Netto 18,81 MwSt .32\nB 19,0% Netto 1,60 MwSt 0,30\n*8990 035/059/002/009 07.01.21 16:09\nALDI SÜD wünscht allen\neinen frohen und gesunden Start\nin das neue Jahr 2021!\nUnsere Öffnungszeiten\nMo - Sa: 8:00 Uhr - 21:00 Uhr\nUst .- ID-Nr .: DE 813192189\nVIELEN DANK\nFÜR IHREN EINKAUF",
+    "regions": [
+      {
+        "x": 218,
+        "y": 182
+      },
+      {
+        "x": 1837,
+        "y": 183
+      },
+      {
+        "x": 1836,
+        "y": 3878
+      },
+      {
+        "x": 220,
+        "y": 3851
+      }
+    ]
+  },
+  "amounts": [
+    {
+      "data": 0.99,
+      "index": 3,
+      "regions": [
+        [
+          {
+            "x": 1032,
+            "y": 455
+          },
+          {
+            "x": 1829,
+            "y": 472
+          },
+          {
+            "x": 1826,
+            "y": 518
+          },
+          {
+            "x": 1030,
+            "y": 501
+          }
+        ]
+      ],
+      "text": "8234 Parboiled Reis 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.75,
+      "index": 4,
+      "regions": [
+        [
+          {
+            "x": 1014,
+            "y": 513
+          },
+          {
+            "x": 1828,
+            "y": 528
+          },
+          {
+            "x": 1825,
+            "y": 572
+          },
+          {
+            "x": 1012,
+            "y": 556
+          }
+        ]
+      ],
+      "text": "36989 Kosmetik-Müllb. 0,75 B",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.8,
+      "index": 5,
+      "regions": [
+        [
+          {
+            "x": 1017,
+            "y": 571
+          },
+          {
+            "x": 1826,
+            "y": 587
+          },
+          {
+            "x": 1822,
+            "y": 628
+          },
+          {
+            "x": 1015,
+            "y": 610
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 5,
+      "regions": [
+        [
+          {
+            "x": 1017,
+            "y": 571
+          },
+          {
+            "x": 1826,
+            "y": 587
+          },
+          {
+            "x": 1822,
+            "y": 628
+          },
+          {
+            "x": 1015,
+            "y": 610
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.8,
+      "index": 6,
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 621
+          },
+          {
+            "x": 1827,
+            "y": 641
+          },
+          {
+            "x": 1827,
+            "y": 685
+          },
+          {
+            "x": 1010,
+            "y": 663
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 6,
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 621
+          },
+          {
+            "x": 1827,
+            "y": 641
+          },
+          {
+            "x": 1827,
+            "y": 685
+          },
+          {
+            "x": 1010,
+            "y": 663
+          }
+        ]
+      ],
+      "text": "48974 Laktof. H-Mil 3,8 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.39,
+      "index": 7,
+      "regions": [
+        [
+          {
+            "x": 983,
+            "y": 676
+          },
+          {
+            "x": 1827,
+            "y": 696
+          },
+          {
+            "x": 1827,
+            "y": 740
+          },
+          {
+            "x": 983,
+            "y": 720
+          }
+        ]
+      ],
+      "text": "704067 Rhein. Saaten 1,39 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.69,
+      "index": 8,
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 732
+          },
+          {
+            "x": 1828,
+            "y": 748
+          },
+          {
+            "x": 1825,
+            "y": 789
+          },
+          {
+            "x": 1011,
+            "y": 779
+          }
+        ]
+      ],
+      "text": "51891 Bio-Honig im Dosie 2,69 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.65,
+      "index": 9,
+      "regions": [
+        [
+          {
+            "x": 1032,
+            "y": 788
+          },
+          {
+            "x": 1827,
+            "y": 809
+          },
+          {
+            "x": 1824,
+            "y": 849
+          },
+          {
+            "x": 1030,
+            "y": 833
+          }
+        ]
+      ],
+      "text": "2723 Körn. Frischkäse 0,65 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.49,
+      "index": 10,
+      "regions": [
+        [
+          {
+            "x": 1030,
+            "y": 844
+          },
+          {
+            "x": 1819,
+            "y": 860
+          },
+          {
+            "x": 1818,
+            "y": 905
+          },
+          {
+            "x": 1025,
+            "y": 892
+          }
+        ]
+      ],
+      "text": "6124 Walnusskerne 2,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 11,
+      "regions": [
+        [
+          {
+            "x": 992,
+            "y": 901
+          },
+          {
+            "x": 1782,
+            "y": 917
+          },
+          {
+            "x": 1781,
+            "y": 961
+          },
+          {
+            "x": 991,
+            "y": 946
+          }
+        ]
+      ],
+      "text": "704514 Fettred. Gefl. Sal 0,99",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.49,
+      "index": 12,
+      "regions": [
+        [
+          {
+            "x": 1028,
+            "y": 961
+          },
+          {
+            "x": 1828,
+            "y": 975
+          },
+          {
+            "x": 1827,
+            "y": 1022
+          },
+          {
+            "x": 1024,
+            "y": 1008
+          }
+        ]
+      ],
+      "text": "6645 Schwein Gulasch 3,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.02,
+      "index": 13,
+      "regions": [
+        [
+          {
+            "x": 985,
+            "y": 1020
+          },
+          {
+            "x": 1826,
+            "y": 1034
+          },
+          {
+            "x": 1825,
+            "y": 1081
+          },
+          {
+            "x": 983,
+            "y": 1065
+          }
+        ]
+      ],
+      "text": "783749 Fenchel 1,02 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.99,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 1084,
+            "y": 1075
+          },
+          {
+            "x": 1826,
+            "y": 1143
+          },
+          {
+            "x": 1827,
+            "y": 1189
+          },
+          {
+            "x": 1083,
+            "y": 1119
+          }
+        ]
+      ],
+      "text": "0,514 kg × 1,99 EUR/kg ,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 1084,
+            "y": 1075
+          },
+          {
+            "x": 1826,
+            "y": 1143
+          },
+          {
+            "x": 1827,
+            "y": 1189
+          },
+          {
+            "x": 1083,
+            "y": 1119
+          }
+        ]
+      ],
+      "text": "0,514 kg × 1,99 EUR/kg ,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.29,
+      "index": 17,
+      "regions": [
+        [
+          {
+            "x": 1013,
+            "y": 1190
+          },
+          {
+            "x": 1827,
+            "y": 1200
+          },
+          {
+            "x": 1823,
+            "y": 1245
+          },
+          {
+            "x": 1010,
+            "y": 1240
+          }
+        ]
+      ],
+      "text": "46722 Weltmeister-Chia-B 0,29 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.29,
+      "index": 18,
+      "regions": [
+        [
+          {
+            "x": 1013,
+            "y": 1246
+          },
+          {
+            "x": 1827,
+            "y": 1258
+          },
+          {
+            "x": 1822,
+            "y": 1302
+          },
+          {
+            "x": 1011,
+            "y": 1295
+          }
+        ]
+      ],
+      "text": "46722 Weltmeister-Chia-B 0,29 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 19,
+      "regions": [
+        [
+          {
+            "x": 990,
+            "y": 1304
+          },
+          {
+            "x": 1827,
+            "y": 1314
+          },
+          {
+            "x": 1823,
+            "y": 1359
+          },
+          {
+            "x": 990,
+            "y": 1353
+          }
+        ]
+      ],
+      "text": "700558 Walnusbrötchen 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 20,
+      "regions": [
+        [
+          {
+            "x": 989,
+            "y": 1364
+          },
+          {
+            "x": 1830,
+            "y": 1370
+          },
+          {
+            "x": 1826,
+            "y": 1416
+          },
+          {
+            "x": 990,
+            "y": 1413
+          }
+        ]
+      ],
+      "text": "700558 Walnusbrötchen 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.69,
+      "index": 21,
+      "regions": [
+        [
+          {
+            "x": 994,
+            "y": 1418
+          },
+          {
+            "x": 1827,
+            "y": 1431
+          },
+          {
+            "x": 1823,
+            "y": 1476
+          },
+          {
+            "x": 993,
+            "y": 1464
+          }
+        ]
+      ],
+      "text": "706562 Freiland-Eier DD 1,69 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.15,
+      "index": 22,
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 1469
+          },
+          {
+            "x": 1825,
+            "y": 1483
+          },
+          {
+            "x": 1820,
+            "y": 1527
+          },
+          {
+            "x": 1012,
+            "y": 1518
+          }
+        ]
+      ],
+      "text": "10856 blend-a-med Zahnc. 1,15 B",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 22.03,
+      "index": 31,
+      "regions": [
+        [
+          {
+            "x": 909,
+            "y": 2035
+          },
+          {
+            "x": 1804,
+            "y": 2051
+          },
+          {
+            "x": 1799,
+            "y": 2100
+          },
+          {
+            "x": 905,
+            "y": 2084
+          }
+        ]
+      ],
+      "text": "Betrag 22.03 EUR",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 22.03,
+      "index": 44,
+      "regions": [
+        [
+          {
+            "x": 888,
+            "y": 2822
+          },
+          {
+            "x": 1804,
+            "y": 2853
+          },
+          {
+            "x": 1800,
+            "y": 2905
+          },
+          {
+            "x": 885,
+            "y": 2870
+          }
+        ]
+      ],
+      "text": "Summ ℮ 22,03",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 22.03,
+      "index": 46,
+      "regions": [
+        [
+          {
+            "x": 893,
+            "y": 2942
+          },
+          {
+            "x": 1777,
+            "y": 2971
+          },
+          {
+            "x": 1773,
+            "y": 3016
+          },
+          {
+            "x": 888,
+            "y": 2986
+          }
+        ]
+      ],
+      "text": "girocard EUR 22,03",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.32,
+      "index": 47,
+      "regions": [
+        [
+          {
+            "x": 887,
+            "y": 3050
+          },
+          {
+            "x": 1774,
+            "y": 3088
+          },
+          {
+            "x": 1771,
+            "y": 3133
+          },
+          {
+            "x": 882,
+            "y": 3097
+          }
+        ]
+      ],
+      "text": "A 07,0% Netto 18,81 MwSt .32",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.6,
+      "index": 48,
+      "regions": [
+        [
+          {
+            "x": 887,
+            "y": 3107
+          },
+          {
+            "x": 1768,
+            "y": 3150
+          },
+          {
+            "x": 1764,
+            "y": 3198
+          },
+          {
+            "x": 882,
+            "y": 3158
+          }
+        ]
+      ],
+      "text": "B 19,0% Netto 1,60 MwSt 0,30",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.3,
+      "index": 48,
+      "regions": [
+        [
+          {
+            "x": 887,
+            "y": 3107
+          },
+          {
+            "x": 1768,
+            "y": 3150
+          },
+          {
+            "x": 1764,
+            "y": 3198
+          },
+          {
+            "x": 882,
+            "y": 3158
+          }
+        ]
+      ],
+      "text": "B 19,0% Netto 1,60 MwSt 0,30",
+      "currencyCode": "EUR"
+    }
+  ],
+  "numbers": [
+    {
+      "data": 12,
+      "text": "Erich-Hoffmann-Straße 12",
+      "regions": [
+        [
+          {
+            "x": 1085,
+            "y": 234
+          },
+          {
+            "x": 1643,
+            "y": 241
+          },
+          {
+            "x": 1642,
+            "y": 289
+          },
+          {
+            "x": 1085,
+            "y": 283
+          }
+        ]
+      ],
+      "index": 1
+    },
+    {
+      "data": 53121,
+      "text": "53121 Bonn-Endenich IEUR",
+      "regions": [
+        [
+          {
+            "x": 1130,
+            "y": 288
+          },
+          {
+            "x": 1758,
+            "y": 412
+          },
+          {
+            "x": 1757,
+            "y": 460
+          },
+          {
+            "x": 1128,
+            "y": 333
+          }
+        ]
+      ],
+      "index": 2
+    },
+    {
+      "data": 2723,
+      "text": "2723 Körn. Frischkäse 0,65 A",
+      "regions": [
+        [
+          {
+            "x": 1032,
+            "y": 788
+          },
+          {
+            "x": 1827,
+            "y": 809
+          },
+          {
+            "x": 1824,
+            "y": 849
+          },
+          {
+            "x": 1030,
+            "y": 833
+          }
+        ]
+      ],
+      "index": 9,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 704514,
+      "text": "704514 Fettred. Gefl. Sal 0,99",
+      "regions": [
+        [
+          {
+            "x": 992,
+            "y": 901
+          },
+          {
+            "x": 1782,
+            "y": 917
+          },
+          {
+            "x": 1781,
+            "y": 961
+          },
+          {
+            "x": 991,
+            "y": 946
+          }
+        ]
+      ],
+      "index": 11
+    },
+    {
+      "data": 54226,
+      "text": "54226 Vollkorn-Sandwich",
+      "regions": [
+        [
+          {
+            "x": 1012,
+            "y": 1131
+          },
+          {
+            "x": 1548,
+            "y": 1148
+          },
+          {
+            "x": 1545,
+            "y": 1193
+          },
+          {
+            "x": 1010,
+            "y": 1178
+          }
+        ]
+      ],
+      "index": 15
+    },
+    {
+      "data": 65443091,
+      "text": "Terminalnummer 65443091",
+      "regions": [
+        [
+          {
+            "x": 926,
+            "y": 1640
+          },
+          {
+            "x": 1795,
+            "y": 1662
+          },
+          {
+            "x": 1792,
+            "y": 1706
+          },
+          {
+            "x": 923,
+            "y": 1684
+          }
+        ]
+      ],
+      "index": 24
+    },
+    {
+      "data": 4332,
+      "text": "Beleg-Nr. 4332",
+      "regions": [
+        [
+          {
+            "x": 921,
+            "y": 1812
+          },
+          {
+            "x": 1800,
+            "y": 1822
+          },
+          {
+            "x": 1801,
+            "y": 1868
+          },
+          {
+            "x": 918,
+            "y": 1855
+          }
+        ]
+      ],
+      "index": 27
+    },
+    {
+      "data": 73151,
+      "text": "Transaktions-Nr 73151",
+      "regions": [
+        [
+          {
+            "x": 919,
+            "y": 1866
+          },
+          {
+            "x": 1802,
+            "y": 1880
+          },
+          {
+            "x": 1802,
+            "y": 1926
+          },
+          {
+            "x": 919,
+            "y": 1910
+          }
+        ]
+      ],
+      "index": 28
+    },
+    {
+      "data": 2,
+      "text": "2 Kartenfolgenummer 0",
+      "regions": [
+        [
+          {
+            "x": 237,
+            "y": 2132
+          },
+          {
+            "x": 1774,
+            "y": 2167
+          },
+          {
+            "x": 1772,
+            "y": 2208
+          },
+          {
+            "x": 233,
+            "y": 2165
+          }
+        ]
+      ],
+      "index": 33
+    },
+    {
+      "data": 1079443091,
+      "text": "Vertragsnummer 1079443091",
+      "regions": [
+        [
+          {
+            "x": 909,
+            "y": 2207
+          },
+          {
+            "x": 1793,
+            "y": 2227
+          },
+          {
+            "x": 1790,
+            "y": 2271
+          },
+          {
+            "x": 908,
+            "y": 2248
+          }
+        ]
+      ],
+      "index": 34
+    },
+    {
+      "data": 182936,
+      "text": "Genehmigungs-Nr. 182936",
+      "regions": [
+        [
+          {
+            "x": 908,
+            "y": 2319
+          },
+          {
+            "x": 1801,
+            "y": 2341
+          },
+          {
+            "x": 1798,
+            "y": 2384
+          },
+          {
+            "x": 906,
+            "y": 2363
+          }
+        ]
+      ],
+      "index": 36
+    },
+    {
+      "data": 18,
+      "text": "18 Artikel",
+      "regions": [
+        [
+          {
+            "x": 893,
+            "y": 2880
+          },
+          {
+            "x": 1123,
+            "y": 2886
+          },
+          {
+            "x": 1121,
+            "y": 2932
+          },
+          {
+            "x": 890,
+            "y": 2925
+          }
+        ]
+      ],
+      "index": 45
+    },
+    {
+      "data": 813192189,
+      "text": "Ust .- ID-Nr .  DE 813192189",
+      "regions": [
+        [
+          {
+            "x": 1043,
+            "y": 3684
+          },
+          {
+            "x": 1626,
+            "y": 3725
+          },
+          {
+            "x": 1619,
+            "y": 3778
+          },
+          {
+            "x": 1039,
+            "y": 3741
+          }
+        ]
+      ],
+      "index": 55,
+      "classifyResult": "primaryTax"
+    }
+  ],
+  "lineAmounts": [],
+  "itemsCount": {
+    "data": 0,
+    "confidenceLevel": 0
+  },
+  "entities": {
+    "invoiceNumber": {
+      "data": "65443091",
+      "text": " 65443091",
+      "confidenceLevel": 0.51,
+      "keyword": "Terminalnummer 65443091"
+    },
+    "receiptNumber": {
+      "data": "73151",
+      "confidenceLevel": 0.5709090909090909,
+      "text": "Transaktions-Nr 73151",
+      "keyword": "Beleg-Nr",
+      "index": 28,
+      "regions": [
+        [
+          {
+            "x": 919,
+            "y": 1866
+          },
+          {
+            "x": 1272,
+            "y": 1876
+          },
+          {
+            "x": 1269,
+            "y": 1919
+          },
+          {
+            "x": 919,
+            "y": 1910
+          }
+        ],
+        [
+          {
+            "x": 1685,
+            "y": 1880
+          },
+          {
+            "x": 1802,
+            "y": 1880
+          },
+          {
+            "x": 1802,
+            "y": 1926
+          },
+          {
+            "x": 1685,
+            "y": 1926
+          }
+        ]
+      ]
+    },
+    "merchantVerification": {
+      "data": {
+        "verificationId": "DE813192189",
+        "countryCode": "DE",
+        "vatNo": "813192189",
+        "vies": {
+          "name": "---",
+          "address": "---",
+          "valid": true,
+          "countryCode": "DE",
+          "vatNumber": "813192189"
+        }
+      },
+      "confidenceLevel": 0.99,
+      "text": "Ust .- ID-Nr .: DE 813192189",
+      "index": 55,
+      "regions": [
+        [
+          {
+            "x": 1043,
+            "y": 3684
+          },
+          {
+            "x": 1101,
+            "y": 3687
+          },
+          {
+            "x": 1096,
+            "y": 3744
+          },
+          {
+            "x": 1039,
+            "y": 3741
+          }
+        ],
+        [
+          {
+            "x": 1112,
+            "y": 3688
+          },
+          {
+            "x": 1148,
+            "y": 3690
+          },
+          {
+            "x": 1144,
+            "y": 3747
+          },
+          {
+            "x": 1107,
+            "y": 3745
+          }
+        ],
+        [
+          {
+            "x": 1159,
+            "y": 3691
+          },
+          {
+            "x": 1270,
+            "y": 3697
+          },
+          {
+            "x": 1264,
+            "y": 3754
+          },
+          {
+            "x": 1155,
+            "y": 3747
+          }
+        ],
+        [
+          {
+            "x": 1281,
+            "y": 3698
+          },
+          {
+            "x": 1328,
+            "y": 3701
+          },
+          {
+            "x": 1323,
+            "y": 3758
+          },
+          {
+            "x": 1275,
+            "y": 3755
+          }
+        ],
+        [
+          {
+            "x": 1339,
+            "y": 3702
+          },
+          {
+            "x": 1401,
+            "y": 3706
+          },
+          {
+            "x": 1395,
+            "y": 3762
+          },
+          {
+            "x": 1334,
+            "y": 3758
+          }
+        ],
+        [
+          {
+            "x": 1413,
+            "y": 3707
+          },
+          {
+            "x": 1626,
+            "y": 3725
+          },
+          {
+            "x": 1619,
+            "y": 3778
+          },
+          {
+            "x": 1407,
+            "y": 3763
+          }
+        ]
+      ]
+    }
+  },
+  "merchantName": {
+    "data": "ALDI SÜD",
+    "confidenceLevel": 0.99,
+    "text": "ALDI SÜD",
+    "index": 0,
+    "regions": [
+      [
+        {
+          "x": 1268,
+          "y": 183
+        },
+        {
+          "x": 1370,
+          "y": 183
+        },
+        {
+          "x": 1367,
+          "y": 226
+        },
+        {
+          "x": 1267,
+          "y": 224
+        }
+      ],
+      [
+        {
+          "x": 1381,
+          "y": 183
+        },
+        {
+          "x": 1456,
+          "y": 184
+        },
+        {
+          "x": 1453,
+          "y": 227
+        },
+        {
+          "x": 1379,
+          "y": 226
+        }
+      ]
+    ]
+  },
+  "merchantAddress": {
+    "data": "Erich-Hoffmann-Straße, 53121, Bonn, Endenich, Nordrhein-Westfalen",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1085,
+          "y": 234
+        },
+        {
+          "x": 1573,
+          "y": 241
+        },
+        {
+          "x": 1572,
+          "y": 289
+        },
+        {
+          "x": 1085,
+          "y": 283
+        }
+      ],
+      [
+        {
+          "x": 1596,
+          "y": 241
+        },
+        {
+          "x": 1643,
+          "y": 241
+        },
+        {
+          "x": 1642,
+          "y": 289
+        },
+        {
+          "x": 1594,
+          "y": 289
+        }
+      ]
+    ]
+  },
+  "merchantCity": {
+    "data": "Endenich, Bonn",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1085,
+          "y": 234
+        },
+        {
+          "x": 1573,
+          "y": 241
+        },
+        {
+          "x": 1572,
+          "y": 289
+        },
+        {
+          "x": 1085,
+          "y": 283
+        }
+      ],
+      [
+        {
+          "x": 1596,
+          "y": 241
+        },
+        {
+          "x": 1643,
+          "y": 241
+        },
+        {
+          "x": 1642,
+          "y": 289
+        },
+        {
+          "x": 1594,
+          "y": 289
+        }
+      ]
+    ]
+  },
+  "merchantState": {
+    "data": "Bonn, Nordrhein-Westfalen",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1085,
+          "y": 234
+        },
+        {
+          "x": 1573,
+          "y": 241
+        },
+        {
+          "x": 1572,
+          "y": 289
+        },
+        {
+          "x": 1085,
+          "y": 283
+        }
+      ],
+      [
+        {
+          "x": 1596,
+          "y": 241
+        },
+        {
+          "x": 1643,
+          "y": 241
+        },
+        {
+          "x": 1642,
+          "y": 289
+        },
+        {
+          "x": 1594,
+          "y": 289
+        }
+      ]
+    ]
+  },
+  "merchantCountryCode": {
+    "data": "DE",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1085,
+          "y": 234
+        },
+        {
+          "x": 1573,
+          "y": 241
+        },
+        {
+          "x": 1572,
+          "y": 289
+        },
+        {
+          "x": 1085,
+          "y": 283
+        }
+      ],
+      [
+        {
+          "x": 1596,
+          "y": 241
+        },
+        {
+          "x": 1643,
+          "y": 241
+        },
+        {
+          "x": 1642,
+          "y": 289
+        },
+        {
+          "x": 1594,
+          "y": 289
+        }
+      ]
+    ]
+  },
+  "merchantTypes": {
+    "confidenceLevel": 0
+  },
+  "merchantPostalCode": {
+    "data": "53121",
+    "confidenceLevel": 0.99,
+    "text": "Erich-Hoffmann-Straß, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 1085,
+          "y": 234
+        },
+        {
+          "x": 1573,
+          "y": 241
+        },
+        {
+          "x": 1572,
+          "y": 289
+        },
+        {
+          "x": 1085,
+          "y": 283
+        }
+      ],
+      [
+        {
+          "x": 1596,
+          "y": 241
+        },
+        {
+          "x": 1643,
+          "y": 241
+        },
+        {
+          "x": 1642,
+          "y": 289
+        },
+        {
+          "x": 1594,
+          "y": 289
+        }
+      ]
+    ]
+  },
+  "elapsed": 6634.696891784668
+}

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bona2/Development/taggun_receipt_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -7,9 +8,9 @@ import 'package:bona2/camera_handler.dart';
 import 'package:bona2/constants.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'Views/cameraview.dart';
-import 'Views/imageuploadview.dart';
-import 'Views/receiptsoverview.dart';
+import 'Views/camera_view.dart';
+import 'Views/image_upload_view.dart';
+import 'Views/receipts_overview.dart';
 import 'global.dart' as globals;
 // import 'package:bona2/global.dart';
 late List<CameraDescription> _cameras;
@@ -19,6 +20,8 @@ Future<void> main() async {
   //Database dbReceipts = await openDatabase("receipts.db");
   //Database dbReceiptItems = await openDatabase("receiptitems.db");
   WidgetsFlutterBinding.ensureInitialized();
+  TaggunReceiptProvider().loadTaggunJsonFiles(); // Initialize singleton instance
+
   _cameras = await availableCameras();
   final String apikeys = await rootBundle.loadString('assets/apikeys.json');
   final apiKeysJson = jsonDecode(apikeys);
@@ -83,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
     CameraView(
       cameras: _cameras,
     ),
-    const ImageUploadView(),
+    ImageUploadView(),
     const ReceiptsOverview(),
   ];
 

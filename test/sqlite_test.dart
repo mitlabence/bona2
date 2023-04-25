@@ -1,19 +1,11 @@
-import 'package:bona2/DataStructures/receipt-item.dart';
+import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:bona2/DataStructures/receipt.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'data-structures_util.dart';
+import 'data_structures_util.dart';
+import 'package:bona2/constants.dart';
 
-const String kCreateTestReceiptItemDatabaseCommand =
-    'CREATE TABLE testReceiptItems (pk INTEGER PRIMARY KEY, rawtext TEXT, shoppingitem TEXT, totalprice REAL, uuid BLOB)';
-const String kTestReceiptItemDatabaseName =
-    "testReceiptItems"; // Has to match with table name in creation command
-
-const String kCreateTestReceiptDatabaseCommand =
-    'CREATE TABLE testReceipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL, currency TEXT, country TEXT, address TEXT, postalcode TEXT, city TEXT, uuid BLOB)';
-const String kTestReceiptDatabaseName =
-    "testReceipts"; // Has to match with table name in creation command
 
 Future main() async {
   // Helpful stackoverflow answer for setting up SQLite unit tests:
@@ -53,6 +45,8 @@ Future main() async {
         'rawtext': 'NaN',
         'shoppingitem': receiptItem.shoppingItem.itemName,
         'totalprice': receiptItem.totalPrice,
+        "quantity": receiptItem.quantity,
+        "unit": receiptItem.unit,
         'uuid': receiptItem.uuid,
       }
     ]);
@@ -79,6 +73,7 @@ Future main() async {
         'address': receipt.address,
         'postalcode': receipt.postalCode,
         'city': receipt.city,
+        'paymenttype': receipt.paymentType,
         'uuid': receipt.uuid,
       }
     ]);

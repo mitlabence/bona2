@@ -1,21 +1,26 @@
 import 'dart:typed_data';
 
-import 'package:bona2/DataStructures/shopping-item.dart';
+import 'package:bona2/DataStructures/shopping_item.dart';
+import 'package:bona2/receipt_reader.dart';
 import 'package:uuid/uuid_util.dart';
 
-import 'DataStructures/receipt-item.dart';
+import 'DataStructures/receipt_item.dart';
 import 'DataStructures/receipt.dart';
+import 'constants.dart';
 
-class TaggunReader {
+class TaggunReceiptReader implements ReceiptReader {
   /// Class to interpret Taggun json file and convert it to
   /// Receipt and List<ReceiptItem> objects
   //TODO: this does not need to be a class as it stands now. Make it
   // singleton or function.
 
+  @override
   late Receipt receipt;
-  late List<ReceiptItem> receiptItemsList;
 
-  TaggunReader({required Map<String, dynamic> json}) {
+  @override
+  late List<ReceiptItem> receiptItems;
+
+  TaggunReceiptReader({required Map<String, dynamic> json}) {
     // Read json data and confidence intervals
     final String shopName = json["merchantName"]["data"];
     final double shopNameConfidence = json["merchantName"]["confidenceLevel"];
@@ -30,21 +35,21 @@ class TaggunReader {
     //final List<String> dateTimeList = dateTimeStrings.split(separators);
     // DateTime.parse can theoretically parse this datetime format!
 
-    final DateTime dateTime = DateTime.parse(json["date"]["data"]);
-    final double dateTimeConfidence = json["date"]["confidenceLevel"];
+    final DateTime dateTime = DateTime.parse(json["date"]["data"]) ?? DateTime.now();
+    final double dateTimeConfidence = json["date"]["confidenceLevel"] ?? 0.0;
 
     final double totalPrice = json["totalAmount"]["data"];
-    final double totalPriceConfidence = json["totalAmount"]["confidenceLevel"];
+    final double totalPriceConfidence = json["totalAmount"]["confidenceLevel"] ?? 0.0;
 
-    final String currency = json["totalAmount"]["currencyCode"];
+    final String currency = json["totalAmount"]["currencyCode"] ?? kNullStringValue;
 
-    final String country = json["location"]["country"]["names"]["en"];
+    final String country = json["location"]["country"]["names"]["en"] ?? kNullStringValue;
 
-    final String address = json["merchantAddress"]["data"];
+    final String address = json["merchantAddress"]["data"] ?? kNullStringValue;
 
-    final String postalCode = json["merchantPostalCode"]["data"];
+    final String postalCode = json["merchantPostalCode"]["data"] ?? kNullStringValue;
 
-    final String city = json["merchantCity"]["data"];
+    final String city = json["merchantCity"]["data"] ?? kNullStringValue;
 
     // Generate uuid for Receipt object
     final Uint8List uuid = UuidUtil.mathRNG();
@@ -60,8 +65,8 @@ class TaggunReader {
             unit: "piece",
             uuid: uuid));
     */
-    receiptItemsList = List.generate(json["amounts"].length, (index) => ReceiptItem(
-        shoppingItem: ShoppingItem(itemName: json["amounts"][0]["text"]),
+    receiptItems = List.generate(json["amounts"].length, (index) => ReceiptItem(
+        shoppingItem: ShoppingItem(itemName: json["amounts"][index]["text"]),
         rawText: json["amounts"][index]["text"],
         totalPrice: json["amounts"][index]["data"],
         quantity: 1,
@@ -71,7 +76,7 @@ class TaggunReader {
 
     // Generate Receipt
     receipt = Receipt(
-        receiptItemsList: receiptItemsList,
+        receiptItemsList: receiptItems,
         shopName: shopName,
         dateTime: dateTime,
         totalPrice: totalPrice,
@@ -84,4 +89,5 @@ class TaggunReader {
         // TODO: infer payment type!
         uuid: uuid);
   }
+
 }

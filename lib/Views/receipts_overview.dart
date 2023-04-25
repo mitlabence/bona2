@@ -1,11 +1,11 @@
-import 'package:bona2/Views/receiptitemlistview.dart';
-import 'package:bona2/databasehelper.dart';
+import 'package:bona2/Views/receipt_item_list_view.dart';
+import 'package:bona2/database_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../DataStructures/receipt.dart';
-import 'package:bona2/randomreceiptgenerator.dart';
+import 'package:bona2/random_receipt_generator.dart';
 
-import '../Widgets/receipt-tile.dart';
+import '../Widgets/receipt_tile.dart';
 
 class ReceiptsOverview extends StatefulWidget {
   const ReceiptsOverview({Key? key}) : super(key: key);
@@ -63,19 +63,27 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
                             return ReceiptTile(
-                                title: snapshot.data![index].shopName,
-                                subtitle:
-                                    snapshot.data![index].dateTime.toString(),
-                                onTapCallback: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ReceiptItemListView(
-                                                ReceiptUuid:
-                                                    snapshot.data![index].uuid,
-                                              )));
-                                });
+                              title: snapshot.data![index].shopName,
+                              subtitle:
+                                  snapshot.data![index].dateTime.toString(),
+                              onTapCallback: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ReceiptItemListView(
+                                              ReceiptUuid:
+                                                  snapshot.data![index].uuid,
+                                            )));
+                              },
+                              onLongPressCallback: () async {
+                                DataBaseHelper dbh = DataBaseHelper.instance;
+                                await dbh.removeReceiptAndItemsByUUID(
+                                    snapshot.data![index].uuid);
+                                setState(() {});
+                                print("Removed receipt");
+                              },
+                            );
                           });
                 }
               },

@@ -1,11 +1,11 @@
 import 'dart:typed_data';
 
-import 'package:bona2/DataStructures/receipt-item.dart';
+import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Widgets/receipt-tile.dart';
-import '../databasehelper.dart';
+import '../Widgets/receipt_tile.dart';
+import '../database_helper.dart';
 
 class ReceiptItemListView extends StatefulWidget {
   final Uint8List ReceiptUuid;
@@ -29,12 +29,11 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
         width: 300,
         child: FutureBuilder<List<ReceiptItem>>(
           future: DataBaseHelper.instance.getReceiptItems(widget.ReceiptUuid),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<ReceiptItem>> snapshot) {
+          builder: (BuildContext context,
+              AsyncSnapshot<List<ReceiptItem>> snapshot) {
             if (!snapshot.hasData) {
-              if (snapshot.hasError)
-                print(snapshot
-                    .error); // TODO: proper connectionState sampling logic necessary
+              if (snapshot.hasError) print(snapshot.error);
+              // TODO: proper connectionState sampling logic necessary
               return const Center(child: Text('Loading...'));
             } else {
               return snapshot.data!.isEmpty
@@ -46,7 +45,11 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
                         return ReceiptTile(
                           title: snapshot.data![index].rawText ?? "NaN",
                           subtitle: snapshot.data![index].totalPrice.toString(),
-                          onTapCallback: () => {},
+                          onTapCallback: () {},
+                          onLongPressCallback: () {
+                            DataBaseHelper dbh = DataBaseHelper.instance;
+
+                          },
                         );
                       });
             }

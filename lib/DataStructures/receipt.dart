@@ -1,8 +1,8 @@
 import "dart:typed_data";
 
-import "package:bona2/DataStructures/shopping-item.dart";
+import "package:bona2/DataStructures/shopping_item.dart";
 
-import "receipt-item.dart";
+import "receipt_item.dart";
 
 class Receipt {
   final List<ReceiptItem> receiptItemsList;
@@ -17,27 +17,49 @@ class Receipt {
   final String paymentType;
   final Uint8List uuid;
 
-  Receipt({required this.receiptItemsList,
-    required this.shopName,
-    required this.dateTime,
-    required this.totalPrice,
-    required this.currency,
-    required this.country,
-    required this.city,
-    required this.address,
-    required this.postalCode,
-    required this.paymentType,
-    required this.uuid});
+  Receipt(
+      {required this.receiptItemsList,
+      required this.shopName,
+      required this.dateTime,
+      required this.totalPrice,
+      required this.currency,
+      required this.country,
+      required this.city,
+      required this.address,
+      required this.postalCode,
+      required this.paymentType,
+      required this.uuid});
 
   int get numberOfItems => receiptItemsList.length;
+  num get detectedTotalPrice => receiptItemsList.map((receiptItem) => receiptItem.totalPrice).reduce((a, b) => a + b);
+  factory Receipt.empty() {
+    /// Create a Receipt instance with
+    ///   * String attributes having the empty string "",
+    ///   * DateTime attributes DateTime.now(),
+    ///   * double attributes 0.0,
+    ///   * Uint8List attributes Uint8List(0)
+    /// as values.
+    return Receipt(
+      receiptItemsList: [],
+      shopName: "",
+      dateTime: DateTime.now(),
+      totalPrice: 0.0,
+      currency: "",
+      country: "",
+      address: "",
+      postalCode: "",
+      city: "",
+      paymentType: "",
+      uuid: Uint8List(0),
+    );
+  }
 
   @override
   String toString() {
     String itemsWithPrices = "";
     for (int i = 0; i < receiptItemsList.length; ++i) {
       itemsWithPrices +=
-      "${receiptItemsList[i].shoppingItem.itemName}: ${receiptItemsList[i]
-          .totalPrice}, ";
+          "${receiptItemsList[i].shoppingItem.itemName}: ${receiptItemsList[i].totalPrice}, ";
     }
     return "Date: $dateTime, Shop: $shopName: $itemsWithPrices"; //TODO: add uuid
   }
@@ -75,12 +97,12 @@ class Receipt {
       'city': city,
       'postalCode': postalCode,
       'address': address,
+      'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
     };
   }
 
-  factory Receipt.fromMap(Map<String, dynamic> map) =>
-      Receipt(
+  factory Receipt.fromMap(Map<String, dynamic> map) => Receipt(
         receiptItemsList: [
           ReceiptItem(
               shoppingItem: ShoppingItem(

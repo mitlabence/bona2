@@ -1,0 +1,1967 @@
+{
+  "location": {
+    "city": {
+      "geoname_id": 2946447,
+      "names": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "ja": "ボン",
+        "pt-BR": "Bona",
+        "ru": "Бонн",
+        "zh-CN": "波恩"
+      }
+    },
+    "continent": {
+      "code": "EU",
+      "geoname_id": 6255148,
+      "names": {
+        "de": "Europa",
+        "en": "Europe",
+        "es": "Europa",
+        "fr": "Europe",
+        "ja": "ヨーロッパ",
+        "pt-BR": "Europa",
+        "ru": "Европа",
+        "zh-CN": "欧洲"
+      }
+    },
+    "country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "location": {
+      "accuracy_radius": 1,
+      "latitude": 50.7362,
+      "longitude": 7.1002,
+      "time_zone": "Europe/Berlin"
+    },
+    "postal": {
+      "code": "53111"
+    },
+    "registered_country": {
+      "geoname_id": 2921044,
+      "is_in_european_union": true,
+      "iso_code": "DE",
+      "names": {
+        "de": "Deutschland",
+        "en": "Germany",
+        "es": "Alemania",
+        "fr": "Allemagne",
+        "ja": "ドイツ連邦共和国",
+        "pt-BR": "Alemanha",
+        "ru": "Германия",
+        "zh-CN": "德国"
+      }
+    },
+    "subdivisions": [
+      {
+        "geoname_id": 2861876,
+        "iso_code": "NW",
+        "names": {
+          "de": "Nordrhein-Westfalen",
+          "en": "North Rhine-Westphalia",
+          "es": "Renania del Norte-Westfalia",
+          "fr": "Rhénanie du Nord-Westphalie",
+          "ru": "Северный Рейн-Вестфалия"
+        }
+      }
+    ]
+  },
+  "totalAmount": {
+    "confidenceLevel": 0.99,
+    "index": 58,
+    "data": 30.79,
+    "text": "Summe 30,79",
+    "regions": [
+      [
+        {
+          "x": 721,
+          "y": 3878
+        },
+        {
+          "x": 1722,
+          "y": 3921
+        },
+        {
+          "x": 1716,
+          "y": 3969
+        },
+        {
+          "x": 714,
+          "y": 3929
+        }
+      ]
+    ],
+    "currencyCode": "EUR",
+    "keyword": "Summe 30,79"
+  },
+  "taxAmount": {
+    "confidenceLevel": 0
+  },
+  "confidenceLevel": 0.8324,
+  "date": {
+    "data": "2021-02-17T11:44:00.000Z",
+    "confidenceLevel": 0.6296,
+    "text": "Uhrzeit A 11:44 :31",
+    "index": 35,
+    "regions": [
+      [
+        {
+          "x": 719,
+          "y": 2139
+        },
+        {
+          "x": 901,
+          "y": 2143
+        },
+        {
+          "x": 900,
+          "y": 2190
+        },
+        {
+          "x": 719,
+          "y": 2186
+        }
+      ],
+      [
+        {
+          "x": 1300,
+          "y": 2121
+        },
+        {
+          "x": 1350,
+          "y": 2121
+        },
+        {
+          "x": 1345,
+          "y": 2220
+        },
+        {
+          "x": 1295,
+          "y": 2223
+        }
+      ],
+      [
+        {
+          "x": 1472,
+          "y": 2121
+        },
+        {
+          "x": 1591,
+          "y": 2123
+        },
+        {
+          "x": 1585,
+          "y": 2200
+        },
+        {
+          "x": 1465,
+          "y": 2211
+        }
+      ],
+      [
+        {
+          "x": 1609,
+          "y": 2123
+        },
+        {
+          "x": 1701,
+          "y": 2125
+        },
+        {
+          "x": 1694,
+          "y": 2189
+        },
+        {
+          "x": 1602,
+          "y": 2198
+        }
+      ]
+    ]
+  },
+  "text": {
+    "text": "SUD\nErich-Hoffmann-Straße 12 OS Jigz\n53121 Bonn-Endenich EUR\n709070 GL: Laktosefreie H 1,09 A\n709070 GL: Laktosefreie H 1,09 A\n3435 Haferflocken 0,49 A\n54226 Vollkorn-Sandwich 0,99 A\n783346 Kiwi grün Stück 0,29 A\n783346 Kiwi grün Stück 0,29\n3133 Kap-Seehecht-Filet 3,79\n45172 Tortelli, frisch 1,59 A\n45305 Vital & Fit 00,99 A\n784829 Rosenkohl QS 750g 0,99\n2524 Rindergulasch 4,49 !\n701868 MR Nuss/Orange/Cra 0,99\n701867 MR Cocos/Mandel/No 0,99 A\n1.09 A\n701865 MR Dunkles Sortime 1\n783749 Fenchel 1,12 AW\n0,488 kg × 2,29 EUR/kg\n783676 Bananen RFA lose 1,04 A\n1,048 kg × 0,99 EUR/kg\n786449 Staudensellerie 1,29 A\n38245 Erdnusscreme 1,69 A\n2723 Körn. Frischkäse 0,65 A\n780463 Avocado Stück 0,89 A\n780463 Avocado Stück 0,89 A\n6124 Walnusskerne 2,49 A\n48387 Skyr 500 g 0,99 A\n700558 Walnussbrötchen 0,49 A\n700558 Walnussbrötchen 0,49 A\nW\n+ KUNDENBELEG +\nTerminalnummer 65443091\nDatum 06.02.202 K\nUhrzeit A 11:44 :31\nBeleg-Nr. 9094\nTransaktions-Nr .Tr07819392\nKartenzahlung\ngirocard\nBetrag 30.79 EUR\nKarte ###############9007\nKartenfolgenummer 01\nVertragsnummer 1079443091\nEMV-AID A0000003591010028001\nGenehmigungs-Nr. 109451\nEMV-DATA:\n0000000000/E800/3900/004D/A00000035910\n10028001/00/0002/0280/605048/440302/22\n/R/194F8BFE/078193\n************************************** 2\nZahlung erfolgt\n**************************************\nZw-Summe 31,19\n+H ++++++++\nBO-Aktion KW 5/2021 -0,20\nBO-Aktion KW 5/2021 -0,20 KI\nAg\nSumme 30,79\n25 Artikel",
+    "regions": [
+      {
+        "x": 710,
+        "y": 107
+      },
+      {
+        "x": 1780,
+        "y": 115
+      },
+      {
+        "x": 1780,
+        "y": 3992
+      },
+      {
+        "x": 709,
+        "y": 3988
+      }
+    ]
+  },
+  "amounts": [
+    {
+      "data": 1.09,
+      "index": 3,
+      "regions": [
+        [
+          {
+            "x": 777,
+            "y": 298
+          },
+          {
+            "x": 1662,
+            "y": 293
+          },
+          {
+            "x": 1664,
+            "y": 347
+          },
+          {
+            "x": 777,
+            "y": 354
+          }
+        ]
+      ],
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 4,
+      "regions": [
+        [
+          {
+            "x": 780,
+            "y": 355
+          },
+          {
+            "x": 1664,
+            "y": 356
+          },
+          {
+            "x": 1666,
+            "y": 411
+          },
+          {
+            "x": 777,
+            "y": 408
+          }
+        ]
+      ],
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 5,
+      "regions": [
+        [
+          {
+            "x": 828,
+            "y": 422
+          },
+          {
+            "x": 1665,
+            "y": 409
+          },
+          {
+            "x": 1666,
+            "y": 466
+          },
+          {
+            "x": 824,
+            "y": 471
+          }
+        ]
+      ],
+      "text": "3435 Haferflocken 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 6,
+      "regions": [
+        [
+          {
+            "x": 810,
+            "y": 481
+          },
+          {
+            "x": 1673,
+            "y": 483
+          },
+          {
+            "x": 1670,
+            "y": 535
+          },
+          {
+            "x": 808,
+            "y": 533
+          }
+        ]
+      ],
+      "text": "54226 Vollkorn-Sandwich 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.29,
+      "index": 7,
+      "regions": [
+        [
+          {
+            "x": 784,
+            "y": 543
+          },
+          {
+            "x": 1672,
+            "y": 533
+          },
+          {
+            "x": 1672,
+            "y": 592
+          },
+          {
+            "x": 783,
+            "y": 595
+          }
+        ]
+      ],
+      "text": "783346 Kiwi grün Stück 0,29 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.29,
+      "index": 8,
+      "regions": [
+        [
+          {
+            "x": 793,
+            "y": 607
+          },
+          {
+            "x": 1625,
+            "y": 603
+          },
+          {
+            "x": 1625,
+            "y": 662
+          },
+          {
+            "x": 790,
+            "y": 659
+          }
+        ]
+      ],
+      "text": "783346 Kiwi grün Stück 0,29",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 3.79,
+      "index": 9,
+      "regions": [
+        [
+          {
+            "x": 838,
+            "y": 674
+          },
+          {
+            "x": 1625,
+            "y": 664
+          },
+          {
+            "x": 1625,
+            "y": 723
+          },
+          {
+            "x": 837,
+            "y": 724
+          }
+        ]
+      ],
+      "text": "3133 Kap-Seehecht-Filet 3,79",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.59,
+      "index": 10,
+      "regions": [
+        [
+          {
+            "x": 818,
+            "y": 736
+          },
+          {
+            "x": 1676,
+            "y": 723
+          },
+          {
+            "x": 1677,
+            "y": 777
+          },
+          {
+            "x": 818,
+            "y": 787
+          }
+        ]
+      ],
+      "text": "45172 Tortelli, frisch 1,59 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 12,
+      "regions": [
+        [
+          {
+            "x": 806,
+            "y": 860
+          },
+          {
+            "x": 1629,
+            "y": 849
+          },
+          {
+            "x": 1629,
+            "y": 903
+          },
+          {
+            "x": 806,
+            "y": 907
+          }
+        ]
+      ],
+      "text": "784829 Rosenkohl QS 750g 0,99",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 4.49,
+      "index": 13,
+      "regions": [
+        [
+          {
+            "x": 854,
+            "y": 921
+          },
+          {
+            "x": 1660,
+            "y": 909
+          },
+          {
+            "x": 1660,
+            "y": 962
+          },
+          {
+            "x": 855,
+            "y": 969
+          }
+        ]
+      ],
+      "text": "2524 Rindergulasch 4,49 !",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 14,
+      "regions": [
+        [
+          {
+            "x": 811,
+            "y": 984
+          },
+          {
+            "x": 1633,
+            "y": 968
+          },
+          {
+            "x": 1633,
+            "y": 1021
+          },
+          {
+            "x": 813,
+            "y": 1032
+          }
+        ]
+      ],
+      "text": "701868 MR Nuss/Orange/Cra 0,99",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 15,
+      "regions": [
+        [
+          {
+            "x": 814,
+            "y": 1044
+          },
+          {
+            "x": 1674,
+            "y": 1035
+          },
+          {
+            "x": 1677,
+            "y": 1080
+          },
+          {
+            "x": 814,
+            "y": 1091
+          }
+        ]
+      ],
+      "text": "701867 MR Cocos/Mandel/No 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.09,
+      "index": 16,
+      "regions": [
+        [
+          {
+            "x": 1552,
+            "y": 1086
+          },
+          {
+            "x": 1677,
+            "y": 1083
+          },
+          {
+            "x": 1678,
+            "y": 1126
+          },
+          {
+            "x": 1552,
+            "y": 1130
+          }
+        ]
+      ],
+      "text": "1.09 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.12,
+      "index": 18,
+      "regions": [
+        [
+          {
+            "x": 817,
+            "y": 1160
+          },
+          {
+            "x": 1716,
+            "y": 1143
+          },
+          {
+            "x": 1715,
+            "y": 1192
+          },
+          {
+            "x": 817,
+            "y": 1203
+          }
+        ]
+      ],
+      "text": "783749 Fenchel 1,12 AW",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.29,
+      "index": 19,
+      "regions": [
+        [
+          {
+            "x": 907,
+            "y": 1213
+          },
+          {
+            "x": 1488,
+            "y": 1209
+          },
+          {
+            "x": 1487,
+            "y": 1257
+          },
+          {
+            "x": 905,
+            "y": 1252
+          }
+        ]
+      ],
+      "text": "0,488 kg × 2,29 EUR/kg",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.04,
+      "index": 20,
+      "regions": [
+        [
+          {
+            "x": 808,
+            "y": 1262
+          },
+          {
+            "x": 1687,
+            "y": 1250
+          },
+          {
+            "x": 1686,
+            "y": 1304
+          },
+          {
+            "x": 808,
+            "y": 1306
+          }
+        ]
+      ],
+      "text": "783676 Bananen RFA lose 1,04 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 21,
+      "regions": [
+        [
+          {
+            "x": 915,
+            "y": 1314
+          },
+          {
+            "x": 1489,
+            "y": 1319
+          },
+          {
+            "x": 1489,
+            "y": 1368
+          },
+          {
+            "x": 912,
+            "y": 1357
+          }
+        ]
+      ],
+      "text": "1,048 kg × 0,99 EUR/kg",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.29,
+      "index": 22,
+      "regions": [
+        [
+          {
+            "x": 806,
+            "y": 1369
+          },
+          {
+            "x": 1686,
+            "y": 1364
+          },
+          {
+            "x": 1684,
+            "y": 1412
+          },
+          {
+            "x": 806,
+            "y": 1412
+          }
+        ]
+      ],
+      "text": "786449 Staudensellerie 1,29 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 1.69,
+      "index": 23,
+      "regions": [
+        [
+          {
+            "x": 828,
+            "y": 1426
+          },
+          {
+            "x": 1688,
+            "y": 1413
+          },
+          {
+            "x": 1688,
+            "y": 1462
+          },
+          {
+            "x": 826,
+            "y": 1472
+          }
+        ]
+      ],
+      "text": "38245 Erdnusscreme 1,69 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.65,
+      "index": 24,
+      "regions": [
+        [
+          {
+            "x": 849,
+            "y": 1481
+          },
+          {
+            "x": 1679,
+            "y": 1471
+          },
+          {
+            "x": 1679,
+            "y": 1523
+          },
+          {
+            "x": 848,
+            "y": 1523
+          }
+        ]
+      ],
+      "text": "2723 Körn. Frischkäse 0,65 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.89,
+      "index": 25,
+      "regions": [
+        [
+          {
+            "x": 807,
+            "y": 1541
+          },
+          {
+            "x": 1692,
+            "y": 1527
+          },
+          {
+            "x": 1690,
+            "y": 1578
+          },
+          {
+            "x": 806,
+            "y": 1587
+          }
+        ]
+      ],
+      "text": "780463 Avocado Stück 0,89 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.89,
+      "index": 26,
+      "regions": [
+        [
+          {
+            "x": 805,
+            "y": 1600
+          },
+          {
+            "x": 1691,
+            "y": 1589
+          },
+          {
+            "x": 1690,
+            "y": 1640
+          },
+          {
+            "x": 805,
+            "y": 1643
+          }
+        ]
+      ],
+      "text": "780463 Avocado Stück 0,89 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 2.49,
+      "index": 27,
+      "regions": [
+        [
+          {
+            "x": 851,
+            "y": 1657
+          },
+          {
+            "x": 1693,
+            "y": 1650
+          },
+          {
+            "x": 1692,
+            "y": 1699
+          },
+          {
+            "x": 846,
+            "y": 1704
+          }
+        ]
+      ],
+      "text": "6124 Walnusskerne 2,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.99,
+      "index": 28,
+      "regions": [
+        [
+          {
+            "x": 827,
+            "y": 1713
+          },
+          {
+            "x": 1686,
+            "y": 1710
+          },
+          {
+            "x": 1685,
+            "y": 1758
+          },
+          {
+            "x": 827,
+            "y": 1759
+          }
+        ]
+      ],
+      "text": "48387 Skyr 500 g 0,99 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 29,
+      "regions": [
+        [
+          {
+            "x": 798,
+            "y": 1777
+          },
+          {
+            "x": 1697,
+            "y": 1768
+          },
+          {
+            "x": 1696,
+            "y": 1818
+          },
+          {
+            "x": 798,
+            "y": 1823
+          }
+        ]
+      ],
+      "text": "700558 Walnussbrötchen 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 0.49,
+      "index": 30,
+      "regions": [
+        [
+          {
+            "x": 796,
+            "y": 1835
+          },
+          {
+            "x": 1698,
+            "y": 1831
+          },
+          {
+            "x": 1700,
+            "y": 1880
+          },
+          {
+            "x": 797,
+            "y": 1882
+          }
+        ]
+      ],
+      "text": "700558 Walnussbrötchen 0,49 A",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 30.79,
+      "index": 40,
+      "regions": [
+        [
+          {
+            "x": 745,
+            "y": 2430
+          },
+          {
+            "x": 1687,
+            "y": 2426
+          },
+          {
+            "x": 1685,
+            "y": 2475
+          },
+          {
+            "x": 746,
+            "y": 2473
+          }
+        ]
+      ],
+      "text": "Betrag 30.79 EUR",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 31.19,
+      "index": 53,
+      "regions": [
+        [
+          {
+            "x": 1220,
+            "y": 3298
+          },
+          {
+            "x": 1682,
+            "y": 3307
+          },
+          {
+            "x": 1680,
+            "y": 3362
+          },
+          {
+            "x": 1220,
+            "y": 3346
+          }
+        ]
+      ],
+      "text": "Zw-Summe 31,19",
+      "currencyCode": "EUR"
+    },
+    {
+      "data": 30.79,
+      "index": 58,
+      "regions": [
+        [
+          {
+            "x": 721,
+            "y": 3878
+          },
+          {
+            "x": 1722,
+            "y": 3921
+          },
+          {
+            "x": 1716,
+            "y": 3969
+          },
+          {
+            "x": 714,
+            "y": 3929
+          }
+        ]
+      ],
+      "text": "Summe 30,79",
+      "currencyCode": "EUR"
+    }
+  ],
+  "numbers": [
+    {
+      "data": 12,
+      "text": "Erich-Hoffmann-Straße 12 OS Jigz",
+      "regions": [
+        [
+          {
+            "x": 861,
+            "y": 37
+          },
+          {
+            "x": 1711,
+            "y": 10
+          },
+          {
+            "x": 1711,
+            "y": 82
+          },
+          {
+            "x": 859,
+            "y": 98
+          }
+        ]
+      ],
+      "index": 1
+    },
+    {
+      "data": 53121,
+      "text": "53121 Bonn-Endenich EUR",
+      "regions": [
+        [
+          {
+            "x": 915,
+            "y": 108
+          },
+          {
+            "x": 1589,
+            "y": 233
+          },
+          {
+            "x": 1589,
+            "y": 286
+          },
+          {
+            "x": 914,
+            "y": 161
+          }
+        ]
+      ],
+      "index": 2
+    },
+    {
+      "data": 709070,
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "regions": [
+        [
+          {
+            "x": 777,
+            "y": 298
+          },
+          {
+            "x": 1662,
+            "y": 293
+          },
+          {
+            "x": 1664,
+            "y": 347
+          },
+          {
+            "x": 777,
+            "y": 354
+          }
+        ]
+      ],
+      "index": 3,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 709070,
+      "text": "709070 GL  Laktosefreie H 1,09 A",
+      "regions": [
+        [
+          {
+            "x": 780,
+            "y": 355
+          },
+          {
+            "x": 1664,
+            "y": 356
+          },
+          {
+            "x": 1666,
+            "y": 411
+          },
+          {
+            "x": 777,
+            "y": 408
+          }
+        ]
+      ],
+      "index": 4,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 3133,
+      "text": "3133 Kap-Seehecht-Filet 3,79",
+      "regions": [
+        [
+          {
+            "x": 838,
+            "y": 674
+          },
+          {
+            "x": 1625,
+            "y": 664
+          },
+          {
+            "x": 1625,
+            "y": 723
+          },
+          {
+            "x": 837,
+            "y": 724
+          }
+        ]
+      ],
+      "index": 9
+    },
+    {
+      "data": 2524,
+      "text": "2524 Rindergulasch 4,49 !",
+      "regions": [
+        [
+          {
+            "x": 854,
+            "y": 921
+          },
+          {
+            "x": 1660,
+            "y": 909
+          },
+          {
+            "x": 1660,
+            "y": 962
+          },
+          {
+            "x": 855,
+            "y": 969
+          }
+        ]
+      ],
+      "index": 13
+    },
+    {
+      "data": 701868,
+      "text": "701868 MR Nuss/Orange/Cra 0,99",
+      "regions": [
+        [
+          {
+            "x": 811,
+            "y": 984
+          },
+          {
+            "x": 1633,
+            "y": 968
+          },
+          {
+            "x": 1633,
+            "y": 1021
+          },
+          {
+            "x": 813,
+            "y": 1032
+          }
+        ]
+      ],
+      "index": 14
+    },
+    {
+      "data": 701865,
+      "text": "701865 MR Dunkles Sortime 1",
+      "regions": [
+        [
+          {
+            "x": 821,
+            "y": 1103
+          },
+          {
+            "x": 1557,
+            "y": 1101
+          },
+          {
+            "x": 1541,
+            "y": 1102
+          },
+          {
+            "x": 822,
+            "y": 1148
+          }
+        ]
+      ],
+      "index": 17
+    },
+    {
+      "data": 1,
+      "text": "701865 MR Dunkles Sortime 1",
+      "regions": [
+        [
+          {
+            "x": 821,
+            "y": 1103
+          },
+          {
+            "x": 1557,
+            "y": 1101
+          },
+          {
+            "x": 1541,
+            "y": 1102
+          },
+          {
+            "x": 822,
+            "y": 1148
+          }
+        ]
+      ],
+      "index": 17
+    },
+    {
+      "data": 783749,
+      "text": "783749 Fenchel 1,12 AW",
+      "regions": [
+        [
+          {
+            "x": 817,
+            "y": 1160
+          },
+          {
+            "x": 1716,
+            "y": 1143
+          },
+          {
+            "x": 1715,
+            "y": 1192
+          },
+          {
+            "x": 817,
+            "y": 1203
+          }
+        ]
+      ],
+      "index": 18
+    },
+    {
+      "data": 1048,
+      "text": "1,048 kg × 0,99 EUR/kg",
+      "regions": [
+        [
+          {
+            "x": 915,
+            "y": 1314
+          },
+          {
+            "x": 1489,
+            "y": 1319
+          },
+          {
+            "x": 1489,
+            "y": 1368
+          },
+          {
+            "x": 912,
+            "y": 1357
+          }
+        ]
+      ],
+      "index": 21
+    },
+    {
+      "data": 2723,
+      "text": "2723 Körn. Frischkäse 0,65 A",
+      "regions": [
+        [
+          {
+            "x": 849,
+            "y": 1481
+          },
+          {
+            "x": 1679,
+            "y": 1471
+          },
+          {
+            "x": 1679,
+            "y": 1523
+          },
+          {
+            "x": 848,
+            "y": 1523
+          }
+        ]
+      ],
+      "index": 24,
+      "classifyResult": "primaryTotal"
+    },
+    {
+      "data": 65443091,
+      "text": "Terminalnummer 65443091",
+      "regions": [
+        [
+          {
+            "x": 720,
+            "y": 2020
+          },
+          {
+            "x": 1684,
+            "y": 2010
+          },
+          {
+            "x": 1681,
+            "y": 2060
+          },
+          {
+            "x": 720,
+            "y": 2067
+          }
+        ]
+      ],
+      "index": 33
+    },
+    {
+      "data": 9094,
+      "text": "Beleg-Nr. 9094",
+      "regions": [
+        [
+          {
+            "x": 729,
+            "y": 2202
+          },
+          {
+            "x": 1684,
+            "y": 2188
+          },
+          {
+            "x": 1683,
+            "y": 2238
+          },
+          {
+            "x": 729,
+            "y": 2248
+          }
+        ]
+      ],
+      "index": 36
+    },
+    {
+      "data": 1079443091,
+      "text": "Vertragsnummer 1079443091",
+      "regions": [
+        [
+          {
+            "x": 735,
+            "y": 2613
+          },
+          {
+            "x": 1694,
+            "y": 2613
+          },
+          {
+            "x": 1693,
+            "y": 2660
+          },
+          {
+            "x": 735,
+            "y": 2660
+          }
+        ]
+      ],
+      "index": 43
+    },
+    {
+      "data": 109451,
+      "text": "Genehmigungs-Nr. 109451",
+      "regions": [
+        [
+          {
+            "x": 737,
+            "y": 2741
+          },
+          {
+            "x": 1702,
+            "y": 2726
+          },
+          {
+            "x": 1702,
+            "y": 2789
+          },
+          {
+            "x": 737,
+            "y": 2789
+          }
+        ]
+      ],
+      "index": 45
+    },
+    {
+      "data": 2,
+      "text": "************************************** 2",
+      "regions": [
+        [
+          {
+            "x": 734,
+            "y": 3049
+          },
+          {
+            "x": 1775,
+            "y": 3048
+          },
+          {
+            "x": 1773,
+            "y": 3099
+          },
+          {
+            "x": 734,
+            "y": 3096
+          }
+        ]
+      ],
+      "index": 50
+    },
+    {
+      "data": 25,
+      "text": "25 Artikel",
+      "regions": [
+        [
+          {
+            "x": 715,
+            "y": 3937
+          },
+          {
+            "x": 974,
+            "y": 3943
+          },
+          {
+            "x": 971,
+            "y": 3992
+          },
+          {
+            "x": 712,
+            "y": 3987
+          }
+        ]
+      ],
+      "index": 59
+    }
+  ],
+  "lineAmounts": [],
+  "itemsCount": {
+    "data": 0,
+    "confidenceLevel": 0
+  },
+  "entities": {
+    "invoiceNumber": {
+      "data": "65443091",
+      "text": " 65443091",
+      "confidenceLevel": 0.51,
+      "keyword": "Terminalnummer 65443091"
+    },
+    "receiptNumber": {
+      "data": "65443091",
+      "confidenceLevel": 0.5603975272727273,
+      "text": "Terminalnummer 65443091",
+      "keyword": "Beleg-Nr",
+      "index": 33,
+      "regions": [
+        [
+          {
+            "x": 720,
+            "y": 2020
+          },
+          {
+            "x": 1062,
+            "y": 2023
+          },
+          {
+            "x": 1060,
+            "y": 2069
+          },
+          {
+            "x": 720,
+            "y": 2067
+          }
+        ],
+        [
+          {
+            "x": 1470,
+            "y": 2011
+          },
+          {
+            "x": 1684,
+            "y": 2010
+          },
+          {
+            "x": 1681,
+            "y": 2060
+          },
+          {
+            "x": 1469,
+            "y": 2059
+          }
+        ]
+      ]
+    }
+  },
+  "merchantName": {
+    "data": "Erich-Hoffmann-Straße 12 OS Jigz",
+    "confidenceLevel": 0.9,
+    "text": "Erich-Hoffmann-Straße 12 OS Jigz",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 861,
+          "y": 37
+        },
+        {
+          "x": 1395,
+          "y": 33
+        },
+        {
+          "x": 1395,
+          "y": 102
+        },
+        {
+          "x": 859,
+          "y": 98
+        }
+      ],
+      [
+        {
+          "x": 1410,
+          "y": 32
+        },
+        {
+          "x": 1458,
+          "y": 30
+        },
+        {
+          "x": 1458,
+          "y": 100
+        },
+        {
+          "x": 1409,
+          "y": 102
+        }
+      ],
+      [
+        {
+          "x": 1471,
+          "y": 29
+        },
+        {
+          "x": 1553,
+          "y": 23
+        },
+        {
+          "x": 1553,
+          "y": 94
+        },
+        {
+          "x": 1471,
+          "y": 99
+        }
+      ],
+      [
+        {
+          "x": 1572,
+          "y": 22
+        },
+        {
+          "x": 1711,
+          "y": 10
+        },
+        {
+          "x": 1711,
+          "y": 82
+        },
+        {
+          "x": 1572,
+          "y": 93
+        }
+      ]
+    ]
+  },
+  "merchantAddress": {
+    "data": "Erich-Hoffmann-Straße, 53121, Bonn, Endenich, Nordrhein-Westfalen",
+    "confidenceLevel": 0.96,
+    "text": "Erich-Hoffmann-Straß Jigz, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 861,
+          "y": 37
+        },
+        {
+          "x": 1395,
+          "y": 33
+        },
+        {
+          "x": 1395,
+          "y": 102
+        },
+        {
+          "x": 859,
+          "y": 98
+        }
+      ],
+      [
+        {
+          "x": 1410,
+          "y": 32
+        },
+        {
+          "x": 1458,
+          "y": 30
+        },
+        {
+          "x": 1458,
+          "y": 100
+        },
+        {
+          "x": 1409,
+          "y": 102
+        }
+      ],
+      [
+        {
+          "x": 1471,
+          "y": 29
+        },
+        {
+          "x": 1553,
+          "y": 23
+        },
+        {
+          "x": 1553,
+          "y": 94
+        },
+        {
+          "x": 1471,
+          "y": 99
+        }
+      ],
+      [
+        {
+          "x": 1572,
+          "y": 22
+        },
+        {
+          "x": 1711,
+          "y": 10
+        },
+        {
+          "x": 1711,
+          "y": 82
+        },
+        {
+          "x": 1572,
+          "y": 93
+        }
+      ]
+    ]
+  },
+  "merchantCity": {
+    "data": "Endenich, Bonn",
+    "confidenceLevel": 0.96,
+    "text": "Erich-Hoffmann-Straß Jigz, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 861,
+          "y": 37
+        },
+        {
+          "x": 1395,
+          "y": 33
+        },
+        {
+          "x": 1395,
+          "y": 102
+        },
+        {
+          "x": 859,
+          "y": 98
+        }
+      ],
+      [
+        {
+          "x": 1410,
+          "y": 32
+        },
+        {
+          "x": 1458,
+          "y": 30
+        },
+        {
+          "x": 1458,
+          "y": 100
+        },
+        {
+          "x": 1409,
+          "y": 102
+        }
+      ],
+      [
+        {
+          "x": 1471,
+          "y": 29
+        },
+        {
+          "x": 1553,
+          "y": 23
+        },
+        {
+          "x": 1553,
+          "y": 94
+        },
+        {
+          "x": 1471,
+          "y": 99
+        }
+      ],
+      [
+        {
+          "x": 1572,
+          "y": 22
+        },
+        {
+          "x": 1711,
+          "y": 10
+        },
+        {
+          "x": 1711,
+          "y": 82
+        },
+        {
+          "x": 1572,
+          "y": 93
+        }
+      ]
+    ]
+  },
+  "merchantState": {
+    "data": "Bonn, Nordrhein-Westfalen",
+    "confidenceLevel": 0.96,
+    "text": "Erich-Hoffmann-Straß Jigz, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 861,
+          "y": 37
+        },
+        {
+          "x": 1395,
+          "y": 33
+        },
+        {
+          "x": 1395,
+          "y": 102
+        },
+        {
+          "x": 859,
+          "y": 98
+        }
+      ],
+      [
+        {
+          "x": 1410,
+          "y": 32
+        },
+        {
+          "x": 1458,
+          "y": 30
+        },
+        {
+          "x": 1458,
+          "y": 100
+        },
+        {
+          "x": 1409,
+          "y": 102
+        }
+      ],
+      [
+        {
+          "x": 1471,
+          "y": 29
+        },
+        {
+          "x": 1553,
+          "y": 23
+        },
+        {
+          "x": 1553,
+          "y": 94
+        },
+        {
+          "x": 1471,
+          "y": 99
+        }
+      ],
+      [
+        {
+          "x": 1572,
+          "y": 22
+        },
+        {
+          "x": 1711,
+          "y": 10
+        },
+        {
+          "x": 1711,
+          "y": 82
+        },
+        {
+          "x": 1572,
+          "y": 93
+        }
+      ]
+    ]
+  },
+  "merchantCountryCode": {
+    "data": "DE",
+    "confidenceLevel": 0.96,
+    "text": "Erich-Hoffmann-Straß Jigz, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 861,
+          "y": 37
+        },
+        {
+          "x": 1395,
+          "y": 33
+        },
+        {
+          "x": 1395,
+          "y": 102
+        },
+        {
+          "x": 859,
+          "y": 98
+        }
+      ],
+      [
+        {
+          "x": 1410,
+          "y": 32
+        },
+        {
+          "x": 1458,
+          "y": 30
+        },
+        {
+          "x": 1458,
+          "y": 100
+        },
+        {
+          "x": 1409,
+          "y": 102
+        }
+      ],
+      [
+        {
+          "x": 1471,
+          "y": 29
+        },
+        {
+          "x": 1553,
+          "y": 23
+        },
+        {
+          "x": 1553,
+          "y": 94
+        },
+        {
+          "x": 1471,
+          "y": 99
+        }
+      ],
+      [
+        {
+          "x": 1572,
+          "y": 22
+        },
+        {
+          "x": 1711,
+          "y": 10
+        },
+        {
+          "x": 1711,
+          "y": 82
+        },
+        {
+          "x": 1572,
+          "y": 93
+        }
+      ]
+    ]
+  },
+  "merchantTypes": {
+    "confidenceLevel": 0
+  },
+  "merchantPostalCode": {
+    "data": "53121",
+    "confidenceLevel": 0.96,
+    "text": "Erich-Hoffmann-Straß Jigz, Bonn-Endenich",
+    "index": 1,
+    "regions": [
+      [
+        {
+          "x": 861,
+          "y": 37
+        },
+        {
+          "x": 1395,
+          "y": 33
+        },
+        {
+          "x": 1395,
+          "y": 102
+        },
+        {
+          "x": 859,
+          "y": 98
+        }
+      ],
+      [
+        {
+          "x": 1410,
+          "y": 32
+        },
+        {
+          "x": 1458,
+          "y": 30
+        },
+        {
+          "x": 1458,
+          "y": 100
+        },
+        {
+          "x": 1409,
+          "y": 102
+        }
+      ],
+      [
+        {
+          "x": 1471,
+          "y": 29
+        },
+        {
+          "x": 1553,
+          "y": 23
+        },
+        {
+          "x": 1553,
+          "y": 94
+        },
+        {
+          "x": 1471,
+          "y": 99
+        }
+      ],
+      [
+        {
+          "x": 1572,
+          "y": 22
+        },
+        {
+          "x": 1711,
+          "y": 10
+        },
+        {
+          "x": 1711,
+          "y": 82
+        },
+        {
+          "x": 1572,
+          "y": 93
+        }
+      ]
+    ]
+  },
+  "elapsed": 8291.734323501587
+}

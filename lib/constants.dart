@@ -13,12 +13,30 @@ bool compareDouble(double a, double b) {
 
 const String kNullStringValue = "NaN";
 
-const String kCreateReceiptItemDatabaseCommand = 'CREATE TABLE ReceiptItems (pk INTEGER PRIMARY KEY, rawtext TEXT, shoppingitem TEXT, totalprice REAL, quantity REAL, unit TEXT, uuid BLOB)';
-const String kTestReceiptItemDatabaseName = "ReceiptItems"; // should match with name defined in kCreateReceiptItemDatabaseCommand
-const String kCreateReceiptDatabaseCommand = 'CREATE TABLE Receipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL, currency TEXT, country TEXT, street TEXT, postalcode TEXT, city TEXT, uuid BLOB)';
-const String kTestReceiptDatabaseName = "Receipts"; // should match with name defined in kCreateReceiptDatabaseCommand
+//TODO: change to list of String database keys and datatypes (or Map), to assure consistency between production and test databases with one modification
+const String kCreateReceiptItemDatabaseCommand =
+    'CREATE TABLE ReceiptItems (pk INTEGER PRIMARY KEY, rawtext TEXT, shoppingitem TEXT, totalprice REAL, quantity REAL, unit TEXT, uuid BLOB)';
+const String kReceiptItemDatabaseName =
+    "ReceiptItems"; // should match with name defined in kCreateReceiptItemDatabaseCommand
+const String kCreateReceiptDatabaseCommand =
+    'CREATE TABLE Receipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL, currency TEXT, country TEXT, address TEXT, postalcode TEXT, city TEXT, paymenttype TEXT, uuid BLOB)';
+const String kReceiptDatabaseName =
+    "Receipts"; // should match with name defined in kCreateReceiptDatabaseCommand
+
+const String kCreateTestReceiptItemDatabaseCommand =
+    'CREATE TABLE testReceiptItems (pk INTEGER PRIMARY KEY, rawtext TEXT, shoppingitem TEXT, totalprice REAL, quantity REAL, unit TEXT, uuid BLOB)';
+const String kTestReceiptItemDatabaseName =
+    "testReceiptItems"; // Has to match with table name in creation command
+
+const String kCreateTestReceiptDatabaseCommand =
+    'CREATE TABLE testReceipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL, currency TEXT, country TEXT, address TEXT, postalcode TEXT, city TEXT, paymenttype TEXT, uuid BLOB)';
+const String kTestReceiptDatabaseName =
+    "testReceipts"; // Has to match with table name in creation command
 
 const String kDatabaseName = "bona2.db";
 const String kChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const String kLowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
 const String kUpperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+// when adding two ReceiptItem objects, put this separator between them.
+const String kReceiptItemAdditionSeparator = "\n";

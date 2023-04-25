@@ -2,10 +2,10 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:bona2/DataStructures/receipt.dart';
-import 'package:bona2/DataStructures/shopping-item.dart';
+import 'package:bona2/DataStructures/shopping_item.dart';
 import 'package:bona2/constants.dart';
 
-import 'DataStructures/receipt-item.dart';
+import 'DataStructures/receipt_item.dart';
 import 'package:uuid/uuid_util.dart';
 
 class RandomReceiptGenerator {

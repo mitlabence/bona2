@@ -1,7 +1,7 @@
 import 'dart:typed_data';
-import 'package:bona2/DataStructures/receipt-item.dart';
+import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:bona2/DataStructures/receipt.dart';
-import 'package:bona2/DataStructures/shopping-item.dart';
+import 'package:bona2/DataStructures/shopping_item.dart';
 
 // TODO: there might be a better way to provide these functions to tests
 

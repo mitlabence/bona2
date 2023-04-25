@@ -8,7 +8,8 @@ class ReceiptTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onTapCallback;
-  const ReceiptTile({Key? key, required this.title, required this.subtitle, required this.onTapCallback}) : super(key: key);
+  final VoidCallback onLongPressCallback;
+  const ReceiptTile({Key? key, required this.title, required this.subtitle, required this.onTapCallback, required this.onLongPressCallback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class ReceiptTile extends StatelessWidget {
       title: Text(title),
       subtitle: Text(subtitle),
       onTap: () => onTapCallback(), // TODO: navigate to ReceiptItem ListView
+      onLongPress: () => onLongPressCallback(),
     );
   }
 }
