@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:string_similarity/string_similarity.dart';
 import '../DataStructures/receipt.dart';
@@ -10,10 +11,12 @@ import '../constants.dart';
 import '../database_helper.dart';
 
 //TODO: this should replace the receiptsoverview. editing should be blocked or allowed, depending on some setting.
+const kClassName = "ReceiptRevisionView";
 
 enum EditType {
   delete,
   mergeUp,
+  mergeDown,
 }
 
 class EditHistoryQueueItem {
@@ -70,7 +73,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                 child: Text("Undo all"),
                 onTap: () {
                   int historyIndex = history.length;
-                  while (historyIndex > 0){
+                  while (historyIndex > 0) {
                     undoLastEditRemoveFromHistory();
                     historyIndex--;
                   }
@@ -90,7 +93,8 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
         SizedBox(
           width: 400,
           height: 600,
-          child: ListView.builder(//FIXME: if empty list, throws error (deleting items for example)
+          child: ListView.builder(
+            //FIXME: if empty list, throws error (deleting items for example)
             scrollDirection: Axis.vertical,
             itemCount: receipt.numberOfItems,
             itemBuilder: (context, index) {
@@ -116,9 +120,17 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                   ),
                   IconButton(
                     // MergeUp
-                    icon: const Icon(Icons.merge_type),
+                    icon: const Icon(Icons.arrow_upward),
                     onPressed: () {
                       mergeUpAddToHistory(index);
+                      setState(() {}); // FIXME: proper way to update needed
+                    },
+                  ),
+                  IconButton(
+                    // MergeUp
+                    icon: const Icon(Icons.arrow_downward),
+                    onPressed: () {
+                      mergeDownAddToHistory(index);
                       setState(() {}); // FIXME: proper way to update needed
                     },
                   ),
@@ -153,9 +165,6 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
 
   void mergeUpAddToHistory(int index) {
     if (index > 0) {
-      // print(receipt.receiptItemsList[index - 1].rawText
-      //     .similarityTo(
-      //         receipt.receiptItemsList[index].rawText));
       receipt.receiptItemsList[index - 1] += receipt.receiptItemsList[index];
       ReceiptItem mergedItem = receipt.receiptItemsList.removeAt(index);
       history.addLast(EditHistoryQueueItem(
@@ -165,6 +174,18 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
       ));
     }
     print(history.length);
+  }
+
+  void mergeDownAddToHistory(int index) {
+    if (index < receipt.receiptItemsList.length - 1) {
+      receipt.receiptItemsList[index + 1] += receipt.receiptItemsList[index];
+      ReceiptItem mergedItem = receipt.receiptItemsList.removeAt(index);
+      history.addLast(EditHistoryQueueItem(
+        editType: EditType.mergeDown,
+        index: index,
+        receiptItem: mergedItem,
+      ));
+    }
   }
 
   void deleteAddToHistory(int index) {
@@ -181,11 +202,17 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
             .insert(historyItem.index, historyItem.receiptItem);
         return 1;
       case EditType.mergeUp:
-        // delete item from (index-1)
         receipt.receiptItemsList[historyItem.index - 1] =
             receipt.receiptItemsList[historyItem.index - 1] -
                 historyItem.receiptItem;
-        // insert item
+        receipt.receiptItemsList
+            .insert(historyItem.index, historyItem.receiptItem);
+        return 1;
+      case EditType.mergeDown:
+        // the item after historyItem is the one currently at "index"
+        receipt.receiptItemsList[historyItem.index] =
+            receipt.receiptItemsList[historyItem.index] -
+                historyItem.receiptItem;
         receipt.receiptItemsList
             .insert(historyItem.index, historyItem.receiptItem);
         return 1;
@@ -193,7 +220,12 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
   }
 
   int undoLastEditRemoveFromHistory() {
-    // FIXME: if history is empty, throws exception
+    if (history.isEmpty) {
+      if (kDebugMode) {
+        print('${kClassName}: undoLastEditRemoveFromHistory() was called with empty history.');
+      }
+      return 0;
+    }
     EditHistoryQueueItem historyItem = history.removeLast();
     return undo(historyItem);
   }
