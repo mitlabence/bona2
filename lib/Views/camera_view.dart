@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:bona2/global.dart' as globals;
+import 'package:bona2/post_request_provider.dart';
 
 class CameraView extends StatefulWidget {
   const CameraView({required this.cameras, Key? key}) : super(key: key);
@@ -123,9 +124,11 @@ class _CameraViewState extends State<CameraView> {
       return null;
     }
     try {
-      final XFile file = await cameraController.takePicture();
-      print("${file.path}");
-      return file;
+      final XFile xFile = await cameraController.takePicture();
+      print("${xFile.path}");
+      File file = File(xFile.path);
+      await getScanVerboseJSON(file);
+      return xFile;
     } on CameraException catch (e) {
       _showCameraException(e);
       return null;

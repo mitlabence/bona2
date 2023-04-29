@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import '../DataStructures/receipt.dart';
 import '../database_helper.dart';
 
+
+
+//TODO: create abstract class/interface POST handler, create implementation for
+// Taggun, add tests
+
 class ImageUploadView extends StatelessWidget {
   ImageUploadView({Key? key}) : super(key: key);
   final TaggunReceiptProvider taggunReceiptProvider = TaggunReceiptProvider();

@@ -11,10 +11,8 @@ import 'global.dart' as globals;
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
 // import 'package:bona2/global.dart';
 late List<CameraDescription> _cameras;
-
 
 // TODO: if decide to use TensorFlow Lite models, can use Firebase for deployment
 Future<void> main() async {
@@ -23,11 +21,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   TaggunReceiptProvider()
       .loadTaggunJsonFiles(); // Initialize singleton instance
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   _cameras = await availableCameras();
   final String apikeys = await rootBundle.loadString('assets/apikeys.json');
   final apiKeysJson = jsonDecode(apikeys);
