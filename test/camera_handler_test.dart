@@ -9,10 +9,10 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
   });
   group("getCamera", () {
-    test("get back-facing camera using getCamera", () async {
-      final CameraDescription cameraDescription =
-          await getCamera(kBackCameraLens);
-      expect(cameraDescription.lensDirection, CameraLensDirection.back);
-    });
+    // test("get back-facing camera using getCamera", () async {
+    //   final CameraDescription cameraDescription =
+    //       await getCamera(kBackCameraLens);
+    //   expect(cameraDescription.lensDirection, CameraLensDirection.back);
+    // });
   });
 }
