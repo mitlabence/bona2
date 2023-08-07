@@ -30,11 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_ml_kit: ^0.13.0
+  # google_ml_kit: ^0.13.0  # using this package results in conflicting version of okio, see app-level build.gradle and https://github.com/firebase/flutterfire/issues/8501
   image_picker: ^0.8.6+3
   path_provider: ^2.0.13
   camera: ^0.10.3+1
-  provider: ^6.0.5
   image: ^4.0.15
   uuid: ^3.0.6
   sqflite: ^2.2.4+1
@@ -46,6 +45,12 @@ dependencies:
   firebase_storage: ^11.1.1
   http_parser: ^4.0.2
   http: ^0.13.5
+  firebase_auth: ^4.6.0
+  google_sign_in: ^6.1.0
+  cloud_firestore: ^4.7.1
+  firebase_app_check: ^0.1.4+1
+  riverpod: ^2.3.6
+  file_picker: ^5.3.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

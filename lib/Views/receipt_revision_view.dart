@@ -3,12 +3,15 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:string_similarity/string_similarity.dart';
+import 'package:uuid/uuid.dart';
 import '../DataStructures/receipt.dart';
 import '../DataStructures/receipt_item.dart';
-import '../Widgets/receipt_tile.dart';
 import '../constants.dart';
 import '../database_helper.dart';
+import '../post_request_provider.dart';
+import 'package:bona2/firestore_helper.dart';
+import 'package:riverpod/riverpod.dart';
+
 
 //TODO: this should replace the receiptsoverview. editing should be blocked or allowed, depending on some setting.
 const kClassName = "ReceiptRevisionView";
@@ -45,12 +48,27 @@ class ReceiptRevisionView extends StatefulWidget {
 
 class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
   late Receipt receipt;
+  late FireStoreHelper fireStoreHelper;
+  late Provider<Receipt> receiptProvider;
   Queue<EditHistoryQueueItem> history = Queue();
+
+  int getReceiptItemsLength(ProviderRef<Receipt> ref){
+    return ref.read(receiptProvider).receiptItemsList.length;
+  }
+
+  ReceiptItem getReceiptItem(ProviderRef<Receipt> ref, int index){
+    return ref.read(receiptProvider).receiptItemsList[index];
+  }
+  void updateReceiptItem(ProviderRef<Receipt> ref, ReceiptItem newReceiptItem, int index) {
+    ref.read(receiptProvider).receiptItemsList[index] = newReceiptItem;
+  }
 
   @override
   void initState() {
     super.initState();
     receipt = widget.receipt;
+    fireStoreHelper = FireStoreHelper(); // get instance
+    receiptProvider = Provider<Receipt>((ref) => receipt);
   }
 
   @override
@@ -104,6 +122,11 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                 subtitle: Text(
                     "${receipt.receiptItemsList[index].totalPrice} ${receipt.currency}"),
                 onTap: () {
+                  //final data = ref.watch(receiptProvider);
+                  // TODO: think about how to modify receipt items from a pop-up window
+                  // https://stackoverflow.com/questions/54480641/flutter-how-to-create-forms-in-popup
+                  // For initial value of form fields:
+                  // https://stackoverflow.com/questions/43214271/how-do-i-supply-an-initial-value-to-a-text-field
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(receipt.receiptItemsList[index].rawText ??
                         kNullStringValue),
@@ -141,6 +164,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
         ),
         Text(
             "Total: ${receipt.detectedTotalPrice} ${receipt.currency} from items, ${receipt.totalPrice} detected."),
+        IconButton(onPressed: () {  }, icon: const Icon(Icons.preview),),
       ]),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),
@@ -156,6 +180,17 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                   'Added receipt number $responseReceipt, receipt items $responseReceiptItem'),
               duration: const Duration(seconds: 2),
             ));
+            print("Uploading to cloud...");
+            final String fname = "${UuidValue.fromByteList(receipt.uuid).uuid}.json";
+            String uploadFilePath = await uploadMapToDriveAsJson(receipt.toMapJson(), fname);
+            print("Receipt scan result uploaded. Uploading receipt object...");
+            await fireStoreHelper.uploadReceiptAndItems(receipt);
+            //await fireStoreHelper.uploadSample();
+            // FIXME: navigator.of should not be called in builder
+            if (!mounted) {
+              print("ReceiptRevisionView: not mounted.");
+              return;
+            }
             Navigator.of(context).pop();
           }
         },

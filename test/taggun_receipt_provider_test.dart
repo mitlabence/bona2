@@ -53,7 +53,7 @@ void main() {
       taggunReceiptProvider.taggunJsonFilePath = "assets/taggun_test/";
     });
     test("Test taggunReceiptProvider", () async { // TODO: give proper name
-      Receipt receipt = await taggunReceiptProvider.pickJsonFile();
+      Receipt receipt = await taggunReceiptProvider.pickReceipt();
       print("Number of items: ${receipt.numberOfItems}");
       receipt.receiptItemsList.forEach((element) {print(element);});
       print(receipt.totalPrice);

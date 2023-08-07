@@ -40,3 +40,10 @@ const String kUpperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 // when adding two ReceiptItem objects, put this separator between them.
 const String kReceiptItemAdditionSeparator = "\n";
+
+// uuid is 32 characters of hexadecimal digits, i.e. 16 unsigned int 8-bit integers
+const int kUuidUint8ListLength = 16;
+
+
+// Firestore-related constants
+const String kFireStoreRootUsersCollection = "users";

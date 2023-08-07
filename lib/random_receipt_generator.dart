@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:bona2/DataStructures/receipt.dart';
 import 'package:bona2/DataStructures/shopping_item.dart';
 import 'package:bona2/constants.dart';
+import 'package:uuid/uuid.dart';
 
 import 'DataStructures/receipt_item.dart';
 import 'package:uuid/uuid_util.dart';
@@ -30,7 +31,8 @@ class RandomReceiptGenerator {
   }
 
   Uint8List randomUUID() {
-    return UuidUtil.mathRNG(seed: seed);
+    UuidValue uuid = const Uuid().v4obj(options: {"rng": UuidUtil.cryptoRNG});
+    return uuid.toBytes(); // Not cryptographically strong! Use cryptoRNG() for production code
   }
 
   ReceiptItem randomReceiptItem() {

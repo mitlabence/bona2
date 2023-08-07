@@ -1,10 +1,10 @@
 import 'dart:convert';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:http_parser/http_parser.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-
 
 // tasks from bona1
 //TODO: replace print() with assert stuff! Should start unit testing...
@@ -20,22 +20,38 @@ import 'package:path_provider/path_provider.dart';
 // TODO: save output json file in google cloud
 // TODO: try opening cache/response_20230429_164400.json
 // TODO: add "are you sure" pop-up window after taking photo
+// TODO: handle error codes properly! (403: authorization error, wrong apikey, for example)
 
-Future<Map<String, dynamic>> getScanVerboseJSON(File file) async {
-  const skipTaggun = true;
-  // Get API key
-  const String apiKeysPath = "assets/taggun/";
+Future<String?> getApiKey(String apiKeyName) async {
+  /// Current keys in apikeys.json:
+  ///   "ocrapi"
+  ///   "taggunapi"
+  ///   "clouduuid"
+  ///
   // find AssetManifest.json on phone (?)
   final manifestJson = await rootBundle.loadString('AssetManifest.json');
   // get local (Android Studio) file paths
   final apiKeysJsonPath = json
       .decode(manifestJson)
       .keys
-      .where((String key) => key.endsWith("apikeys.json")).toList();
+      .where((String key) => key.endsWith("apikeys.json"))
+      .toList();
   assert(apiKeysJsonPath.length == 1);
   final apiKeysLocalPath = await rootBundle.loadString(apiKeysJsonPath[0]);
-  final String taggunApiKey = json.decode(apiKeysLocalPath)["taggunapi"]["key"];
-  /*
+  final Map<String, dynamic> apiKeysJson = json.decode(apiKeysLocalPath);
+  if (apiKeysJson.keys.contains(apiKeyName)) {
+    return apiKeysJson[apiKeyName]["key"];
+  } else {
+    return null;
+  }
+}
+
+Future<Map<String, dynamic>> postTaggunVerbose(File file) async {
+  final String? taggunApiKey = await getApiKey("taggunapi");
+  if (taggunApiKey == null) {
+    throw Exception("postTaggunVerbose: No taggun api key found!");
+  } else {
+    /*
   Curl:
   curl -X 'POST' \
   'https://api.taggun.io/api/receipt/v1/verbose/file' \
@@ -49,53 +65,86 @@ Future<Map<String, dynamic>> getScanVerboseJSON(File file) async {
   -F 'subAccountId=mitlabence' \
   -F 'referenceId=t0000003'
    */
-  //TODO: add subAccountId and referenceId!
-  print("getScanVerboseJSON: initializing request");
-  var j;
-  final Uri apiUri =
-      Uri.parse("https://api.taggun.io/api/receipt/v1/verbose/file");
-  //final data = await file.readAsBytes();
-  var request = http.MultipartRequest("POST", apiUri);
-  request.headers['content-type'] = 'multipart/form-data';
-  print("taggunApiKey:$taggunApiKey");
-  request.headers['apikey'] = taggunApiKey;
-  request.fields["extractTime"] = "true"; //TODO: Test this
-  request.files.add(await http.MultipartFile.fromPath(
-    'file',
-    file.path,
-    contentType: MediaType('image', 'jpeg'),
-  ));
-  print("getScanVerboseJSON: request sent");
-  await request.send().then(
-    (result) async {
-      await http.Response.fromStream(result).then((response) {
-        print(
-            "getScanVerboseJSON response status code: ${response.statusCode}");
-        if (response.statusCode == 200) {
-          j = jsonDecode(response.body);
-          //return j; //FIXME: for some reason, this does not return from the whole function. Should I leave this "return j" here? I guess it is needed because of the await?
-          print("getScanVerboseJSON: successful!");
-        } else {
-          print("getScanVerboseJSON: getting JSON from image failed!");
-          print("header:");
-          print(response.headers);
-          print("reason:");
-          print(response.reasonPhrase);
-          print("body:");
-          print(response.body);
+    //TODO: add subAccountId and referenceId!
+    print("getScanVerboseJSON: initializing request");
+    var j;
+    final Uri apiUri =
+        Uri.parse("https://api.taggun.io/api/receipt/v1/verbose/file");
+    //final data = await file.readAsBytes();
+    var request = http.MultipartRequest("POST", apiUri);
+    request.headers['content-type'] = 'multipart/form-data';
+    print("taggunApiKey:$taggunApiKey");
+    request.headers['apikey'] = taggunApiKey;
+    request.fields["extractTime"] = "true"; //TODO: Test this
+    request.files.add(await http.MultipartFile.fromPath(
+      'file',
+      file.path,
+      contentType: MediaType('image', 'jpeg'),
+    ));
+    print("getScanVerboseJSON: request sent");
+    await request.send().then(
+      (result) async {
+        await http.Response.fromStream(result).then((response) {
+          print(
+              "getScanVerboseJSON response status code: ${response.statusCode}");
+          if (response.statusCode == 200) {
+            j = jsonDecode(response.body);
+            //return j; //FIXME: for some reason, this does not return from the whole function. Should I leave this "return j" here? I guess it is needed because of the await?
+            print("getScanVerboseJSON: successful!");
+          } else {
+            print("getScanVerboseJSON: getting JSON from image failed!");
+            print("header:");
+            print(response.headers);
+            print("reason:");
+            print(response.reasonPhrase);
+            print("body:");
+            print(response.body);
 
-          //return Map(); // TODO: check if this is a valid solution
-        }
-      });
-    },
-  );
-  print(j.toString());
-  final documentsPath = await getApplicationDocumentsDirectory();
-  final exportFile = File('${documentsPath.path}/data.json');
-  final encodedJson = json.encode(j);
-  await exportFile.writeAsString(encodedJson);
-  //TODO: add json formatting!
-  return j;
-  print("Getting JSON from image failed fatally. Returning Map()");
-  return Map(); // TODO: check if this is a valid solution
+            //return Map(); // TODO: check if this is a valid solution
+          }
+        });
+      },
+    );
+    print(j.toString());
+    final documentsPath = await getApplicationDocumentsDirectory();
+    final exportFile = File('${documentsPath.path}/data.json');
+    final encodedJson = json.encode(j);
+    await exportFile.writeAsString(encodedJson);
+    //TODO: add json formatting!
+    return j;
+    print("Getting JSON from image failed fatally. Returning Map()");
+    return Map(); // TODO: check if this is a valid solution
+  }
+}
+
+Future<String> uploadMapToDriveAsJson(
+    Map<String, dynamic> jsonMap, String filename) async {
+  final String? userCloudId = await getApiKey("clouduuid");
+  if (userCloudId == null) {
+    throw Exception("User Cloud ID not found!");
+  } else {
+    assert(filename.endsWith(".json"));
+    final storage = FirebaseStorage.instance;
+    print("found storage");
+    final userFolderRef = storage.ref().child(userCloudId);
+    print("Found folder");
+    final newJsonRef = userFolderRef.child(filename);
+    print("Found file ref");
+    // This produces a way too large file (~doubles the size) only for the sake
+    // of beautifying the json file:
+    //const JsonEncoder encoder = JsonEncoder.withIndent('  ');
+    //String jsonString = encoder.convert(jsonMap);
+    String jsonString =
+    json.encode(jsonMap);
+    // TODO: maybe easier way to convert file?
+    Uint8List jsonData = Uint8List.fromList(utf8.encode(jsonString));
+    print("Got file data");
+    print(newJsonRef.fullPath);
+    UploadTask uploadTask = newJsonRef.putData(jsonData);
+    // TODO: uploadTask throws error. File does not exist? no auth token for request?
+    print("upload task started");
+    String downloadUrl = await (await uploadTask).ref.getDownloadURL();
+    print("Uploaded to $downloadUrl");
+    return downloadUrl;
+  }
 }

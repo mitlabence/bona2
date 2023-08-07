@@ -3,14 +3,20 @@ import 'package:bona2/Development/taggun_receipt_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-
+import "package:cloud_firestore/cloud_firestore.dart";
 import 'Views/camera_view.dart';
 import 'Views/image_upload_view.dart';
 import 'Views/receipts_overview.dart';
+import 'firestore_helper.dart';
 import 'global.dart' as globals;
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import "package:bona2/google_auth.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import 'package:firebase_app_check/firebase_app_check.dart';
+import 'global.dart';
+
 // import 'package:bona2/global.dart';
 late List<CameraDescription> _cameras;
 
@@ -29,6 +35,27 @@ Future<void> main() async {
   final apiKeysJson = jsonDecode(apikeys);
   globals.OcrApiKey = apiKeysJson["ocrapi"]["key"];
   // TODO: https://www.youtube.com/watch?v=noi6aYsP7Go 8:07. Add functions for database operations, test them in ReceiptView screen.
+  // FIXME: Unhandled Exception: PlatformException(sign_in_failed, com.google.android.gms.common.api.ApiException: 10: , null, null)
+  // MAybe: https://stackoverflow.com/questions/54557479/flutter-and-google-sign-in-plugin-platformexceptionsign-in-failed-com-google
+  final userCredential = await signInWithGoogle();
+  if (userCredential.user == null) {
+    // TODO: proper handling of sign-in error
+    throw Exception("Authentication failed. User is null!");
+  } else {
+    firebaseUid = userCredential.user!.uid;
+    FireStoreHelper fsh = FireStoreHelper();
+    await FirebaseAppCheck.instance.activate(
+      webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+      // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose
+      // your preferred provider. Choose from:
+      // 1. debug provider
+      // 2. safety net provider
+      // 3. play integrity provider
+      androidProvider: AndroidProvider.debug,
+    ); // https://firebase.google.com/docs/app-check/flutter/default-providers
+    firebaseAppCheckToken = (await FirebaseAppCheck.instance.getToken())!;
+    // FIXME: null check should not be forced...
+  }
   runApp(const BonaApp());
 }
 

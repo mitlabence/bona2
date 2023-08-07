@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:path/path.dart' as path;
 
 import '../DataStructures/receipt.dart';
 import '../taggun_receipt_reader.dart';
@@ -72,23 +70,33 @@ class TaggunReceiptProvider {
     return _taggunJsonFiles;
   }
 
-  Future<Receipt> pickJsonFile() async {
-    await taggunJsonFiles;  // Wait for taggun files to load
+  Future<Receipt> pickReceipt() async {
+    try {
+      final Map<String, dynamic>? json = await pickJson();
+      if (json == null) {
+        print("Error decoding json file. Returning empty receipt");
+      } else {
+        TaggunReceiptReader taggunReader = TaggunReceiptReader(json: json);
+        return taggunReader.receipt;
+      }
+    } on FormatException catch (e) {
+      print("Returning empty receipt");
+    }
+    return Receipt.empty();
+  }
+
+  Future<Map<String, dynamic>?> pickJson() async {
+    await taggunJsonFiles; // Wait for taggun files to load
     assert(_taggunJsonFiles.isNotEmpty);
     final int indexFile = _rng.nextInt(_taggunJsonFiles.length);
-    print("Index is $indexFile");
     try {
+      print("Index is $indexFile");
       final filePath = await rootBundle.loadString(_taggunJsonFiles[indexFile],
           cache: false);
-      final json = jsonDecode(filePath);
-      TaggunReceiptReader taggunReader = TaggunReceiptReader(json: json);
-      return taggunReader.receipt;
-      // TODO: apparently, assets/... is returned as taggunJsonFiles, instead of local device files...
+      return jsonDecode(filePath);
     } on FormatException catch (e) {
       print(
           "Error decoding supposed json file at ${_taggunJsonFiles[indexFile]}: $e");
-      print("Returning empty receipt");
-      return Receipt.empty();
     }
   }
 }

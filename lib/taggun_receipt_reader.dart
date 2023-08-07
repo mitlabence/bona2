@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:bona2/DataStructures/shopping_item.dart';
 import 'package:bona2/receipt_reader.dart';
+import 'package:bona2/uuid_tools.dart';
 import 'package:uuid/uuid_util.dart';
 
 import 'DataStructures/receipt_item.dart';
@@ -52,7 +53,7 @@ class TaggunReceiptReader implements ReceiptReader {
     final String city = json["merchantCity"]["data"] ?? kNullStringValue;
 
     // Generate uuid for Receipt object
-    final Uint8List uuid = UuidUtil.mathRNG();
+    final Uint8List uuid = generateUuidUint8List();
     // Get items
     /*
     receiptItemsList = List.generate(

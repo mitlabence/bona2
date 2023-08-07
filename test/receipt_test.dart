@@ -131,4 +131,16 @@ void main() {
   group("test Receipt getters and setters", () {
     assert(1 == 1);
   });
+
+
+  group("test uuid", () {
+    // TODO: test initializing a receipt with or without uuid, test format:
+    //A standard UUID (Universally Unique Identifier) is represented as a string
+    // of 36 characters, typically in the form of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".
+    // Each "x" represents a hexadecimal digit, which can be represented by 4 bits.
+    test("test Receipt initialized without uuid parameter", () {
+
+    });
+    test("", () {});
+  });
 }

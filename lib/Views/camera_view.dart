@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:bona2/Development/taggun_receipt_provider.dart';
+import 'package:bona2/Views/image_revision_view.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -62,9 +64,15 @@ class _CameraViewState extends State<CameraView> {
         setState(() {
           imageFile = file;
         });
+
         if (file != null) {
           showInSnackBar('Picture saved to ${file.path}');
-          sendRequest(imageFile!.path);
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ImageRevisionView(imageFile: imageFile!),
+          ));
+          //sendRequest(imageFile!.path);
+          // TODO: Request should not be sent in camera_view! But only afte reviewing the image!
+          //var results = sendRequestPlaceholder(imageFile!.path); // Do not use API for development yet.
         }
       }
     });
@@ -72,7 +80,13 @@ class _CameraViewState extends State<CameraView> {
     // Need to use POST, as GET only allows to use URL. See Post parameters
     // Also need to lower file size to < 1 MB.
   }
-
+  Future<dynamic> sendRequestPlaceholder(String filePath) async {
+    var receiptJson = await TaggunReceiptProvider().pickJson();
+    return receiptJson;
+  }
+  //TODO: clean up this mess code! Need to separate Taggun implementation from send request code.
+  // Need to make sure what type is returned in the uncoupled taggun API POST request function,
+  // And make all possible events in this function non-dynamic! I.e. know what is returned in each case.
   Future<dynamic> sendRequest(String filePath) async {
     MultipartFile image = await MultipartFile.fromPath("file", filePath);
     final Uri uri = Uri.parse("https://api.ocr.space/parse/image");
@@ -88,7 +102,7 @@ class _CameraViewState extends State<CameraView> {
       ..files.add(image);
     var response = await request.send();
     final respStr = await response.stream.bytesToString();
-    var r = await jsonDecode(respStr);
+    var r = await jsonDecode(respStr); // FIXME: need to figure out type of r for clean code!
     print(response.statusCode);
     final directory = await getApplicationDocumentsDirectory();
     final File outputJson = File('${directory.path}/out.json');
@@ -127,7 +141,6 @@ class _CameraViewState extends State<CameraView> {
       final XFile xFile = await cameraController.takePicture();
       print("${xFile.path}");
       File file = File(xFile.path);
-      await getScanVerboseJSON(file);
       return xFile;
     } on CameraException catch (e) {
       _showCameraException(e);

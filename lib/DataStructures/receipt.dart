@@ -1,6 +1,9 @@
 import "dart:typed_data";
 
 import "package:bona2/DataStructures/shopping_item.dart";
+import "package:bona2/uuid_tools.dart";
+import "package:uuid/uuid.dart";
+import "package:uuid/uuid_util.dart";
 
 import "receipt_item.dart";
 
@@ -15,7 +18,7 @@ class Receipt {
   final String postalCode;
   final String city;
   final String paymentType;
-  final Uint8List uuid;
+  late final Uint8List uuid; // leave option to either define uuid or let Receipt class assign one
 
   Receipt(
       {required this.receiptItemsList,
@@ -27,11 +30,16 @@ class Receipt {
       required this.city,
       required this.address,
       required this.postalCode,
-      required this.paymentType,
-      required this.uuid});
+      required this.paymentType, uuid}) {
+    this.uuid = uuid ?? generateUuidUint8List();
+  }
 
   int get numberOfItems => receiptItemsList.length;
-  num get detectedTotalPrice => receiptItemsList.map((receiptItem) => receiptItem.totalPrice).reduce((a, b) => a + b);
+
+  num get detectedTotalPrice => receiptItemsList
+      .map((receiptItem) => receiptItem.totalPrice)
+      .reduce((a, b) => a + b);
+
   factory Receipt.empty() {
     /// Create a Receipt instance with
     ///   * String attributes having the empty string "",
@@ -72,6 +80,23 @@ class Receipt {
   Map<String, dynamic> toMap() {
     return {
       'receiptItemsList': receiptItemsList,
+      'shopName': shopName,
+      'dateTime': dateTime.millisecondsSinceEpoch, // convert for SQLite
+      'totalPrice': totalPrice,
+      'currency': currency,
+      'country': country,
+      'city': city,
+      'postalCode': postalCode,
+      'address': address,
+      'paymentType': paymentType,
+      'uuid': uuid, // keep it as blob (Uint8List) for SQLite
+    };
+  }
+
+  Map<String, dynamic> toMapJson() {
+    return {
+      'receiptItemsList': List.generate(
+          receiptItemsList.length, (index) => receiptItemsList[index].toMap()),
       'shopName': shopName,
       'dateTime': dateTime.millisecondsSinceEpoch, // convert for SQLite
       'totalPrice': totalPrice,
