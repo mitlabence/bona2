@@ -1,7 +1,13 @@
 import 'dart:typed_data';
-import 'package:bona2/style_constants.dart';
+import 'package:bona2/Views/receipt_revision_view.dart';
+import 'package:bona2/taggun_receipt_reader.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import '../DataStructures/receipt.dart';
+import '../post_request_provider.dart';
+import '../receipt_reader.dart';
+import '../uuid_tools.dart';
 
 class ImageRevisionView extends StatefulWidget {
   const ImageRevisionView({required this.imageFile, Key? key})
@@ -15,6 +21,10 @@ class ImageRevisionView extends StatefulWidget {
 class _ImageRevisionViewState extends State<ImageRevisionView> {
   Uint8List? imageData;
 
+  // TODO: extract specific implementation of interface out of this class. provider should be passed as parameter?
+  // Or maybe it does make sense to put it here to avoid overcomplicating
+  // matters - receipt scanner API should be only called in this view.
+  PostRequestProvider postRequestProvider = TaggunPostRequestProvider();
   @override
   void initState() {
     super.initState();
@@ -34,17 +44,47 @@ class _ImageRevisionViewState extends State<ImageRevisionView> {
   }
 
   showConfirmDialog(BuildContext context) {
-
     // set up the buttons
     Widget cancelButton = TextButton(
       child: Text("Cancel"),
-      onPressed:  () {Navigator.of(context).pop();},
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
     );
     Widget submitButton = TextButton(
       child: Text("Submit"),
       // TODO: add sendRequest(imageFile!.path); from image_upload_view!
       // postTaggunVerbose(File file)  from post_request_provider. That file should be refactored into an implementaiton!
-      onPressed:  () {}, // TODO: add Taggun API call here. More generally, add API call here of Taggun-implementation of receipt OCR
+      onPressed: () async {
+        //TODO: Navigator.pop() before moving to next window? Otherwise pressing back button ends up with same dialog
+        // TODO: save resultsMap to local file! In emergency it should be recovered from local file.
+        String uuidString = generateUuidString();
+        Uint8List uuidBlob =
+            uuidBytesListFromString(uuidString); // Uint8List is a blob in SQL
+        String fnameJson = "$uuidString.json";
+        String fnameJpeg = "$uuidString.jpeg";
+
+
+        Map<String, dynamic> resultsMap =
+        await postRequestProvider.postFile(widget.imageFile.path);
+        String uploadedJsonPath =
+            await uploadMapToDriveAsJson(resultsMap, fnameJson);
+        print(uploadedJsonPath);
+        ReceiptReader receiptReader = TaggunReceiptReader(json: resultsMap, uuid: uuidBlob);
+        Receipt receipt = receiptReader.receipt;
+        // Receipt receipt = Receipt.fromMapAndUuid(resultsMap, uuidBlob);
+        print("Created receipt");
+        if (context.mounted) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ReceiptRevisionView(receipt: receipt)));
+        } else {
+          print("ImageRevisionView: Context not mounted!");
+        }
+        print("uploading image...");
+        String uploadedImagePath =
+        await uploadFileToDrive(File(widget.imageFile.path), fnameJpeg);
+        print(uploadedImagePath);
+      }, // TODO: add Taggun API call here. More generally, add API call here of Taggun-implementation of receipt OCR
     );
     /*
     // Old sendRequest function calling free ocr API
@@ -118,7 +158,9 @@ class _ImageRevisionViewState extends State<ImageRevisionView> {
                 // TODO: onPressed(): add Dialog() are you sure? This will cost 1 coin... Then on yes it sends the taggun post request, moves to receipt_revision_view
                 Material(
                   child: IconButton(
-                    onPressed: () {showConfirmDialog(context);},
+                    onPressed: () {
+                      showConfirmDialog(context);
+                    },
                     icon: const Icon(Icons.upload_file),
                   ),
                 ),

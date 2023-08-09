@@ -15,8 +15,7 @@ class TaggunReceiptProvider {
   }
 
   static const String _defaultJsonFilesPath = "assets/taggun/";
-  static const int _seed =
-      42; //TODO: maybe make use of seed, make it changeable?
+  static const int _seed = 42;
   late String _taggunJsonFilesPath;
   late List<String> _taggunJsonFiles;
   final Random _rng = Random();

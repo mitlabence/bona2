@@ -22,7 +22,13 @@ import 'package:path_provider/path_provider.dart';
 // TODO: add "are you sure" pop-up window after taking photo
 // TODO: handle error codes properly! (403: authorization error, wrong apikey, for example)
 
-Future<String?> getApiKey(String apiKeyName) async {
+abstract class PostRequestProvider {
+  Future<String?> getApiKey();
+
+  Future<Map<String, dynamic>> postFile(String filePath);
+}
+
+Future<String?> getApiKeyWithName(String apiKeyName) async {
   /// Current keys in apikeys.json:
   ///   "ocrapi"
   ///   "taggunapi"
@@ -46,12 +52,19 @@ Future<String?> getApiKey(String apiKeyName) async {
   }
 }
 
-Future<Map<String, dynamic>> postTaggunVerbose(File file) async {
-  final String? taggunApiKey = await getApiKey("taggunapi");
-  if (taggunApiKey == null) {
-    throw Exception("postTaggunVerbose: No taggun api key found!");
-  } else {
-    /*
+class TaggunPostRequestProvider implements PostRequestProvider {
+  @override
+  Future<String?> getApiKey() async {
+    return await getApiKeyWithName("taggunapi");
+  }
+
+  @override
+  Future<Map<String, dynamic>> postFile(String filePath) async {
+    final String? taggunApiKey = await getApiKey();
+    if (taggunApiKey == null) {
+      throw Exception("postTaggunVerbose: No taggun api key found!");
+    } else {
+      /*
   Curl:
   curl -X 'POST' \
   'https://api.taggun.io/api/receipt/v1/verbose/file' \
@@ -65,61 +78,85 @@ Future<Map<String, dynamic>> postTaggunVerbose(File file) async {
   -F 'subAccountId=mitlabence' \
   -F 'referenceId=t0000003'
    */
-    //TODO: add subAccountId and referenceId!
-    print("getScanVerboseJSON: initializing request");
-    var j;
-    final Uri apiUri =
-        Uri.parse("https://api.taggun.io/api/receipt/v1/verbose/file");
-    //final data = await file.readAsBytes();
-    var request = http.MultipartRequest("POST", apiUri);
-    request.headers['content-type'] = 'multipart/form-data';
-    print("taggunApiKey:$taggunApiKey");
-    request.headers['apikey'] = taggunApiKey;
-    request.fields["extractTime"] = "true"; //TODO: Test this
-    request.files.add(await http.MultipartFile.fromPath(
-      'file',
-      file.path,
-      contentType: MediaType('image', 'jpeg'),
-    ));
-    print("getScanVerboseJSON: request sent");
-    await request.send().then(
-      (result) async {
-        await http.Response.fromStream(result).then((response) {
-          print(
-              "getScanVerboseJSON response status code: ${response.statusCode}");
-          if (response.statusCode == 200) {
-            j = jsonDecode(response.body);
-            //return j; //FIXME: for some reason, this does not return from the whole function. Should I leave this "return j" here? I guess it is needed because of the await?
-            print("getScanVerboseJSON: successful!");
-          } else {
-            print("getScanVerboseJSON: getting JSON from image failed!");
-            print("header:");
-            print(response.headers);
-            print("reason:");
-            print(response.reasonPhrase);
-            print("body:");
-            print(response.body);
+      //TODO: add subAccountId and referenceId!
+      print("getScanVerboseJSON: initializing request");
+      var j;
+      final Uri apiUri =
+          Uri.parse("https://api.taggun.io/api/receipt/v1/verbose/file");
+      //final data = await file.readAsBytes();
+      var request = http.MultipartRequest("POST", apiUri);
+      request.headers['content-type'] = 'multipart/form-data';
+      print("taggunApiKey:$taggunApiKey");
+      request.headers['apikey'] = taggunApiKey;
+      request.fields["extractTime"] = "true"; //TODO: Test this
+      request.files.add(await http.MultipartFile.fromPath(
+        'file',
+        filePath,
+        contentType: MediaType('image', 'jpeg'),
+      ));
+      print("getScanVerboseJSON: request sent");
+      await request.send().then(
+        (result) async {
+          await http.Response.fromStream(result).then((response) {
+            print(
+                "getScanVerboseJSON response status code: ${response.statusCode}");
+            if (response.statusCode == 200) {
+              j = jsonDecode(response.body);
+              //return j; //FIXME: for some reason, this does not return from the whole function. Should I leave this "return j" here? I guess it is needed because of the await?
+              print("getScanVerboseJSON: successful!");
+            } else {
+              print("getScanVerboseJSON: getting JSON from image failed!");
+              print("header:");
+              print(response.headers);
+              print("reason:");
+              print(response.reasonPhrase);
+              print("body:");
+              print(response.body);
 
-            //return Map(); // TODO: check if this is a valid solution
-          }
-        });
-      },
-    );
-    print(j.toString());
-    final documentsPath = await getApplicationDocumentsDirectory();
-    final exportFile = File('${documentsPath.path}/data.json');
-    final encodedJson = json.encode(j);
-    await exportFile.writeAsString(encodedJson);
-    //TODO: add json formatting!
-    return j;
-    print("Getting JSON from image failed fatally. Returning Map()");
-    return Map(); // TODO: check if this is a valid solution
+              //return Map(); // TODO: check if this is a valid solution
+            }
+          });
+        },
+      );
+      print(j.toString());
+      final documentsPath = await getApplicationDocumentsDirectory();
+      final exportFile = File('${documentsPath.path}/data.json');
+      final encodedJson = json.encode(j);
+      await exportFile.writeAsString(encodedJson);
+      //TODO: add json formatting!
+      return j;
+      print("Getting JSON from image failed fatally. Returning Map()");
+      return Map(); // TODO: check if this is a valid solution
+    }
+  }
+}
+
+Future<String> uploadFileToDrive(File file, String filename) async {
+  final String? userCloudId = await getApiKeyWithName("clouduuid");
+  if (userCloudId == null) {
+    throw Exception("User Cloud ID not found!");
+  } else {
+    assert(filename.endsWith(".jpeg"));
+    final storage = FirebaseStorage.instance;
+    print("found storage");
+    final userFolderRef = storage.ref().child(userCloudId);
+    print("Found folder");
+    // TODO: handle already existing filename? There might be a performance issue? Not expecting high frequency of uploading...
+    final newFileRef = userFolderRef.child(filename);
+    print("Found file ref");
+    Uint8List fileBytesData = await file.readAsBytes();
+    print("Got file data");
+    UploadTask uploadTask = newFileRef.putData(fileBytesData);
+    print("upload task started");
+    String downloadUrl = await (await uploadTask).ref.getDownloadURL();
+    print("Uploaded to $downloadUrl");
+    return downloadUrl;
   }
 }
 
 Future<String> uploadMapToDriveAsJson(
     Map<String, dynamic> jsonMap, String filename) async {
-  final String? userCloudId = await getApiKey("clouduuid");
+  final String? userCloudId = await getApiKeyWithName("clouduuid");
   if (userCloudId == null) {
     throw Exception("User Cloud ID not found!");
   } else {
@@ -134,8 +171,7 @@ Future<String> uploadMapToDriveAsJson(
     // of beautifying the json file:
     //const JsonEncoder encoder = JsonEncoder.withIndent('  ');
     //String jsonString = encoder.convert(jsonMap);
-    String jsonString =
-    json.encode(jsonMap);
+    String jsonString = json.encode(jsonMap);
     // TODO: maybe easier way to convert file?
     Uint8List jsonData = Uint8List.fromList(utf8.encode(jsonString));
     print("Got file data");

@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:bona2/DataStructures/shopping_item.dart';
 import 'package:bona2/receipt_reader.dart';
 import 'package:bona2/uuid_tools.dart';
-import 'package:uuid/uuid_util.dart';
 
 import 'DataStructures/receipt_item.dart';
 import 'DataStructures/receipt.dart';
@@ -21,7 +20,7 @@ class TaggunReceiptReader implements ReceiptReader {
   @override
   late List<ReceiptItem> receiptItems;
 
-  TaggunReceiptReader({required Map<String, dynamic> json}) {
+  TaggunReceiptReader({required Map<String, dynamic> json, Uint8List? uuid}) {
     // Read json data and confidence intervals
     final String shopName = json["merchantName"]["data"];
     final double shopNameConfidence = json["merchantName"]["confidenceLevel"];
@@ -35,25 +34,43 @@ class TaggunReceiptReader implements ReceiptReader {
     //final RegExp separators = RegExp(r"[-|T|:|.]");
     //final List<String> dateTimeList = dateTimeStrings.split(separators);
     // DateTime.parse can theoretically parse this datetime format!
+    // TODO: rewrite this more elegantly: if no datetime on receipt, use DateTime.now()
+    final DateTime now = DateTime.now();
+    DateTime dateTime = now;
+    if (json["date"].containsKey("data")){
+      try{
+        dateTime =
+            DateTime.parse(json["date"]["data"]) ?? now;
+      }
+      on FormatException {
+        print("DateTime formatexception!");
+      }
 
-    final DateTime dateTime = DateTime.parse(json["date"]["data"]) ?? DateTime.now();
+    }
+
     final double dateTimeConfidence = json["date"]["confidenceLevel"] ?? 0.0;
 
     final double totalPrice = json["totalAmount"]["data"];
-    final double totalPriceConfidence = json["totalAmount"]["confidenceLevel"] ?? 0.0;
+    final double totalPriceConfidence =
+        json["totalAmount"]["confidenceLevel"] ?? 0.0;
 
-    final String currency = json["totalAmount"]["currencyCode"] ?? kNullStringValue;
+    final String currency =
+        json["totalAmount"]["currencyCode"] ?? kNullStringValue;
 
-    final String country = json["location"]["country"]["names"]["en"] ?? kNullStringValue;
+    final String country =
+        json["location"]["country"]["names"]["en"] ?? kNullStringValue;
 
     final String address = json["merchantAddress"]["data"] ?? kNullStringValue;
 
-    final String postalCode = json["merchantPostalCode"]["data"] ?? kNullStringValue;
+    final String postalCode =
+        json["merchantPostalCode"]["data"] ?? kNullStringValue;
 
     final String city = json["merchantCity"]["data"] ?? kNullStringValue;
 
     // Generate uuid for Receipt object
-    final Uint8List uuid = generateUuidUint8List();
+    // TODO: check overshadowing workings, or find better name than finalUuid!
+    Uint8List finalUuid = uuid ?? generateUuidUint8List();
+
     // Get items
     /*
     receiptItemsList = List.generate(
@@ -66,13 +83,16 @@ class TaggunReceiptReader implements ReceiptReader {
             unit: "piece",
             uuid: uuid));
     */
-    receiptItems = List.generate(json["amounts"].length, (index) => ReceiptItem(
-        shoppingItem: ShoppingItem(itemName: json["amounts"][index]["text"]),
-        rawText: json["amounts"][index]["text"],
-        totalPrice: json["amounts"][index]["data"],
-        quantity: 1,
-        unit: "piece",
-        uuid: uuid));
+    receiptItems = List.generate(
+        json["amounts"].length,
+        (index) => ReceiptItem(
+            shoppingItem:
+                ShoppingItem(itemName: json["amounts"][index]["text"]),
+            rawText: json["amounts"][index]["text"],
+            totalPrice: json["amounts"][index]["data"],
+            quantity: 1,
+            unit: "piece",
+            uuid: finalUuid));
     // TODO: infer quantity, unit, shoppingItem from text!
 
     // Generate Receipt
@@ -88,7 +108,6 @@ class TaggunReceiptReader implements ReceiptReader {
         postalCode: postalCode,
         paymentType: "card",
         // TODO: infer payment type!
-        uuid: uuid);
+        uuid: finalUuid);
   }
-
 }

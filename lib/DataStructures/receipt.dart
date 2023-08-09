@@ -18,7 +18,8 @@ class Receipt {
   final String postalCode;
   final String city;
   final String paymentType;
-  late final Uint8List uuid; // leave option to either define uuid or let Receipt class assign one
+  late final Uint8List
+      uuid; // leave option to either define uuid or let Receipt class assign one
 
   Receipt(
       {required this.receiptItemsList,
@@ -30,7 +31,8 @@ class Receipt {
       required this.city,
       required this.address,
       required this.postalCode,
-      required this.paymentType, uuid}) {
+      required this.paymentType,
+      uuid}) {
     this.uuid = uuid ?? generateUuidUint8List();
   }
 
@@ -127,7 +129,12 @@ class Receipt {
     };
   }
 
-  factory Receipt.fromMap(Map<String, dynamic> map) => Receipt(
+  /// Given a json-like map of a receipt object (NOT a scanned receipt object)
+  /// with the proper keys, reconstruct the receipt object.
+  /// WARNING: uuid (Uint8List) needs to be included in the map!
+  /// If not present, use fromMapAndUuid()!
+  /// Use ReceiptReader to convert scan results to a Receipt.
+  factory Receipt.fromMap(Map<String, dynamic> mapWIthUuid) => Receipt(
         receiptItemsList: [
           ReceiptItem(
               shoppingItem: ShoppingItem(
@@ -135,7 +142,32 @@ class Receipt {
               ),
               rawText: 'asd',
               totalPrice: 1.0,
-              uuid: map["uuid"],
+              uuid: mapWIthUuid["uuid"],
+              unit: "ml",
+              quantity: 500)
+        ],
+        shopName: mapWIthUuid["shopname"],
+        dateTime: DateTime.fromMillisecondsSinceEpoch(mapWIthUuid["datetime"]),
+        totalPrice: mapWIthUuid["totalprice"],
+        currency: mapWIthUuid["currency"],
+        country: mapWIthUuid["country"],
+        city: mapWIthUuid["city"],
+        address: mapWIthUuid["address"],
+        postalCode: mapWIthUuid["postalcode"],
+        uuid: mapWIthUuid["uuid"],
+        paymentType: mapWIthUuid["paymenttype"],
+      );
+
+  factory Receipt.fromMapAndUuid(Map<String, dynamic> map, Uint8List uuid) =>
+      Receipt(
+        receiptItemsList: [
+          ReceiptItem(
+              shoppingItem: ShoppingItem(
+                itemName: "asd",
+              ),
+              rawText: 'asd',
+              totalPrice: 1.0,
+              uuid: uuid,
               unit: "ml",
               quantity: 500)
         ],
@@ -147,7 +179,7 @@ class Receipt {
         city: map["city"],
         address: map["address"],
         postalCode: map["postalcode"],
-        uuid: map["uuid"],
+        uuid: uuid,
         paymentType: map["paymenttype"],
       );
 }
