@@ -9,12 +9,16 @@ final Uint8List uuid = Uint8List.fromList(
     [121, 127, 240, 67, 17, 235, 17, 225, 128, 214, 81, 9, 152, 117, 93, 16]);
 final ShoppingItem shoppingItem = ShoppingItem(itemName: "Nothing");
 
-
 ReceiptItem createReceiptItem({String? rawText}) {
   return ReceiptItem(
-      shoppingItem: shoppingItem, rawText: rawText, totalPrice: 0.49, uuid: uuid, quantity: 500, unit: "g");
+      shoppingItem: shoppingItem,
+      rawText: rawText,
+      totalPrice: 0.49,
+      currency: "EUR",
+      uuid: uuid,
+      quantity: 500,
+      unit: "g");
 }
-
 
 Receipt createReceiptSingleItem() {
   final ReceiptItem receiptItem = createReceiptItem();
@@ -44,5 +48,6 @@ Receipt createReceiptEmpty() {
       address: "Axel-Springer-Straße 11, 10001 Berlin, Deutschland",
       postalCode: "10969",
       uuid: uuid,
-      paymentType: 'cash');
+      paymentType: 'cash',
+      dataSource: 0);
 }

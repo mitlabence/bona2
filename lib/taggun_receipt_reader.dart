@@ -8,6 +8,9 @@ import 'DataStructures/receipt_item.dart';
 import 'DataStructures/receipt.dart';
 import 'constants.dart';
 
+// TODO: add source to Receipt (default: NaN)
+// TODO: in receipt view, add on-click function: edit text (receiptitem). Edit quantity, what else?
+
 class TaggunReceiptReader implements ReceiptReader {
   /// Class to interpret Taggun json file and convert it to
   /// Receipt and List<ReceiptItem> objects
@@ -24,6 +27,8 @@ class TaggunReceiptReader implements ReceiptReader {
     // Read json data and confidence intervals
     final String shopName = json["merchantName"]["data"];
     final double shopNameConfidence = json["merchantName"]["confidenceLevel"];
+    // TODO: add more checks and exception handling here! This function needs to be very stable.
+    // Also, later, hint for issues that arose? (no datetime, double items?)
 
     // Taggun returns datetime in following format: yyyy-MM-ddTHH:mm:ss.SSSZ.
     // Need to convert this to [yyyy, MM, dd, HH, mm, ss, SSS].
@@ -37,15 +42,12 @@ class TaggunReceiptReader implements ReceiptReader {
     // TODO: rewrite this more elegantly: if no datetime on receipt, use DateTime.now()
     final DateTime now = DateTime.now();
     DateTime dateTime = now;
-    if (json["date"].containsKey("data")){
-      try{
-        dateTime =
-            DateTime.parse(json["date"]["data"]) ?? now;
-      }
-      on FormatException {
+    if (json["date"].containsKey("data")) {
+      try {
+        dateTime = DateTime.parse(json["date"]["data"]) ?? now;
+      } on FormatException {
         print("DateTime formatexception!");
       }
-
     }
 
     final double dateTimeConfidence = json["date"]["confidenceLevel"] ?? 0.0;
@@ -91,6 +93,7 @@ class TaggunReceiptReader implements ReceiptReader {
             rawText: json["amounts"][index]["text"],
             totalPrice: json["amounts"][index]["data"],
             quantity: 1,
+            currency: currency,
             unit: "piece",
             uuid: finalUuid));
     // TODO: infer quantity, unit, shoppingItem from text!
@@ -108,6 +111,7 @@ class TaggunReceiptReader implements ReceiptReader {
         postalCode: postalCode,
         paymentType: "card",
         // TODO: infer payment type!
-        uuid: finalUuid);
+        uuid: finalUuid,
+        dataSource: kDataSourceTaggunNumber);
   }
 }

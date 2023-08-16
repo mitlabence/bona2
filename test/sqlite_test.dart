@@ -46,6 +46,7 @@ Future main() async {
         'shoppingitem': receiptItem.shoppingItem.itemName,
         'totalprice': receiptItem.totalPrice,
         "quantity": receiptItem.quantity,
+        "currency": receiptItem.currency,
         "unit": receiptItem.unit,
         'uuid': receiptItem.uuid,
       }
@@ -75,6 +76,7 @@ Future main() async {
         'city': receipt.city,
         'paymenttype': receipt.paymentType,
         'uuid': receipt.uuid,
+        'datasource': receipt.dataSource,
       }
     ]);
     await db.close();

@@ -6,12 +6,13 @@ import 'package:bona2/constants.dart';
 /// Contains an item with various properties.
 class ReceiptItem {
   /// the text that was used to infer this item
-  final String? rawText; // Allow None if we do not intend to save raw string
+  String? rawText; // Allow None if we do not intend to save raw string
   /// the shopping item containing
-  final ShoppingItem shoppingItem;
-  final num totalPrice;
-  final num? quantity;
-  final String? unit;
+  ShoppingItem shoppingItem;
+  num totalPrice;
+  num? quantity;
+  String? unit;
+  String currency;
   final Uint8List
       uuid; // uuid should match uuid of Receipt containing this item
 
@@ -21,6 +22,7 @@ class ReceiptItem {
     required this.totalPrice,
     required this.quantity,
     required this.unit,
+    required this.currency,
     required this.uuid,
   });
 
@@ -37,7 +39,8 @@ class ReceiptItem {
   bool operator ==(Object other) {
     return (other is ReceiptItem) &&
         (shoppingItem == other.shoppingItem) &&
-        (compareDouble(totalPrice.toDouble(), other.totalPrice.toDouble()));
+        (compareDouble(totalPrice.toDouble(), other.totalPrice.toDouble())) &&
+        (currency == other.currency);
   }
 
   Map<String, dynamic> toMap() {
@@ -46,6 +49,7 @@ class ReceiptItem {
       'shoppingItem': shoppingItem.itemName,
       'totalPrice': totalPrice,
       'uuid': uuid,
+      'currency': currency,
       'quantity': quantity ?? -1.0,
       'unit': unit ?? "NaN",
     };
@@ -56,8 +60,9 @@ class ReceiptItem {
         rawText: map["rawtext"] ?? "NaN",
         // Allow None if we do not intend to save raw string
         totalPrice: map["totalprice"],
-        quantity: map["quantity"],
-        unit: map["unit"] ?? "NaN",
+        quantity: map.containsKey("quantity") ? map["quantity"] : 1,
+        unit: map.containsKey("unit") ? map["unit"] : "NaN",
+        currency: map.containsKey("currency") ? map["currency"] : "EUR",
         uuid: map["uuid"],
       );
 
@@ -77,6 +82,7 @@ class ReceiptItem {
       quantity: quantity,
       // TODO: in some cases, "other" might contain the quantity!
       unit: unit,
+      currency: currency,
       uuid: uuid,
     );
   }
@@ -110,8 +116,14 @@ class ReceiptItem {
       rawText: resultRawText,
       totalPrice: totalPrice,
       quantity: quantity,
+      currency: currency,
       unit: unit,
       uuid: uuid,
     );
   }
+
+  @override
+  // TODO: implement hashCode
+  int get hashCode => super.hashCode;
+
 }

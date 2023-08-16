@@ -8,6 +8,7 @@ import "package:uuid/uuid_util.dart";
 import "receipt_item.dart";
 
 class Receipt {
+
   final List<ReceiptItem> receiptItemsList;
   final String shopName;
   final DateTime dateTime;
@@ -18,6 +19,9 @@ class Receipt {
   final String postalCode;
   final String city;
   final String paymentType;
+  /// 0 - NaN (use 0 value to fill data with no data source info),
+  /// 1 - taggun API
+  final int dataSource;  // i.e. the way the receipt was scanned
   late final Uint8List
       uuid; // leave option to either define uuid or let Receipt class assign one
 
@@ -32,7 +36,8 @@ class Receipt {
       required this.address,
       required this.postalCode,
       required this.paymentType,
-      uuid}) {
+      uuid,
+      this.dataSource=0,}) {
     this.uuid = uuid ?? generateUuidUint8List();
   }
 
@@ -92,6 +97,7 @@ class Receipt {
       'address': address,
       'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
+      'dataSource': dataSource,
     };
   }
 
@@ -109,6 +115,7 @@ class Receipt {
       'address': address,
       'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
+      'dataSource': dataSource,
     };
   }
 
@@ -126,6 +133,7 @@ class Receipt {
       'address': address,
       'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
+      'dataSource': dataSource,
     };
   }
 
@@ -134,7 +142,7 @@ class Receipt {
   /// WARNING: uuid (Uint8List) needs to be included in the map!
   /// If not present, use fromMapAndUuid()!
   /// Use ReceiptReader to convert scan results to a Receipt.
-  factory Receipt.fromMap(Map<String, dynamic> mapWIthUuid) => Receipt(
+  factory Receipt.fromMap(Map<String, dynamic> mapWithUuid) => Receipt(
         receiptItemsList: [
           ReceiptItem(
               shoppingItem: ShoppingItem(
@@ -142,20 +150,22 @@ class Receipt {
               ),
               rawText: 'asd',
               totalPrice: 1.0,
-              uuid: mapWIthUuid["uuid"],
+              currency: mapWithUuid["currency"],
+              uuid: mapWithUuid["uuid"],
               unit: "ml",
               quantity: 500)
         ],
-        shopName: mapWIthUuid["shopname"],
-        dateTime: DateTime.fromMillisecondsSinceEpoch(mapWIthUuid["datetime"]),
-        totalPrice: mapWIthUuid["totalprice"],
-        currency: mapWIthUuid["currency"],
-        country: mapWIthUuid["country"],
-        city: mapWIthUuid["city"],
-        address: mapWIthUuid["address"],
-        postalCode: mapWIthUuid["postalcode"],
-        uuid: mapWIthUuid["uuid"],
-        paymentType: mapWIthUuid["paymenttype"],
+        shopName: mapWithUuid["shopname"],
+        dateTime: DateTime.fromMillisecondsSinceEpoch(mapWithUuid["datetime"]),
+        totalPrice: mapWithUuid["totalprice"],
+        currency: mapWithUuid["currency"],
+        country: mapWithUuid["country"],
+        city: mapWithUuid["city"],
+        address: mapWithUuid["address"],
+        postalCode: mapWithUuid["postalcode"],
+        uuid: mapWithUuid["uuid"],
+        paymentType: mapWithUuid["paymenttype"],
+        dataSource: mapWithUuid.containsKey("dataSource") ? mapWithUuid["dataSource"] : 0,
       );
 
   factory Receipt.fromMapAndUuid(Map<String, dynamic> map, Uint8List uuid) =>
@@ -167,6 +177,7 @@ class Receipt {
               ),
               rawText: 'asd',
               totalPrice: 1.0,
+              currency: map["currency"],
               uuid: uuid,
               unit: "ml",
               quantity: 500)
@@ -181,5 +192,6 @@ class Receipt {
         postalCode: map["postalcode"],
         uuid: uuid,
         paymentType: map["paymenttype"],
+        dataSource: map.containsKey("dataSource") ? map["dataSource"] : 0,
       );
 }

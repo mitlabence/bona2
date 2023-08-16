@@ -43,6 +43,7 @@ class RandomReceiptGenerator {
         totalPrice: rng.nextDouble() * maxTotalPrice,
         uuid: randomUUID(),
         unit: "g",
+        currency: "EUR",
         quantity: rng.nextInt(1000));
   }
 
