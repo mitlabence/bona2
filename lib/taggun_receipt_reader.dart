@@ -88,8 +88,8 @@ class TaggunReceiptReader implements ReceiptReader {
     receiptItems = List.generate(
         json["amounts"].length,
         (index) => ReceiptItem(
-            shoppingItem:
-                ShoppingItem(itemName: json["amounts"][index]["text"]),
+            itemCategory:
+                ItemCategory(itemName: json["amounts"][index]["text"]),
             rawText: json["amounts"][index]["text"],
             totalPrice: json["amounts"][index]["data"],
             quantity: 1,

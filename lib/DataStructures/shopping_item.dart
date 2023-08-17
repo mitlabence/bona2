@@ -1,9 +1,9 @@
 
 /// Contains the name of the item.
-class ShoppingItem {
+class ItemCategory {
   final String itemName;
 
-  ShoppingItem({required this.itemName});
+  ItemCategory({required this.itemName});
 
   @override
   String toString() {
@@ -12,17 +12,17 @@ class ShoppingItem {
 
   @override
   bool operator ==(Object other) {
-    return other is ShoppingItem && itemName == other.itemName;
+    return other is ItemCategory && itemName == other.itemName;
   }
 
-  ShoppingItem operator +(ShoppingItem other) {
+  ItemCategory operator +(ItemCategory other) {
     /// Adding two ShoppingItems should only happen when the second is not a true
     /// shopping item (i.e. merging). Thus the itemName of the other ShoppingItem
     /// should be discarded.
-    return ShoppingItem(itemName: itemName);
+    return ItemCategory(itemName: itemName);
   }
 
-  ShoppingItem operator -(ShoppingItem other){
-    return ShoppingItem(itemName: itemName);
+  ItemCategory operator -(ItemCategory other){
+    return ItemCategory(itemName: itemName);
   }
 }

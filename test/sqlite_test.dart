@@ -43,7 +43,7 @@ Future main() async {
       {
         'pk': 1,
         'rawtext': 'NaN',
-        'shoppingitem': receiptItem.shoppingItem.itemName,
+        'shoppingitem': receiptItem.itemCategory.itemName,
         'totalprice': receiptItem.totalPrice,
         "quantity": receiptItem.quantity,
         "currency": receiptItem.currency,

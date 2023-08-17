@@ -4,6 +4,7 @@ import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/utils/utils.dart';
+import 'package:tuple/tuple.dart';
 import 'dart:io';
 import 'DataStructures/receipt.dart';
 import 'constants.dart';
@@ -62,6 +63,13 @@ class DataBaseHelper {
     Database db = await instance.db;
     return await db.insert(kReceiptItemDatabaseName, receiptItem.toMap());
   }
+  Future<int> updateReceiptItem(var pk, ReceiptItem newReceiptItem ) async {
+    Database db = await instance.db;
+    return 1;
+    // TODO: implement function. uuid is in newReceiptItem. Test it!
+    // TODO: check if possible to turn pk into num! See getReceiptItemsWithPk().
+    //return await db.update(kReceiptItemDatabaseName, newReceiptItem.toMap(), where: '$uuid = ? & $');
+  }
 
   Future<int> addReceiptItems(List<ReceiptItem> receiptItemsList) async {
     Database db = await instance.db;
@@ -91,11 +99,34 @@ class DataBaseHelper {
     String uuidString = hex(uuid).toUpperCase();
     Database db = await instance.db;
     var receiptItems = await db.query(kReceiptItemDatabaseName,
-        where: "uuid = x'$uuidString'", orderBy: 'uuid');
+        where: "uuid = x'$uuidString'", orderBy: 'pk');
     List<ReceiptItem> receiptItemsList = receiptItems.isNotEmpty
         ? receiptItems.map((item) => ReceiptItem.fromMap(item)).toList()
         : [];
+
+    Map<int, ReceiptItem> result = {};
+    for (int i = 0; i < receiptItemsList.length; i++) {
+      result[i] = receiptItemsList[i];
+    }
     return receiptItemsList;
+  }
+
+  Future<List<Tuple2<dynamic, ReceiptItem>>> getReceiptItemsWithPk(Uint8List uuid) async {
+    String uuidString = hex(uuid).toUpperCase();
+    Database db = await instance.db;
+    var receiptItems = await db.query(kReceiptItemDatabaseName,
+        where: "uuid = x'$uuidString'", orderBy: 'pk');
+    List<ReceiptItem> receiptItemsList = receiptItems.isNotEmpty
+        ? receiptItems.map((item) => ReceiptItem.fromMap(item)).toList()
+        : [];
+    List<dynamic> pkList = receiptItems.isNotEmpty
+        ? receiptItems.map((item) => item["pk"]).toList()
+        : [];
+    List<Tuple2<dynamic, ReceiptItem>> result = [];
+    for (int i = 0; i < receiptItemsList.length; i++) {
+      result.add(Tuple2(pkList[i], receiptItemsList[i]));
+    }
+    return result;
   }
 
   Future<void> removeReceiptAndItemsByUUID(Uint8List uuid) async {

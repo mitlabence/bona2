@@ -8,7 +8,7 @@ class ReceiptItem {
   /// the text that was used to infer this item
   String? rawText; // Allow None if we do not intend to save raw string
   /// the shopping item containing
-  ShoppingItem shoppingItem;
+  ItemCategory itemCategory;
   num totalPrice;
   num? quantity;
   String? unit;
@@ -17,7 +17,7 @@ class ReceiptItem {
       uuid; // uuid should match uuid of Receipt containing this item
 
   ReceiptItem({
-    required this.shoppingItem,
+    required this.itemCategory,
     required this.rawText,
     required this.totalPrice,
     required this.quantity,
@@ -29,16 +29,16 @@ class ReceiptItem {
   @override
   String toString() {
     if (rawText != null) {
-      return "$shoppingItem: $totalPrice with raw text: $rawText";
+      return "$itemCategory: $totalPrice with raw text: $rawText";
     } else {
-      return "$shoppingItem: $totalPrice with no raw text";
+      return "$itemCategory: $totalPrice with no raw text";
     }
   }
 
   @override
   bool operator ==(Object other) {
     return (other is ReceiptItem) &&
-        (shoppingItem == other.shoppingItem) &&
+        (itemCategory == other.itemCategory) &&
         (compareDouble(totalPrice.toDouble(), other.totalPrice.toDouble())) &&
         (currency == other.currency);
   }
@@ -46,7 +46,7 @@ class ReceiptItem {
   Map<String, dynamic> toMap() {
     return {
       'rawText': rawText ?? "NaN",
-      'shoppingItem': shoppingItem.itemName,
+      'shoppingItem': itemCategory.itemName,
       'totalPrice': totalPrice,
       'uuid': uuid,
       'currency': currency,
@@ -56,7 +56,7 @@ class ReceiptItem {
   }
 
   factory ReceiptItem.fromMap(Map<String, dynamic> map) => ReceiptItem(
-        shoppingItem: ShoppingItem(itemName: map["shoppingitem"]),
+        itemCategory: ItemCategory(itemName: map["shoppingitem"]),
         rawText: map["rawtext"] ?? "NaN",
         // Allow None if we do not intend to save raw string
         totalPrice: map["totalprice"],
@@ -75,7 +75,7 @@ class ReceiptItem {
   /// 6. The uuid of the first receipt item is kept
   ReceiptItem operator +(ReceiptItem other) {
     return ReceiptItem(
-      shoppingItem: shoppingItem + other.shoppingItem,
+      itemCategory: itemCategory + other.itemCategory,
       rawText:
           "${rawText ?? ''}$kReceiptItemAdditionSeparator${other.rawText ?? ''}",
       totalPrice: totalPrice,
@@ -112,7 +112,7 @@ class ReceiptItem {
     } // Else (if this.rawText is null): keep it null
 
     return ReceiptItem(
-      shoppingItem: shoppingItem - other.shoppingItem,
+      itemCategory: itemCategory - other.itemCategory,
       rawText: resultRawText,
       totalPrice: totalPrice,
       quantity: quantity,

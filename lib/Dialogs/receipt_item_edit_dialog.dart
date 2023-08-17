@@ -1,21 +1,25 @@
 import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:bona2/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
+
+import '../DataStructures/shopping_item.dart';
 
 // TODO add ShoppingItem values in a database (this should be the item category; also rename ShoppingItem to ItemCategory?). Add dropdown kind of menu (search for the item category by typing?)
 
 
 class ReceiptItemEditDialog extends StatefulWidget {
-  const ReceiptItemEditDialog({required this.receiptItem, Key? key})
+  const ReceiptItemEditDialog({required this.receiptItem, required this.pk, Key? key})
       : super(key: key);
   final ReceiptItem receiptItem;
+  final dynamic pk;
 
   @override
   State<ReceiptItemEditDialog> createState() => _ReceiptItemEditDialogState();
 }
 
 class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
-  late TextEditingController _titleController;
+  late TextEditingController _itemCategoryController;
   late TextEditingController _rawTextController;
   // late NumberFormat _unitsController;
   late TextEditingController _quantityController;
@@ -23,6 +27,7 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
   late String unit;
   late num totalPrice;
   late String currency;
+  late ItemCategory itemCategory;
 
   @override
   void initState() {
@@ -31,8 +36,9 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
     unit = widget.receiptItem.unit!;
     totalPrice = widget.receiptItem.totalPrice;
     currency = widget.receiptItem.currency;
-    _titleController =
-        TextEditingController(text: widget.receiptItem.shoppingItem.itemName);
+    itemCategory = widget.receiptItem.itemCategory;
+    _itemCategoryController =
+        TextEditingController(text: widget.receiptItem.itemCategory.itemName);
     _rawTextController =
         TextEditingController(text: widget.receiptItem.rawText);
     _quantityController =
@@ -43,7 +49,7 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
 
   @override
   void dispose() {
-    _titleController.dispose();
+    _itemCategoryController.dispose();
     _rawTextController.dispose();
     _quantityController.dispose();
     super.dispose();
@@ -55,7 +61,9 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
       title: const Text('Edit Content'),
       content: Column(
         children: [
-          TextField(controller: _titleController),
+          Text("Item category: ${widget.pk}"),
+          TextField(controller: _itemCategoryController),
+          const Text("Raw text:"),
           TextField(controller: _rawTextController),
           Row(children: [Expanded(
             flex: 2,
@@ -116,16 +124,16 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.pop(context); // Close the dialog
+            Navigator.pop(context, Tuple2(widget.pk, widget.receiptItem)); // Close the dialog
           },
           child: const Text('Cancel'),
         ),
         ElevatedButton(
           onPressed: () {
             // Save the edited content
-            ReceiptItem editedValue = widget.receiptItem;
+            ReceiptItem editedValue = ReceiptItem(itemCategory: ItemCategory(itemName: _itemCategoryController.text), rawText: _rawTextController.text, totalPrice: num.parse(_totalPriceController.text), quantity: num.parse(_quantityController.text), unit: unit, currency: currency, uuid: widget.receiptItem.uuid);
             Navigator.pop(context,
-                editedValue); // Close the dialog and return the edited value
+                Tuple2(widget.pk, editedValue)); // Close the dialog and return the edited value
           },
           child: const Text('Save'),
         ),

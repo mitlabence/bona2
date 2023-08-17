@@ -74,7 +74,7 @@ class Receipt {
     String itemsWithPrices = "";
     for (int i = 0; i < receiptItemsList.length; ++i) {
       itemsWithPrices +=
-          "${receiptItemsList[i].shoppingItem.itemName}: ${receiptItemsList[i].totalPrice}, ";
+          "${receiptItemsList[i].itemCategory.itemName}: ${receiptItemsList[i].totalPrice}, ";
     }
     return "Date: $dateTime, Shop: $shopName: $itemsWithPrices"; //TODO: add uuid
   }
@@ -145,7 +145,7 @@ class Receipt {
   factory Receipt.fromMap(Map<String, dynamic> mapWithUuid) => Receipt(
         receiptItemsList: [
           ReceiptItem(
-              shoppingItem: ShoppingItem(
+              itemCategory: ItemCategory(
                 itemName: "asd",
               ),
               rawText: 'asd',
@@ -172,7 +172,7 @@ class Receipt {
       Receipt(
         receiptItemsList: [
           ReceiptItem(
-              shoppingItem: ShoppingItem(
+              itemCategory: ItemCategory(
                 itemName: "asd",
               ),
               rawText: 'asd',

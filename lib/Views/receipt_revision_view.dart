@@ -118,7 +118,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
             itemBuilder: (context, index) {
               return ListTile(
                 title:
-                    Text(receipt.receiptItemsList[index].shoppingItem.itemName),
+                    Text(receipt.receiptItemsList[index].itemCategory.itemName),
                 subtitle: Text(
                     "${receipt.receiptItemsList[index].totalPrice} ${receipt.currency}"),
                 onTap: () {

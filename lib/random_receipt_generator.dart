@@ -37,7 +37,7 @@ class RandomReceiptGenerator {
 
   ReceiptItem randomReceiptItem() {
     return ReceiptItem(
-        shoppingItem: ShoppingItem(itemName: randomString(maxItemNameLength)),
+        itemCategory: ItemCategory(itemName: randomString(maxItemNameLength)),
         rawText: randomString(maxItemRawTextLength),
         //TODO: for future testing, adding whitespace (converting to using lorem ipsum, for example) might be useful
         totalPrice: rng.nextDouble() * maxTotalPrice,
