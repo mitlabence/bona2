@@ -24,7 +24,7 @@ class _ImageUploadViewState extends State<ImageUploadView> {
 
   void addReceiptCallback(BuildContext context, Receipt receipt) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => ReceiptRevisionView(receipt: receipt),
+      builder: (context) => ReceiptRevisionView(receipt: receipt, imageData: null),
     ));
   }
 
@@ -57,7 +57,7 @@ class _ImageUploadViewState extends State<ImageUploadView> {
                 if (context.mounted) {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
-                          ReceiptRevisionView(receipt: receipt)));
+                          ReceiptRevisionView(receipt: receipt, imageData: null)));
                 } else {
                   print("ImageUploadView: Context not mounted!");
                 }
@@ -100,11 +100,6 @@ class _ImageUploadViewState extends State<ImageUploadView> {
                 });
               },
               child: Text("Pick image"),
-            ),
-            ElevatedButton(
-              child: Text("Test pop to list"),
-              //FIXME: app bar disappears when using navigator like this!
-              onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/upload', (r) => false),
             ),
           ],
         ),

@@ -246,7 +246,7 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text("Saved changes!")));
                         Navigator.pushNamedAndRemoveUntil(
-                            context, '/list', (r) => false);
+                            context, '/upload', (r) => false);
                       }
                       //dbh.updateReceiptItem(editedPk, newReceiptItem)
                     }

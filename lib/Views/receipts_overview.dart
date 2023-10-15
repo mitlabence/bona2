@@ -6,6 +6,7 @@ import '../DataStructures/receipt.dart';
 import 'package:bona2/random_receipt_generator.dart';
 
 import '../Widgets/receipt_tile.dart';
+import '../utils.dart';
 
 class ReceiptsOverview extends StatefulWidget {
   const ReceiptsOverview({Key? key}) : super(key: key);
@@ -67,7 +68,7 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                             return ReceiptTile(
                               title: snapshot.data![index].shopName,
                               subtitle:
-                                  snapshot.data![index].dateTime.toString(),
+                                  "${formatDateTimeToMinutes(snapshot.data![index].dateTime)}, ${snapshot.data![index].totalPrice} ${snapshot.data![index].currency}",
                               onTapCallback: () {
                                 Navigator.push(
                                     context,

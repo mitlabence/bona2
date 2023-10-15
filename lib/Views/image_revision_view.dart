@@ -70,20 +70,21 @@ class _ImageRevisionViewState extends State<ImageRevisionView> {
         String uploadedJsonPath =
             await uploadMapToDriveAsJson(resultsMap, fnameJson);
         print(uploadedJsonPath);
+        print("uploading image...");
+        String uploadedImagePath =
+        await uploadFileToDrive(File(widget.imageFile.path), fnameJpeg);
+        print(uploadedImagePath);
         ReceiptReader receiptReader = TaggunReceiptReader(json: resultsMap, uuid: uuidBlob);
         Receipt receipt = receiptReader.receipt;
         // Receipt receipt = Receipt.fromMapAndUuid(resultsMap, uuidBlob);
         print("Created receipt");
         if (context.mounted) {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ReceiptRevisionView(receipt: receipt)));
+              builder: (context) => ReceiptRevisionView(receipt: receipt, imageData: imageData)));
         } else {
           print("ImageRevisionView: Context not mounted!");
         }
-        print("uploading image...");
-        String uploadedImagePath =
-        await uploadFileToDrive(File(widget.imageFile.path), fnameJpeg);
-        print(uploadedImagePath);
+
       }, // TODO: add Taggun API call here. More generally, add API call here of Taggun-implementation of receipt OCR
     );
     /*

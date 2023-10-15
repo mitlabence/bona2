@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:bona2/Dialogs/show_image_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +39,10 @@ class ReceiptRevisionView extends StatefulWidget {
   /// This view should be called after a receipt and receipt items are
   /// acquired and just before inserted into the database. Review the items,
   /// details, manually correct them if necessary.
-  const ReceiptRevisionView({required this.receipt, Key? key})
+  const ReceiptRevisionView({required this.receipt, required this.imageData, Key? key})
       : super(key: key);
   final Receipt receipt;
+  final Uint8List? imageData;
 
   @override
   State<ReceiptRevisionView> createState() => _ReceiptRevisionViewState();
@@ -164,7 +166,16 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
         ),
         Text(
             "Total: ${receipt.detectedTotalPrice} ${receipt.currency} from items, ${receipt.totalPrice} detected."),
-        IconButton(onPressed: () {  }, icon: const Icon(Icons.preview),),
+        IconButton(onPressed: () async {
+          if (widget.imageData != null) {
+            await showDialog(context: context, builder: (context) => ShowImageDialog(
+              imageData: widget.imageData!,
+            ),);
+          } else {
+            print("No image was found.");
+          }
+
+        }, icon: const Icon(Icons.preview),),
       ]),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),

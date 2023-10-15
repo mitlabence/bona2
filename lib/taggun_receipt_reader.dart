@@ -49,8 +49,17 @@ class TaggunReceiptReader implements ReceiptReader {
         print("DateTime formatexception!");
       }
     }
+    final double dateTimeConfidence;
+    if (json["date"]["confidenceLevel"] is double) {
+      dateTimeConfidence = json["date"]["confidenceLevel"];
+    }
+    else if (json["date"]["confidenceLevel"] is int ){
+      dateTimeConfidence = json["date"]["confidenceLevel"].toDouble();
+    } else {
+      print("Warning: date confidenceLevel in json file invalid type: ${json["date"]["confidenceLevel"]}. Expected int or double.");
+      dateTimeConfidence = 0.0;
+    }
 
-    final double dateTimeConfidence = json["date"]["confidenceLevel"] ?? 0.0;
     late double totalPrice;
     if (json["totalAmount"]["data"] is double) {
       totalPrice = json["totalAmount"]["data"];
@@ -60,8 +69,9 @@ class TaggunReceiptReader implements ReceiptReader {
       print("Warning: totalPrice in json file invalid type: ${json["totalAmount"]["data"]}. Expected int or double.");
       totalPrice = -1.0;
     }
+
     final double totalPriceConfidence =
-        json["totalAmount"]["confidenceLevel"] ?? 0.0;
+        json["totalAmount"]["confidenceLevel"].toDouble() ?? 0.0;
 
     final String currency =
         json["totalAmount"]["currencyCode"] ?? kNullStringValue;
