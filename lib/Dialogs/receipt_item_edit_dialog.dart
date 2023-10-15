@@ -7,9 +7,9 @@ import '../DataStructures/shopping_item.dart';
 
 // TODO add ShoppingItem values in a database (this should be the item category; also rename ShoppingItem to ItemCategory?). Add dropdown kind of menu (search for the item category by typing?)
 
-
 class ReceiptItemEditDialog extends StatefulWidget {
-  const ReceiptItemEditDialog({required this.receiptItem, required this.pk, Key? key})
+  const ReceiptItemEditDialog(
+      {required this.receiptItem, required this.pk, Key? key})
       : super(key: key);
   final ReceiptItem receiptItem;
   final dynamic pk;
@@ -21,6 +21,7 @@ class ReceiptItemEditDialog extends StatefulWidget {
 class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
   late TextEditingController _itemCategoryController;
   late TextEditingController _rawTextController;
+
   // late NumberFormat _unitsController;
   late TextEditingController _quantityController;
   late TextEditingController _totalPriceController;
@@ -28,6 +29,8 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
   late num totalPrice;
   late String currency;
   late ItemCategory itemCategory;
+
+  bool markedForDelete = false;
 
   @override
   void initState() {
@@ -44,7 +47,6 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
     _quantityController =
         TextEditingController(text: widget.receiptItem.quantity.toString());
     _totalPriceController = TextEditingController(text: totalPrice.toString());
-
   }
 
   @override
@@ -61,17 +63,18 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
       title: const Text('Edit Content'),
       content: Column(
         children: [
-          Text("Item category: ${widget.pk}"),
+          Text("Item (${widget.pk}) category:"),
           TextField(controller: _itemCategoryController),
           const Text("Raw text:"),
           TextField(controller: _rawTextController),
-          Row(children: [Expanded(
-            flex: 2,
-            child: TextField(
-              controller: _quantityController,
-              keyboardType: TextInputType.number,
+          Row(children: [
+            Expanded(
+              flex: 2,
+              child: TextField(
+                controller: _quantityController,
+                keyboardType: TextInputType.number,
+              ),
             ),
-          ),
             Expanded(
               flex: 1,
               child: DropdownButton(
@@ -90,15 +93,16 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
                   });
                 },
               ),
-            ),]),
-
-          Row(children: [Expanded(
-            flex: 2,
-            child: TextField(
-              controller: _totalPriceController,
-              keyboardType: TextInputType.number,
             ),
-          ),
+          ]),
+          Row(children: [
+            Expanded(
+              flex: 2,
+              child: TextField(
+                controller: _totalPriceController,
+                keyboardType: TextInputType.number,
+              ),
+            ),
             Expanded(
               flex: 1,
               child: DropdownButton(
@@ -117,23 +121,44 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
                   });
                 },
               ),
-            ),]),
-
+            ),
+          ]),
+      Checkbox(
+        checkColor: Colors.white,
+        value: markedForDelete,
+        onChanged: (bool? value) {
+          setState(() {
+            markedForDelete = value!;
+          });
+        },
+      ),
         ],
       ),
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.pop(context, Tuple2(widget.pk, widget.receiptItem)); // Close the dialog
+            Navigator.pop(context,
+                Tuple3(widget.pk, widget.receiptItem, EditStatus.unchanged)); // Close the dialog
           },
           child: const Text('Cancel'),
         ),
         ElevatedButton(
           onPressed: () {
             // Save the edited content
-            ReceiptItem editedValue = ReceiptItem(itemCategory: ItemCategory(itemName: _itemCategoryController.text), rawText: _rawTextController.text, totalPrice: num.parse(_totalPriceController.text), quantity: num.parse(_quantityController.text), unit: unit, currency: currency, uuid: widget.receiptItem.uuid);
-            Navigator.pop(context,
-                Tuple2(widget.pk, editedValue)); // Close the dialog and return the edited value
+            ReceiptItem editedValue = ReceiptItem(
+                itemCategory:
+                    ItemCategory(itemName: _itemCategoryController.text),
+                rawText: _rawTextController.text,
+                totalPrice: num.parse(_totalPriceController.text),
+                quantity: num.parse(_quantityController.text),
+                unit: unit,
+                currency: currency,
+                uuid: widget.receiptItem.uuid);
+
+            Navigator.pop(
+                context,
+                Tuple3(widget.pk,
+                    editedValue, markedForDelete? EditStatus.deleted : EditStatus.changed)); // Close the dialog and return the edited value
           },
           child: const Text('Save'),
         ),

@@ -9,19 +9,19 @@ import "receipt_item.dart";
 
 class Receipt {
 
-  final List<ReceiptItem> receiptItemsList;
-  final String shopName;
-  final DateTime dateTime;
-  final double totalPrice;
-  final String currency;
-  final String country;
-  final String address;
-  final String postalCode;
-  final String city;
-  final String paymentType;
+  List<ReceiptItem> receiptItemsList;
+  String shopName;
+  DateTime dateTime;
+  double totalPrice;
+  String currency;
+  String country;
+  String address;
+  String postalCode;
+  String city;
+  String paymentType;
   /// 0 - NaN (use 0 value to fill data with no data source info),
   /// 1 - taggun API
-  final int dataSource;  // i.e. the way the receipt was scanned
+  int dataSource;  // i.e. the way the receipt was scanned
   late final Uint8List
       uuid; // leave option to either define uuid or let Receipt class assign one
 

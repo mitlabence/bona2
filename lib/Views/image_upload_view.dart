@@ -100,7 +100,12 @@ class _ImageUploadViewState extends State<ImageUploadView> {
                 });
               },
               child: Text("Pick image"),
-            )
+            ),
+            ElevatedButton(
+              child: Text("Test pop to list"),
+              //FIXME: app bar disappears when using navigator like this!
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/upload', (r) => false),
+            ),
           ],
         ),
       ),

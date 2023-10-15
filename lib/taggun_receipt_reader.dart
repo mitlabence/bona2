@@ -51,8 +51,15 @@ class TaggunReceiptReader implements ReceiptReader {
     }
 
     final double dateTimeConfidence = json["date"]["confidenceLevel"] ?? 0.0;
-
-    final double totalPrice = json["totalAmount"]["data"];
+    late double totalPrice;
+    if (json["totalAmount"]["data"] is double) {
+      totalPrice = json["totalAmount"]["data"];
+    } else if (json["totalAmount"]["data"] is int) {
+      totalPrice = json["totalAmount"]["data"].toDouble();
+    } else {
+      print("Warning: totalPrice in json file invalid type: ${json["totalAmount"]["data"]}. Expected int or double.");
+      totalPrice = -1.0;
+    }
     final double totalPriceConfidence =
         json["totalAmount"]["confidenceLevel"] ?? 0.0;
 

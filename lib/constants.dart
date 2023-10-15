@@ -15,7 +15,7 @@ const String kNullStringValue = "NaN";
 
 //TODO: change to list of String database keys and datatypes (or Map), to assure consistency between production and test databases with one modification
 const String kCreateReceiptItemDatabaseCommand =
-    'CREATE TABLE ReceiptItems (pk INTEGER PRIMARY KEY, rawtext TEXT, shoppingitem TEXT, totalprice REAL, cirremcy TEXT. quantity REAL, unit TEXT, uuid BLOB)';
+    'CREATE TABLE ReceiptItems (pk INTEGER PRIMARY KEY, rawtext TEXT, shoppingitem TEXT, totalprice REAL, currency TEXT, quantity REAL, unit TEXT, uuid BLOB)';
 const String kReceiptItemDatabaseName =
     "ReceiptItems"; // should match with name defined in kCreateReceiptItemDatabaseCommand
 const String kCreateReceiptDatabaseCommand =
@@ -66,8 +66,15 @@ const List<String> kReceiptItemUnitsList = [
 ];
 
 const List<String> kCurrenciesList = [
+  "NaN",
   "EUR",
   "USD",
   "HUF",
   "GBP",
 ];
+
+enum EditStatus {
+  unchanged,
+  changed,
+  deleted
+}

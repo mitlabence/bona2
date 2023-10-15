@@ -38,7 +38,7 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                             setState(
                                 () {}); // TODO: there must be a better way of notifying the framework of the change! Or put changes inside
                           },
-                          child: const Text("Clear databases"))
+                          child: const Text("Clear local databases"))
                     ])
           ],
         ),
@@ -47,13 +47,15 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
             height: 500,
             width: 300,
             child: FutureBuilder<List<Receipt>>(
+              // TODO: with increasing number of receipts, need to make smaller queries, updating with scrolling
               future: DataBaseHelper.instance.getReceipts(),
               builder: (BuildContext context,
                   AsyncSnapshot<List<Receipt>> snapshot) {
                 if (!snapshot.hasData) {
-                  if (snapshot.hasError)
+                  if (snapshot.hasError) {
                     print(snapshot
                         .error); // TODO: proper connectionState sampling logic necessary
+                  }
                   return const Center(child: Text('Loading...'));
                 } else {
                   return snapshot.data!.isEmpty
@@ -72,7 +74,7 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             ReceiptItemListView(
-                                              ReceiptUuid:
+                                              receiptUuid:
                                                   snapshot.data![index].uuid,
                                             )));
                               },

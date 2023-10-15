@@ -74,6 +74,7 @@ class RandomReceiptGenerator {
         address: "Ritterstraße 51, 10119 Berlin, Germany",
         postalCode: "10119",
         paymentType: "cash",
+        dataSource: 0,
         uuid: randomUUID());
   }
 }

@@ -73,11 +73,31 @@ class FireStoreHelper {
     await batch.commit();
   }
 
+  Future<void> updateReceipt(Receipt receipt) async {
+    final String fileName = uuidStringFromUint8List(receipt.uuid);
+    final receiptDocRef = receiptsCollection.doc(fileName);
+    WriteBatch batch = firebase.batch();
+    Map<String, dynamic> receiptMap = receipt.toMap();
+    List<ReceiptItem> receiptItems = receiptMap.remove("receiptItemsList");
+    // Write receipt into receipts collection
+    var receiptsFileRef = firebase.collection("receipts").doc(fileName);
+    batch.update(receiptsFileRef, receiptMap);
+    var receiptItemsCollectionRef = receiptDocRef.collection("receipt_items");
+    for (int i = 0; i < receiptItems.length; i++) {
+      final ReceiptItem receiptItem = receiptItems[i];
+      final receiptItemFileName = "${fileName}_$i";
+      var receiptItemDocRef =
+      receiptItemsCollectionRef.doc(receiptItemFileName);
+      final receiptItemMap = receiptItem.toMap();
+      batch.update(receiptItemDocRef, receiptItemMap);
+    }
+    await batch.commit();
+  }
+
 // TODO: create two collections: receipts -> subcollection receiptItems, taggunResults
 // TODO: upon acquiring the uid (authentication) and uploading first json file,
 // put it in proper folder
 // TODO: keep using Google Cloud Storage for storing photos of receipts, for
 //  future model training (should be easy to match photo with taggunResults document)
 // TODO: need to configure appcheck...
-// TODO: D/com.google.firebase.appcheck.debug.internal.DebugAppCheckProvider(13864): Enter this debug secret into the allow list in the Firebase Console for your project: 18a0fdf0-296f-41fa-b889-38110df72b15
 }

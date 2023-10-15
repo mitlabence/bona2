@@ -22,6 +22,8 @@ import 'package:path_provider/path_provider.dart';
 // TODO: add "are you sure" pop-up window after taking photo
 // TODO: handle error codes properly! (403: authorization error, wrong apikey, for example)
 
+
+//TODO: upload image to cloud storage, then server handles decoding into json (with taggun or whatever)?
 abstract class PostRequestProvider {
   Future<String?> getApiKey();
 

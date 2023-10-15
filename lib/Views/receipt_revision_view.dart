@@ -182,8 +182,6 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
             ));
             print("Uploading to cloud...");
             final String fname = "${UuidValue.fromByteList(receipt.uuid).uuid}.json";
-            String uploadFilePath = await uploadMapToDriveAsJson(receipt.toMapJson(), fname);
-            print("Receipt scan result uploaded. Uploading receipt object...");
             // TODO: it should be uploaded into an own (uuid) folder per user!
             await fireStoreHelper.uploadReceiptAndItems(receipt);
             //await fireStoreHelper.uploadSample();
@@ -191,7 +189,8 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
               print("ReceiptRevisionView: not mounted.");
               return;
             }
-            Navigator.of(context).pop();
+            //Navigator.of(context).pop();
+            Navigator.pushNamedAndRemoveUntil(context, '/upload', (r) => false);
           }
         },
       ),
