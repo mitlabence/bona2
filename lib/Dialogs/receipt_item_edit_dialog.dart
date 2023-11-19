@@ -8,11 +8,13 @@ import '../DataStructures/shopping_item.dart';
 // TODO add ShoppingItem values in a database (this should be the item category; also rename ShoppingItem to ItemCategory?). Add dropdown kind of menu (search for the item category by typing?)
 
 class ReceiptItemEditDialog extends StatefulWidget {
+  /// Given a ReceiptItem receiptItem, its identifier index in a list (for backtracking which item changed),
+  /// show a dialog to edit its details.
   const ReceiptItemEditDialog(
-      {required this.receiptItem, required this.pk, Key? key})
+      {required this.receiptItem, required this.index, Key? key})
       : super(key: key);
   final ReceiptItem receiptItem;
-  final dynamic pk;
+  final dynamic index;
 
   @override
   State<ReceiptItemEditDialog> createState() => _ReceiptItemEditDialogState();
@@ -63,7 +65,7 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
       title: const Text('Edit Content'),
       content: Column(
         children: [
-          Text("Item (${widget.pk}) category:"),
+          Text("Category:"),
           TextField(controller: _itemCategoryController),
           const Text("Raw text:"),
           TextField(controller: _rawTextController),
@@ -138,7 +140,7 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
         TextButton(
           onPressed: () {
             Navigator.pop(context,
-                Tuple3(widget.pk, widget.receiptItem, EditStatus.unchanged)); // Close the dialog
+                Tuple3(widget.index, widget.receiptItem, EditStatus.unchanged)); // Close the dialog
           },
           child: const Text('Cancel'),
         ),
@@ -157,7 +159,7 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
 
             Navigator.pop(
                 context,
-                Tuple3(widget.pk,
+                Tuple3(widget.index,
                     editedValue, markedForDelete? EditStatus.deleted : EditStatus.changed)); // Close the dialog and return the edited value
           },
           child: const Text('Save'),
