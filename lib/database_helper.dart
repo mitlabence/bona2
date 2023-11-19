@@ -134,6 +134,13 @@ class DataBaseHelper {
     return receiptItemsList;
   }
 
+  Future<List<dynamic>> getReceiptsDateTimeTotalPrice() async{
+    Database db = await instance.db;
+    List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice"], where: "totalprice > 0", orderBy: 'datetime' );  // datetime is int, totalprice is double
+    List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"]});
+    return response;
+  }
+
   Future<Receipt> getReceiptByUuid(Uint8List uuid) async{
     String uuidString = hex(uuid).toUpperCase();
     Database db = await instance.db;

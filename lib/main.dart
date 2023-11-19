@@ -4,11 +4,13 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import "package:cloud_firestore/cloud_firestore.dart";
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'Views/camera_view.dart';
 import 'Views/image_upload_view.dart';
 import 'Views/receipts_overview.dart';
 import 'firestore_helper.dart';
 import 'global.dart' as globals;
+import 'Views/visualization_view.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -68,15 +70,6 @@ class BonaApp extends StatelessWidget {
     return MaterialApp(
         title: 'Bona 2.0',
         theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
           primarySwatch: Colors.red,
         ),
         initialRoute: '/upload',
@@ -117,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     ImageUploadView(),
     const ReceiptsOverview(),
+    ProviderScope( child: VisualizationView(),),
   ];
 
   @override
@@ -142,6 +136,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.blue,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.center_focus_weak),
@@ -154,6 +150,10 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Receipts',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: 'Visualization',
           ),
         ],
         selectedItemColor: Colors.amber[800],
