@@ -163,7 +163,7 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
                                         // Local copy of list should be tuple3, third option containing "changed", "deleted", "unchanged" enum options.
                                         receiptItem: fetchedReceipt!
                                             .receiptItemsList[index],
-                                        pk: pk),
+                                        index: pk),
                                   );
                                   var editedPk =
                                       editedPkReceiptItemStatus.item1;
@@ -196,7 +196,7 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
                                       break;
                                     case EditStatus.deleted:
                                       // TODO: implement!
-                                      print("Item deleted.");
+                                      print("Item deleted. Not implemented (yet).");
                                       break;
                                     case EditStatus.unchanged:
                                       break;
