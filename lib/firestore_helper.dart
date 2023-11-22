@@ -40,14 +40,6 @@ class FireStoreHelper {
     taggunResultsCollection = firebase.collection("taggunResults");
   }
 
-  Future<void> uploadSample() async {
-    const String fileName = "Sample";
-    final docRef = receiptsCollection.doc(fileName);
-    final Map<String, String> sample = {"a": "b", "c": "d"};
-    await docRef.set(sample);
-    print("Done!");
-  }
-
   Future<void> uploadReceiptAndItems(Receipt receipt) async {
     final String fileName = uuidStringFromUint8List(receipt.uuid);
     // TODO: might convert to non-future function if I don't check for existence
@@ -93,6 +85,9 @@ class FireStoreHelper {
     }
     await batch.commit();
   }
+
+
+
 
 // TODO: create two collections: receipts -> subcollection receiptItems, taggunResults
 // TODO: upon acquiring the uid (authentication) and uploading first json file,
