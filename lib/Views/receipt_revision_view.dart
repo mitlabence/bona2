@@ -8,17 +8,17 @@ import 'package:tuple/tuple.dart';
 import 'package:uuid/uuid.dart';
 import '../DataStructures/receipt.dart';
 import '../DataStructures/receipt_item.dart';
+import '../Dialogs/all_receipt_items_edit_dialog.dart';
 import '../Dialogs/receipt_item_edit_dialog.dart';
 import '../constants.dart';
 import '../database_helper.dart';
-import '../post_request_provider.dart';
 import 'package:bona2/firestore_helper.dart';
 import 'package:riverpod/riverpod.dart';
 
-//TODO: this should replace the receiptsoverview. editing should be blocked or allowed, depending on some setting.
 const kClassName = "ReceiptRevisionView";
 
 enum EditType {
+  add,
   delete,
   mergeUp,
   mergeDown,
@@ -43,8 +43,10 @@ class ReceiptRevisionView extends StatefulWidget {
   /// This view should be called after a receipt and receipt items are
   /// acquired and just before inserted into the database. Review the items,
   /// details, manually correct them if necessary.
-  const ReceiptRevisionView(
-      {required this.receipt, required this.imageData, Key? key})
+  /// Alternatively, it can be called
+  // TODO: combine this and receipt_item_list_view into a unified view. Need to extract business logic (fetching from database vs. working with List<Receipt> in case of a new receipt,
+  // the effect of pressing save changes: upload changes to database vs. create new receipt in the databases
+  const ReceiptRevisionView({required this.receipt, this.imageData, Key? key})
       : super(key: key);
   final Receipt receipt;
   final Uint8List? imageData;
@@ -107,6 +109,30 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                   setState(() {});
                 },
               ),
+              PopupMenuItem(
+                value: 1,
+                child: const Text("Change for all items..."),
+                onTap: () async {
+                  Receipt modifiedReceipt = await showDialog(
+                    context: context,
+                    builder: (context) => AllReceiptItemsEditDialog(
+                      receipt: receipt,
+                    ),
+                  );
+                  if (modifiedReceipt != null) {
+                    // a tuple2(receipt, receiptitemslist) was returned
+                    // replace old fetchedReceipt and fetchedReceiptItems with new
+                    Receipt newReceipt = modifiedReceipt;
+                    // TODO: unlock "save changes" button. Assign proper save functionality to it, i.e. update database .
+
+                    setState(() {
+                      receipt = newReceipt;
+                    });
+                  } else {
+                    print("No changes");
+                  }
+                },
+              ),
             ],
             onSelected: (int result) {
               //TODO: implement undo and undo all.
@@ -148,14 +174,12 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                         index: index),
                   );
                   // Save changes, add to edit history
-                  var editedIndex =
-                      editedIndexReceiptItemStatus.item1;
+                  var editedIndex = editedIndexReceiptItemStatus.item1;
                   ReceiptItem editedReceiptItem =
                       editedIndexReceiptItemStatus.item2;
-                  EditStatus editStatus =
-                      editedIndexReceiptItemStatus.item3;
+                  EditStatus editStatus = editedIndexReceiptItemStatus.item3;
 
-                  switch(editStatus) {
+                  switch (editStatus) {
                     case EditStatus.changed:
                       replaceAddToHistory(editedIndex, editedReceiptItem);
                       break;
@@ -214,9 +238,11 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
             if (widget.imageData != null) {
               await showDialog(
                 context: context,
-                builder: (context) => ShowImageDialog(
-                  imageData: widget.imageData!,
-                ),
+                builder: (context) {
+                  return ShowImageDialog(
+                    imageData: widget.imageData!,
+                  );
+                },
               );
             } else {
               print("No image was found.");
@@ -224,6 +250,11 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
           },
           icon: const Icon(Icons.preview),
         ),
+        IconButton(
+            onPressed: () {
+              addEmptyItemAddToHistory();
+            },
+            icon: Icon(Icons.plus_one)),
       ]),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),
@@ -257,6 +288,23 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
     );
   }
 
+  void addEmptyItemAddToHistory() {
+    print(receipt.receiptItemsList.length);
+    ReceiptItem emptyReceiptItem = ReceiptItem.empty();
+    setState(() {
+      receipt.receiptItemsList.add(emptyReceiptItem);
+    });
+    print(receipt.receiptItemsList.length);
+    // Do not put add in the edit history. Undo all removes the added item as well.
+    /*
+    history.addLast(EditHistoryQueueItem(
+      editType: EditType.add,
+      index: receipt.receiptItemsList.length - 1,
+      receiptItem: emptyReceiptItem,
+    ));
+     */
+  }
+
   void mergeUpAddToHistory(int index) {
     if (index > 0) {
       receipt.receiptItemsList[index - 1] += receipt.receiptItemsList[index];
@@ -267,6 +315,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
         receiptItem: mergedItem,
       ));
     }
+    setState(() {});
     print(history.length);
   }
 
@@ -332,7 +381,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
     }
   }
 
-  void replaceAddToHistory(int index, ReceiptItem newItem){
+  void replaceAddToHistory(int index, ReceiptItem newItem) {
     ReceiptItem overwrittenItem = receipt.receiptItemsList[index];
     receipt.receiptItemsList[index] = newItem;
     history.addLast(EditHistoryQueueItem(
@@ -341,9 +390,13 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
 
   void deleteAddToHistory(int index) {
     ReceiptItem removedItem = receipt.receiptItemsList.removeAt(index);
-    history.addLast(EditHistoryQueueItem(
-        editType: EditType.delete, index: index, receiptItem: removedItem));
-    print(history.length);
+    if (!removedItem.isEmpty) {
+      history.addLast(EditHistoryQueueItem(
+          editType: EditType.delete, index: index, receiptItem: removedItem));
+      print(history.length);
+    } else {
+      print("Removed item was empty; not added to history.");
+    }
   }
 
   int undo(EditHistoryQueueItem historyItem) {
@@ -351,6 +404,9 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
       case EditType.delete:
         receipt.receiptItemsList
             .insert(historyItem.index, historyItem.receiptItem);
+        return 1;
+      case EditType.add:
+        receipt.receiptItemsList.removeAt(historyItem.index);
         return 1;
       case EditType.mergeUp:
         receipt.receiptItemsList[historyItem.index - 1] =
@@ -384,6 +440,10 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
 
   int undoLastEditRemoveFromHistory() {
     if (history.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("History is empty"),
+        duration: Duration(seconds: 1),
+      ));
       if (kDebugMode) {
         print(
             '${kClassName}: undoLastEditRemoveFromHistory() was called with empty history.');
