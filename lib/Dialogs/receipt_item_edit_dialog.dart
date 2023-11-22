@@ -56,6 +56,7 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
     _itemCategoryController.dispose();
     _rawTextController.dispose();
     _quantityController.dispose();
+    _totalPriceController.dispose();
     super.dispose();
   }
 
