@@ -10,6 +10,13 @@ class ItemCategory {
     return itemName;
   }
 
+  ItemCategory.empty() :
+      itemName = "";
+
+  @override
+  bool get isEmpty => itemName.isEmpty;
+
+
   @override
   bool operator ==(Object other) {
     return other is ItemCategory && itemName == other.itemName;

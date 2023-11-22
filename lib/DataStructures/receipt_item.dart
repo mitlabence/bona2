@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:bona2/DataStructures/shopping_item.dart';
 import 'package:bona2/constants.dart';
@@ -55,16 +54,45 @@ class ReceiptItem {
     };
   }
 
-  factory ReceiptItem.fromMap(Map<String, dynamic> map) => ReceiptItem(
-        itemCategory: ItemCategory(itemName: map["shoppingitem"]),
-        rawText: map["rawtext"] ?? "NaN",
+  ReceiptItem.empty({Uint8List? uuid})
+      : itemCategory = ItemCategory.empty(),
+        rawText = "",
+        totalPrice = 0.0,
+        quantity = 1,
+        unit = "NaN",
+        currency = "EUR",
+        uuid = uuid ?? Uint8List.fromList([]);
+
+  // TODO: add isNotEmpty (also to ItemCategory)
+  @override
+  bool get isEmpty {
+    if (!itemCategory.isEmpty) {
+      return false;
+    }
+    if (rawText != null && rawText!.isNotEmpty) {
+      return false;
+    }
+    if (totalPrice != 0.0) {
+      return false;
+    }
+    if (unit != "NaN") {
+      return false;
+    }
+    if (uuid != null && uuid.isNotEmpty) {
+      return false;
+    }
+    return true;
+  }
+
+  ReceiptItem.fromMap(Map<String, dynamic> map)
+      : itemCategory = ItemCategory(itemName: map["shoppingitem"]),
+        rawText = map["rawtext"] ?? "NaN",
         // Allow None if we do not intend to save raw string
-        totalPrice: map["totalprice"],
-        quantity: map.containsKey("quantity") ? map["quantity"] : 1,
-        unit: map.containsKey("unit") ? map["unit"] : "NaN",
-        currency: map.containsKey("currency") ? map["currency"] : "EUR",
-        uuid: map["uuid"],
-      );
+        totalPrice = map["totalprice"],
+        quantity = map.containsKey("quantity") ? map["quantity"] : 1,
+        unit = map.containsKey("unit") ? map["unit"] : "NaN",
+        currency = map.containsKey("currency") ? map["currency"] : "EUR",
+        uuid = map["uuid"];
 
   /// Adding two receipt items does the following:
   /// 1. The raw Texts are added
@@ -125,5 +153,4 @@ class ReceiptItem {
   @override
   // TODO: implement hashCode
   int get hashCode => super.hashCode;
-
 }
