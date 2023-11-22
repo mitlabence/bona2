@@ -36,7 +36,7 @@ class _ShowImageDialogState extends State<ShowImageDialog> {
               alignment: Alignment(0, .9),
               child: ButtonBar(
                 // TODO: add theme! Create global app theme!
-                alignment: MainAxisAlignment.center,
+                alignment: MainAxisAlignment.end,
                 children: <Widget>[
                   // TODO: on retry, delete temporal file?
                   Material(
