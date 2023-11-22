@@ -7,8 +7,7 @@ import '../DataStructures/receipt_item.dart';
 import '../constants.dart';
 
 class AllReceiptItemsEditDialog extends StatefulWidget {
-  AllReceiptItemsEditDialog(
-      {required this.receipt, Key? key})
+  AllReceiptItemsEditDialog({required this.receipt, Key? key})
       : super(key: key);
   Receipt receipt;
 
@@ -22,6 +21,7 @@ class AllReceiptItemsEditDialog extends StatefulWidget {
 class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
   late Receipt receipt;
   late String currency;
+  late TextEditingController _totalPriceController;
 
   @override
   void initState() {
@@ -29,6 +29,15 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
     print("Init called");
     receipt = widget.receipt;
     currency = receipt.currency;
+    _totalPriceController =
+        TextEditingController(text: receipt.totalPrice.toString());
+    print(receipt.totalPrice.toString());
+  }
+
+  @override
+  void dispose() {
+    _totalPriceController.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,22 +46,36 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
       title: const Text("Edit general data"),
       content: Column(
         children: [
-          DropdownButton(
-            value: currency,
-            items:
-                kCurrenciesList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            onChanged: (String? value) {
-              if (value != null) {
-                setState(() {
-                  currency = value;
-                });
-              }
-            },
+          Text("Total price:"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                height: 40,
+                width: 80,
+                child: TextField(
+                  controller: _totalPriceController,
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+              DropdownButton(
+                value: currency,
+                items: kCurrenciesList
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  if (value != null) {
+                    setState(() {
+                      currency = value;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -77,9 +100,8 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
             });
             //Receipt editedReceipt
             if (context.mounted) {
-              Navigator.pop(
-                  context,
-                  receipt// Return changed receipt and receiptItems as tuple
+              Navigator.pop(context,
+                  receipt // Return changed receipt and receiptItems as tuple
                   ); // Close the dialog and return the edited value Tuple2(widget.pk, editedValue, markedForDelete? EditStatus.deleted : EditStatus.changed)
             }
           },
