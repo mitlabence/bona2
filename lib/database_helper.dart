@@ -42,7 +42,7 @@ class DataBaseHelper {
 
   Future<List<Receipt>> getReceipts() async {
     Database db = await instance.db;
-    var receipts = await db.query(kReceiptDatabaseName, orderBy: 'uuid');
+    var receipts = await db.query(kReceiptDatabaseName, orderBy: 'datetime DESC');
     List<Receipt> receiptsList = receipts.isNotEmpty
         ? receipts.map((item) => Receipt.fromMap(item)).toList()
         : [];
@@ -137,6 +137,16 @@ class DataBaseHelper {
   Future<List<dynamic>> getReceiptsDateTimeTotalPrice() async{
     Database db = await instance.db;
     List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice"], where: "totalprice > 0", orderBy: 'datetime' );  // datetime is int, totalprice is double
+    List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"]});
+    return response;
+  }
+
+  Future<List<dynamic>> getReceiptsDateTimeTotalPriceBetween(DateTime startTime, DateTime endTime) async{
+    int startTimeSinceEpoch = startTime.millisecondsSinceEpoch;
+    int endTimeSinceEpoch = endTime.millisecondsSinceEpoch;
+
+    Database db = await instance.db;
+    List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice"], where: "totalprice > 0 AND datetime BETWEEN $startTimeSinceEpoch AND $endTimeSinceEpoch", orderBy: 'datetime' );  // datetime is int, totalprice is double
     List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"]});
     return response;
   }
