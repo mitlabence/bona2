@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:bona2/Development/taggun_receipt_provider.dart';
 import 'package:bona2/Views/receipt_revision_view.dart';
 import 'package:bona2/uuid_tools.dart';
@@ -7,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import '../DataStructures/receipt.dart';
 import '../post_request_provider.dart';
+import '../receipt_reader.dart';
+import '../taggun_receipt_reader.dart';
 import 'image_revision_view.dart';
 
 //TODO: create abstract class/interface POST handler, create implementation for
@@ -24,7 +28,8 @@ class _ImageUploadViewState extends State<ImageUploadView> {
 
   void addReceiptCallback(BuildContext context, Receipt receipt) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => ReceiptRevisionView(receipt: receipt, imageData: null),
+      builder: (context) =>
+          ReceiptRevisionView(receipt: receipt, imageData: null),
     ));
   }
 
@@ -44,64 +49,65 @@ class _ImageUploadViewState extends State<ImageUploadView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SizedBox(
-        height: 500,
-        width: 300,
-        child: Column(
-          children: <Widget>[
-            TextButton(
-              onPressed: () async {
-                // TODO: put json file in cloud storage
-                Receipt receipt = await taggunReceiptProvider.pickReceipt();
-                // TODO: see https://stackoverflow.com/questions/68871880/do-not-use-buildcontexts-across-async-gaps
-                if (context.mounted) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          ReceiptRevisionView(receipt: receipt, imageData: null)));
-                } else {
-                  print("ImageUploadView: Context not mounted!");
-                }
-                // DataBaseHelper dbh = DataBaseHelper.instance;
-                // int responseReceipt = await dbh.addReceipt(r);
-                // int responseReceiptItem = await dbh.addReceiptItems(r.receiptItemsList);
-              },
-              child: const Text("Add random receipt"),
-            ),
-            TextButton(
-              onPressed: () async {
-                var uuid = generateUuidString();
-                String fname = "$uuid.json";
-                Map<String, dynamic>? jsonData =
-                    await taggunReceiptProvider.pickJson();
-                if (jsonData != null) {
-                  String uploadFilePath =
-                      await uploadMapToDriveAsJson(jsonData, fname);
-                }
-              },
-              child: const Text("Random json to cloud"),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                _pickImage().then((XFile? file) {
-                  XFile? imageFile;
-                  if (mounted) {
-                    setState(() {
-                      imageFile = file;
-                    });
+      body: SafeArea(
+        child: Container(
+          constraints: BoxConstraints.expand(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () async {
+                  final String uuidString = "";
+                  print("loading json");
+                  Map<String, dynamic>? json =
+                      await loadJsonFromDrive("$uuidString.json");
+                  print("loading image");
 
-                    if (file != null) {
+                  Uint8List? imageData =
+                      await loadFileFromDrive("$uuidString.jpeg");
+                  if (json == null) {
+                    print("json is null");
+                  } else {
+                    print(json.keys);
+                    Uint8List uuidBlob = uuidBytesListFromString(uuidString);
+                    if (imageData == null) {
+                      print("imageData is null");
+                    } else {
+                      ReceiptReader receiptReader =
+                          TaggunReceiptReader(json: json, uuid: uuidBlob);
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            ImageRevisionView(imageFile: imageFile!),
-                      ));
-                      //var results = sendRequestPlaceholder(imageFile!.path); // Do not use API for development yet.
+                          builder: (context) => ReceiptRevisionView(
+                              receipt: receiptReader.receipt,
+                              imageData: imageData)));
                     }
                   }
-                });
-              },
-              child: Text("Pick image"),
-            ),
-          ],
+                },
+                child: Text("Create receipt"),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  _pickImage().then((XFile? file) {
+                    XFile? imageFile;
+                    if (mounted) {
+                      setState(() {
+                        imageFile = file;
+                      });
+
+                      if (file != null) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              ImageRevisionView(imageFile: imageFile!),
+                        ));
+                        //var results = sendRequestPlaceholder(imageFile!.path); // Do not use API for development yet.
+                      }
+                    }
+                  });
+                },
+                child: Text("Pick image"),
+              ),
+            ],
+          ),
         ),
       ),
     );
