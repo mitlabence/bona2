@@ -22,7 +22,6 @@ import 'package:path_provider/path_provider.dart';
 // TODO: add "are you sure" pop-up window after taking photo
 // TODO: handle error codes properly! (403: authorization error, wrong apikey, for example)
 
-
 //TODO: upload image to cloud storage, then server handles decoding into json (with taggun or whatever)?
 abstract class PostRequestProvider {
   Future<String?> getApiKey();
@@ -130,6 +129,38 @@ class TaggunPostRequestProvider implements PostRequestProvider {
       print("Getting JSON from image failed fatally. Returning Map()");
       return Map(); // TODO: check if this is a valid solution
     }
+  }
+}
+
+Future<Uint8List?> loadFileFromDrive(String fileName) async {
+  final String? userCloudId = await getApiKeyWithName("clouduuid");
+  if (userCloudId == null) {
+    throw Exception("User Cloud ID not found!");
+  } else {
+    final storage = FirebaseStorage.instance;
+    print("found storage");
+    final userFolderRef = storage.ref().child(userCloudId);
+    print("Found folder");
+    final requestedFileRef = userFolderRef.child(fileName);
+    try {
+      final file = await requestedFileRef.getData();
+      return file;
+    }
+    on PlatformException catch (e) { // If no file with given name, PlatformException is thrown by Firebase
+      print("File not found");
+      return null;
+    }
+  }
+}
+
+Future<Map<String, dynamic>?> loadJsonFromDrive(String fileName) async {
+  final Uint8List? file = await loadFileFromDrive(fileName);
+  //final js = json.encode(file);
+  if (file != null) {
+    var js = utf8.decode(file!);
+    return json.decode(js);
+  } else {
+    return null;
   }
 }
 
