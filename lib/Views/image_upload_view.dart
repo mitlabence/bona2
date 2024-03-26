@@ -57,8 +57,18 @@ class _ImageUploadViewState extends State<ImageUploadView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
+                onPressed: () {
+                  Receipt emptyReceipt = Receipt.empty();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ReceiptRevisionView(
+                          receipt: emptyReceipt,
+                          imageData: null)));
+                },
+                child: Text("Manually enter receipt"),
+              ),
+              ElevatedButton(
                 onPressed: () async {
-                  final String uuidString = "";
+                  const String uuidString = "";
                   print("loading json");
                   Map<String, dynamic>? json =
                       await loadJsonFromDrive("$uuidString.json");
