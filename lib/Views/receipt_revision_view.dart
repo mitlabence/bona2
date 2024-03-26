@@ -245,6 +245,10 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                 },
               );
             } else {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('No image available.'),
+                duration: Duration(seconds: 1),
+              ));
               print("No image was found.");
             }
           },
