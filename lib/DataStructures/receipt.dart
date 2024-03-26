@@ -43,7 +43,7 @@ class Receipt {
 
   int get numberOfItems => receiptItemsList.length;
 
-  num get detectedTotalPrice => receiptItemsList
+  num get detectedTotalPrice => numberOfItems==0 ? 0.0 : receiptItemsList
       .map((receiptItem) => receiptItem.totalPrice)
       .reduce((a, b) => a + b);
 
