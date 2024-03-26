@@ -63,6 +63,7 @@ const List<String> kReceiptItemUnitsList = [
   "oz",
   "lb",
   "gal",
+  "NaN",
 ];
 
 const List<String> kCurrenciesList = [
