@@ -76,9 +76,9 @@ void main() {
         return Future.value(encoded.buffer.asByteData());
       });
     });
-    test('loadReceipts should correctly load JSON files', () async {
+    //test('loadReceipts should correctly load JSON files', () async {
       // Mock the Directory.list and FileSystemEntity.path methods
-      MockDirectory mockDirectory = MockDirectory();
+      //MockDirectory mockDirectory = MockDirectory();
       // TODO: decide if use MockDirectory with mock files, or all files in assets/taggun, or assets/taggun/single
       // when(() => mockDirectory.list(recursive: false))
       //     .thenAnswer((_) => Stream<FileSystemEntity>.fromIterable(fileList));
@@ -97,6 +97,6 @@ void main() {
       //     path.join(mockJsonFilesPath, 'file2.json'));
       // expect(taggunReceiptProvider.taggunJsonFiles[2],
       //     path.join(mockJsonFilesPath, 'file3.json'));
-    });
+    //});
   });
 }
