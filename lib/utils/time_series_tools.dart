@@ -37,14 +37,12 @@ class TimeSeriesData {
       throw Exception(
           "Interval must be positive, non-zero."); // TODO: it is a ValueError. Make it more specific
     }
-    int n_bins = endDate.difference(startDate).inHours ~/ interval.inHours;
     List<TimeStamp> tResampled = [];
     TimeStamp currentTimeStamp = startDate;
     while (currentTimeStamp <= endDate) {
       tResampled.add(currentTimeStamp);
       currentTimeStamp = currentTimeStamp.add(interval);
     }
-    //assert(tResampled.length == n_bins);
     // apply aggregate function to each subset of amplitudes
     List<num> yResampled = [];
 
