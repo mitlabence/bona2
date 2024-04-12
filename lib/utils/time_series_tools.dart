@@ -3,7 +3,7 @@ class TimeSeriesData {
 
   List<TimeStamp> t;
   List<num> y;
-
+  int get length => y.length;
   TimeSeriesData.empty()
       : t = List<TimeStamp>.empty(),
         y = List<num>.empty();
