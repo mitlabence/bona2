@@ -11,4 +11,5 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:bona2/main.dart';
 
 void main() {
+  return;
 }
