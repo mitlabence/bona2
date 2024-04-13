@@ -8,7 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:bona2/main.dart';
+//import 'package:bona2/main.dart'; // TODO: if need this import to test widgets, need to mock firebase...
+// Also see https://stackoverflow.com/questions/63662031/how-to-mock-the-firebaseapp-in-flutter
 
 void main() {
   return;
