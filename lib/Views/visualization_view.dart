@@ -46,9 +46,9 @@ class VisualizationView extends ConsumerWidget {
                           totalPriceData.dateTime,
                       yValueMapper: (_TotalPriceData totalPriceData, _) =>
                           totalPriceData.totalPrice,
-                      name: 'Spent',
+                      name: 'Spent', // TODO: show instead time frame! Remake TotalPriceData into DataPoint that uses TimeStamp, or better yet, TimeSeriesData
                       // Enable data label
-                      dataLabelSettings: DataLabelSettings(isVisible: true))
+                      dataLabelSettings: const DataLabelSettings(isVisible: true))
                 ],
                 zoomPanBehavior: ZoomPanBehavior(
                   enablePinching: true,
@@ -74,7 +74,6 @@ class VisualizationView extends ConsumerWidget {
 final testProvider = FutureProvider<List<dynamic>>((ref) async {
   DataBaseHelper dbh = DataBaseHelper.instance;
   final DateTime now = DateTime.now();
-  final DateTime startTime = now.subtract(Duration(days: 3 * 30));
   return dbh.getReceiptsDateTimeTotalPriceBetween(
       DateTime.fromMillisecondsSinceEpoch(0), now);
 });
