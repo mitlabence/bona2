@@ -258,12 +258,15 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
             onPressed: () {
               addEmptyItemAddToHistory();
             },
-            icon: Icon(Icons.plus_one)),
+            icon: const Icon(Icons.plus_one)),
       ]),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),
         onPressed: () async {
           DataBaseHelper dbh = DataBaseHelper.instance;
+          // Set total price to sum of receiptItem prices
+          num totalPrice = receipt.receiptItemsList.map((receiptItem) => receiptItem.totalPrice).reduce((value, element) => value + element);
+          receipt.totalPrice = totalPrice.toDouble();
           int responseReceipt = await dbh.addReceipt(receipt);
           int responseReceiptItem =
               await dbh.addReceiptItems(receipt.receiptItemsList);

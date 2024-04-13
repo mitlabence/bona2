@@ -22,6 +22,7 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
   late Receipt receipt;
   late String currency;
   late TextEditingController _totalPriceController;
+  late DateTime selectedDate;
 
   @override
   void initState() {
@@ -29,9 +30,9 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
     print("Init called");
     receipt = widget.receipt;
     currency = receipt.currency;
+    selectedDate = receipt.dateTime;
     _totalPriceController =
         TextEditingController(text: receipt.totalPrice.toString());
-    print(receipt.totalPrice.toString());
   }
 
   @override
@@ -46,7 +47,7 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
       title: const Text("Edit general data"),
       content: Column(
         children: [
-          Text("Total price:"),
+          const Text("Total price:"),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -77,6 +78,9 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
               ),
             ],
           ),
+          Text(selectedDate.toString()),
+          ElevatedButton(onPressed: () => _selectDate(context), child: const Text("Change date...")),
+          ElevatedButton(onPressed: () => _addUpCosts(context), child: const Text("Calculate total cost...")),
         ],
       ),
       actions: <Widget>[
@@ -97,6 +101,11 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
             }
             setState(() {
               receipt.currency = currency;
+              if (selectedDate != null && selectedDate != receipt.dateTime) {
+                receipt.dateTime = selectedDate;
+              }
+              receipt.totalPrice = double.parse(_totalPriceController.text);
+              print(receipt.totalPrice);
             });
             //Receipt editedReceipt
             if (context.mounted) {
@@ -109,5 +118,28 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
         ),
       ],
     );
+  }
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(context: context, firstDate: DateTime(2018, 1), lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      // Keep the time data unchanged, only modify year, month and day
+      final hour = selectedDate.hour;
+      final minute = selectedDate.minute;
+      final second = selectedDate.second;
+      final millisec = selectedDate.millisecond;
+      final year = picked.year;
+      final month = picked.month;
+      final day = picked.day;
+      final DateTime newDateTime = DateTime(year, month, day, hour, minute, second, millisec);
+      setState(() {
+        selectedDate = newDateTime;
+      });
+    }
+  }
+  Future<void> _addUpCosts(BuildContext context) async {
+    final num newTotalPrice = receipt.receiptItemsList.map((receiptItem) => receiptItem.totalPrice).reduce((totalPrice, itemPrice) => totalPrice + itemPrice);
+    setState(() {
+      _totalPriceController.text = newTotalPrice.toString();
+    });
   }
 }
