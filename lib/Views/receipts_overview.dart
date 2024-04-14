@@ -102,10 +102,10 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
               flex:1,
               child: TextButton(
                 onPressed: () {},
-                child: Text("Add receipt"),
+                child: const Text("Add receipt"),
               ),
             ),
-            Expanded(
+            const Expanded(
               flex: 1,
               child: TextButton(
                 onPressed: null,

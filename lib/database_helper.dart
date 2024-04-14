@@ -40,9 +40,12 @@ class DataBaseHelper {
     await db.execute(kCreateReceiptItemDatabaseCommand);
   }
 
-  Future<List<Receipt>> getReceipts() async {
+  Future<List<Receipt>> getReceipts({ReceiptField sortByField=ReceiptField.dateTime, SortingOrder order=SortingOrder.desc}) async {
+    /// Given a [sortByField] field and [order] sorting order, return a list of receipts sorted by the field in the specified order.
+    final String sortingField = getReceiptColumnName(sortByField);
+    final String sortingOrder = getSortingOrder(order);
     Database db = await instance.db;
-    var receipts = await db.query(kReceiptDatabaseName, orderBy: 'datetime DESC');
+    var receipts = await db.query(kReceiptDatabaseName, orderBy: '$sortingField $sortingOrder');
     List<Receipt> receiptsList = receipts.isNotEmpty
         ? receipts.map((item) => Receipt.fromMap(item)).toList()
         : [];
