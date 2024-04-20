@@ -80,6 +80,7 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
           ),
           Text(selectedDate.toString()),
           ElevatedButton(onPressed: () => _selectDate(context), child: const Text("Change date...")),
+          ElevatedButton(onPressed: () => _selectTime(context), child: const Text("Change time...")),
           ElevatedButton(onPressed: () => _addUpCosts(context), child: const Text("Calculate total cost...")),
         ],
       ),
@@ -120,26 +121,43 @@ class _AllReceiptItemsEditDialogState extends State<AllReceiptItemsEditDialog> {
     );
   }
   Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(context: context, firstDate: DateTime(2018, 1), lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
+    final DateTime? pickedDate = await showDatePicker(context: context, firstDate: DateTime(2018, 1), lastDate: DateTime(2101));
+    if (pickedDate != null && pickedDate != selectedDate) {
       // Keep the time data unchanged, only modify year, month and day
       final hour = selectedDate.hour;
       final minute = selectedDate.minute;
       final second = selectedDate.second;
       final millisec = selectedDate.millisecond;
-      final year = picked.year;
-      final month = picked.month;
-      final day = picked.day;
+      final year = pickedDate.year;
+      final month = pickedDate.month;
+      final day = pickedDate.day;
       final DateTime newDateTime = DateTime(year, month, day, hour, minute, second, millisec);
       setState(() {
         selectedDate = newDateTime;
       });
     }
   }
+  Future<void> _selectTime(BuildContext context) async {
+    TimeOfDay initialTime = TimeOfDay(hour: selectedDate.hour, minute: selectedDate.minute);  // The original time user wants to change
+    final TimeOfDay? pickedTime = await showTimePicker(context: context, initialTime: initialTime);
+    if (pickedTime != null && pickedTime != initialTime) {
+      // Keep date, only change time: hours and minutes
+      final hour = pickedTime.hour;
+      final minute = pickedTime.minute;
+      final year = selectedDate.year;
+      final month = selectedDate.month;
+      final day = selectedDate.day;
+      final DateTime newDateTime = DateTime(year, month, day, hour, minute);
+      setState(() {
+        selectedDate = newDateTime;
+      });
+    }
+    }
   Future<void> _addUpCosts(BuildContext context) async {
     final num newTotalPrice = receipt.receiptItemsList.map((receiptItem) => receiptItem.totalPrice).reduce((totalPrice, itemPrice) => totalPrice + itemPrice);
     setState(() {
       _totalPriceController.text = newTotalPrice.toString();
     });
   }
+
 }
