@@ -75,7 +75,7 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                               return ReceiptTile(
                                 title: snapshot.data![index].shopName,
                                 subtitle:
-                                    "${formatDateTimeToMinutes(snapshot.data![index].dateTime)}, ${snapshot.data![index].totalPrice} ${snapshot.data![index].currency}",
+                                    "${formatDateTimeToMinutes(snapshot.data![index].dateTime)}, ${snapshot.data![index].totalPrice.toStringAsFixed(2)} ${snapshot.data![index].currency}",
                                 onTapCallback: () {
                                   Navigator.push(
                                       context,

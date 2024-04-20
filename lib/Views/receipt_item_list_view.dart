@@ -151,7 +151,7 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
                                         .itemCategory.itemName ??
                                     "NaN",
                                 subtitle:
-                                    "${fetchedReceipt!.receiptItemsList[index].currency} ${fetchedReceipt!.receiptItemsList[index].totalPrice}",
+                                    "${fetchedReceipt!.receiptItemsList[index].currency} ${fetchedReceipt!.receiptItemsList[index].totalPrice.toStringAsFixed(2)}",
                                 onTapCallback: () async {
                                   var pk = receiptItemsPk![index];
                                   // FIXME: clicking next to dialog closes it, but returns Null, whereas Tuple3 was expected!
