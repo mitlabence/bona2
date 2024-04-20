@@ -64,7 +64,7 @@ class _ReceiptItemListViewState extends State<ReceiptItemListView> {
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 value: 1,
-                child: const Text("Change for all items..."),
+                child: const Text("Change receipt details..."),
                 onTap: () async {
                   await fetchReceiptTask;
                   // TODO: can I do this more elegantly? To make sure receiptitems are already loaded.
