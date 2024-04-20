@@ -54,6 +54,7 @@ dependencies:
   tuple: ^2.0.2
   syncfusion_flutter_charts: ^23.1.44
   flutter_riverpod: ^2.4.6
+  collection: ^1.18.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
