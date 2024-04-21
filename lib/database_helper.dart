@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -51,7 +50,6 @@ class DataBaseHelper {
         : [];
     return receiptsList;
   }
-
   Future<int> addReceipt(Receipt receipt) async {
     //TODO: misleading, as this function does not add the items in the receipt.
     // Change the name or impelment alternative function which adds the items as well.
@@ -137,20 +135,20 @@ class DataBaseHelper {
     return receiptItemsList;
   }
 
-  Future<List<dynamic>> getReceiptsDateTimeTotalPrice() async{
+  Future<List<dynamic>> getReceiptsDateTimeTotalPriceCurrency() async{
     Database db = await instance.db;
-    List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice"], where: "totalprice > 0", orderBy: 'datetime' );  // datetime is int, totalprice is double
-    List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"]});
+    List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice", "currency"], where: "totalprice > 0", orderBy: 'datetime' );  // datetime is int, totalprice is double
+    List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"], "currency": queryResponse[index]["currency"]});
     return response;
   }
 
-  Future<List<dynamic>> getReceiptsDateTimeTotalPriceBetween(DateTime startTime, DateTime endTime) async{
+  Future<List<dynamic>> getReceiptsDateTimeTotalPriceCurrencyBetween(DateTime startTime, DateTime endTime) async{
     int startTimeSinceEpoch = startTime.millisecondsSinceEpoch;
     int endTimeSinceEpoch = endTime.millisecondsSinceEpoch;
 
     Database db = await instance.db;
-    List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice"], where: "totalprice > 0 AND datetime BETWEEN $startTimeSinceEpoch AND $endTimeSinceEpoch", orderBy: 'datetime' );  // datetime is int, totalprice is double
-    List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"]});
+    List queryResponse = await db.query(kReceiptDatabaseName, columns: ["datetime", "totalprice", "currency"], where: "totalprice > 0 AND datetime BETWEEN $startTimeSinceEpoch AND $endTimeSinceEpoch", orderBy: 'datetime' );  // datetime is int, totalprice is double
+    List response = List.generate(queryResponse.length, (index) => {"datetime": DateTime.fromMillisecondsSinceEpoch(queryResponse[index]["datetime"]), "totalprice": queryResponse[index]["totalprice"], "currency":queryResponse[index]["currency"]});
     return response;
   }
 
