@@ -46,6 +46,8 @@ Future main() async {
   group("Group test TimeSeriesData", () {
     late List<TimeStamp> t;
     late List<num> y;
+    late String xUnit;
+    late String yUnit;
     setUp(() {
       t = [
         TimeStamp(DateTime(2000, 5, 15)),
@@ -53,14 +55,19 @@ Future main() async {
         TimeStamp(DateTime(2004, 12, 3))
       ];
       y = [0.7, 0.2, 0.5];
+      xUnit = "xUnit";
+      yUnit = "yUnit";
     });
     test("Test initialization runs", () {
-      expect(() => TimeSeriesData(t, y), returnsNormally);
+      expect(() => TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit),
+          returnsNormally);
     });
     test("Test initialization assigns fields", () {
-      TimeSeriesData ts = TimeSeriesData(t, y);
+      TimeSeriesData ts = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       expect(ts.t, equals(t));
       expect(ts.y, equals(y));
+      expect(ts.xUnit, equals(xUnit));
+      expect(ts.yUnit, equals(yUnit));
     });
     test("Test sorting, ascending by time", () {
       // Explicitly define the data, independently of setUp() which might change in the future
@@ -95,10 +102,12 @@ Future main() async {
         TimeStamp(DateTime(2004, 12, 3))
       ];
       List<num> ySorted = [0.2, 0.7, 0.5];
-      TimeSeriesData ts = TimeSeriesData(t, y);
+      TimeSeriesData ts = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData tsSorted = ts.sort(byTime: true, ascending: true);
       expect(tsSorted.t, equals(tSorted));
       expect(tsSorted.y, equals(ySorted));
+      expect(tsSorted.xUnit, equals(xUnit));
+      expect(tsSorted.yUnit, equals(yUnit));
     });
     test("Test isEqualTo with empty self", () {
       TimeSeriesData tsd1 = TimeSeriesData.empty();
@@ -263,7 +272,7 @@ Future main() async {
         1.0,
         1.0,
       ];
-      TimeSeriesData tsd = TimeSeriesData(ts, ys);
+      TimeSeriesData tsd = TimeSeriesData(ts, ys, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2001, 1, 1)),
           TimeStamp(DateTime(2003, 2, 3)),
@@ -277,6 +286,8 @@ Future main() async {
       expect(resampled.t.length, equals(resampled.y.length));
       expect(resampled.t, equals(expectedList));
       expect(resampled.y, equals([2.0, 3.0, 4.0]));
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample() with no values in any windows", () {
       List<TimeStamp> ts = [
@@ -303,7 +314,7 @@ Future main() async {
         1.0,
         1.0,
       ];
-      TimeSeriesData tsd = TimeSeriesData(ts, ys);
+      TimeSeriesData tsd = TimeSeriesData(ts, ys, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 2)),
           TimeStamp(DateTime(2000, 1, 4, 12, 20, 1)),
@@ -312,23 +323,25 @@ Future main() async {
           nanValue: 0.0);
       expect(resampled.t.length, equals(3));
       expect(resampled.y, equals([3.0, 2.0, 3.0]));
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample with beginDate > endDate", () {
-      TimeSeriesData tsd = TimeSeriesData(t, y);
+      TimeSeriesData tsd = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 3)),
-          TimeStamp(DateTime(
-            2000,
-            1,
-            1,
-          )), // endDate earlier than beginDate
+          TimeStamp(DateTime(2000, 1, 1)), // endDate earlier than beginDate
           const Duration(days: 1), // 2 days + half day = 3 time windows
           (l) => l.reduce((value, element) => value + element),
           nanValue: 0.0);
+      expect(tsd.xUnit, equals(xUnit));
+      expect(tsd.yUnit, equals(yUnit));
       expect(resampled.isEmpty, true);
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample with beginDate = endDate and duration=1 day", () {
-      TimeSeriesData tsd = TimeSeriesData(t, y);
+      TimeSeriesData tsd = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 1)),
           TimeStamp(DateTime(
@@ -340,9 +353,11 @@ Future main() async {
           (l) => l.reduce((value, element) => value + element),
           nanValue: 0.0);
       expect(resampled.isEmpty, true);
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample with beginDate = endDate and duration=1 minute", () {
-      TimeSeriesData tsd = TimeSeriesData(t, y);
+      TimeSeriesData tsd = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 1)),
           TimeStamp(DateTime(
@@ -354,9 +369,11 @@ Future main() async {
           (l) => l.reduce((value, element) => value + element),
           nanValue: 0.0);
       expect(resampled.isEmpty, true);
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample with beginDate = endDate and duration=1 second", () {
-      TimeSeriesData tsd = TimeSeriesData(t, y);
+      TimeSeriesData tsd = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 1)),
           TimeStamp(DateTime(
@@ -368,6 +385,8 @@ Future main() async {
           (l) => l.reduce((value, element) => value + element),
           nanValue: 0.0);
       expect(resampled.isEmpty, true);
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test open intervals", () {
       List<TimeStamp> ts = [
@@ -381,7 +400,7 @@ Future main() async {
         TimeStamp(DateTime(2000, 1, 3, 12, 20)),
       ];
       List<num> ys = [1.0, 1.0, 1.0];
-      TimeSeriesData tsd = TimeSeriesData(ts, ys);
+      TimeSeriesData tsd = TimeSeriesData(ts, ys, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 2)),
           TimeStamp(DateTime(2000, 1, 3, 12, 20)),
@@ -390,6 +409,8 @@ Future main() async {
           nanValue: 0.0);
       expect(resampled.t.length, equals(2));
       expect(resampled.y, equals([1.0, 0.0]));
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test all values within range", () {
       List<TimeStamp> ts = [
@@ -416,7 +437,7 @@ Future main() async {
         1.0,
         1.0,
       ];
-      TimeSeriesData tsd = TimeSeriesData(ts, ys);
+      TimeSeriesData tsd = TimeSeriesData(ts, ys, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tsd.resample(
           TimeStamp(DateTime(2000, 1, 1, 15)),
           TimeStamp(DateTime(2000, 1, 4, 14)),
@@ -425,9 +446,11 @@ Future main() async {
           nanValue: 0.0);
       expect(resampled.t.length, equals(3));
       expect(resampled.y, equals([3.0, 1.0, 6.0]));
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample with range smaller than interval", () {
-      TimeSeriesData tds = TimeSeriesData(t, y);
+      TimeSeriesData tds = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tds.resample(
         TimeStamp(DateTime(2003, 1, 1, 12, 50)),
         TimeStamp(DateTime(2003, 1, 1, 12, 55)),
@@ -436,24 +459,27 @@ Future main() async {
       );
       expect(resampled.t.length, equals(1)); // only 1 incomplete
       expect(resampled.y, equals([0.0])); // only 1 incomplete
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resample with last TimeStamp coinciding with endDate", () {
       List<TimeStamp> ts = [
         TimeStamp(DateTime(2024, 1, 1, 11, 50)), // outside range
         TimeStamp(DateTime(2024, 1, 1, 12, 50)), // just inside first bin
         TimeStamp(DateTime(2024, 1, 1, 12, 55)), // inside first bin
-        TimeStamp(DateTime(2024, 1, 1, 13, 49, 59)), // just inside second bin
-        TimeStamp(DateTime(2024, 1, 1, 13, 50, 0, 0)), // just inside third bin
-        TimeStamp(DateTime(2024, 1, 1, 15, 51)), // inside fifth bin
-        TimeStamp(DateTime(2024, 1, 1, 15, 52)), // inside fifth bin
+        TimeStamp(DateTime(2024, 1, 1, 13, 49, 59)), // just inside first bin
+        TimeStamp(DateTime(2024, 1, 1, 13, 50, 0, 0)), // just inside second bin
+        TimeStamp(DateTime(2024, 1, 1, 15, 51)), // inside fourth bin
+        TimeStamp(DateTime(2024, 1, 1, 15, 52)), // inside fourth bin
         TimeStamp(DateTime(2024, 1, 1, 16, 53)), // outside range
         TimeStamp(DateTime(2024, 1, 1, 17, 50)), // outside range
       ];
       List<num> ys = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
-      TimeSeriesData tds = TimeSeriesData(ts, ys);
+      TimeSeriesData tds = TimeSeriesData(ts, ys, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData tdsResampled = tds.resample(
           TimeStamp(DateTime(2024, 1, 1, 12, 50)),
           TimeStamp(DateTime(2024, 1, 1, 16, 50)),
+          // Should give 5 timestamps: 12:50 to 16:50 inclusive, every hour
           const Duration(hours: 1),
           (l) => l.reduce((value, element) => value + element));
       TimeSeriesData expected = TimeSeriesData([
@@ -462,12 +488,21 @@ Future main() async {
         TimeStamp(DateTime(2024, 1, 1, 14, 50)),
         TimeStamp(DateTime(2024, 1, 1, 15, 50)),
         TimeStamp(DateTime(2024, 1, 1, 16, 50)),
-      ], []);
+      ], [
+        3.0,
+        1.0,
+        0.0,
+        2.0,
+        0.0
+      ], xUnit: xUnit, yUnit: yUnit);
+      expect(tdsResampled.isEqualTo(expected), true);
     });
   });
   group("Group test resampleMonths()", () {
     late List<TimeStamp> t;
     late List<num> y;
+    late String xUnit;
+    late String yUnit;
     setUp(() {
       t = [
         TimeStamp(DateTime(2000, 5, 15)),
@@ -478,9 +513,11 @@ Future main() async {
         TimeStamp(DateTime(2001, 1, 3)),
       ];
       y = [1.0, 1.0, 1.0, 1.0, 1.0];
+      xUnit = "xUnit";
+      yUnit = "yUnit";
     });
     test("Test resampleMonths with beginDate > endDate", () {
-      TimeSeriesData tds = TimeSeriesData(t, y);
+      TimeSeriesData tds = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tds.resampleMonths(
         TimeStamp(DateTime(2000, 8, 29)),
         TimeStamp(DateTime(2000, 1, 1)), // earlier than beginDate
@@ -489,7 +526,7 @@ Future main() async {
       expect(resampled.isEmpty, true);
     });
     test("Test resampleMonth with beginDate = endDate", () {
-      TimeSeriesData tds = TimeSeriesData(t, y);
+      TimeSeriesData tds = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tds.resampleMonths(
         TimeStamp(DateTime(2000, 5, 22)),
         // there is an entry with this date in tds
@@ -497,31 +534,42 @@ Future main() async {
         (l) => l.reduce((value, element) => value + element),
       );
       expect(resampled.isEmpty, true);
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
     test("Test resampleMonth with all data in range", () {
-      TimeSeriesData tds = TimeSeriesData(t, y);
+      TimeSeriesData tds = TimeSeriesData(t, y, xUnit: xUnit, yUnit: yUnit);
       TimeSeriesData resampled = tds.resampleMonths(
         TimeStamp(DateTime(2000, 5, 1)),
         // there is an entry with this date in tds
         TimeStamp(DateTime(2001, 1, 31)),
         (l) => l.reduce((value, element) => value + element),
       );
-      TimeSeriesData tdsExpected = TimeSeriesData(
-        [
-          TimeStamp(DateTime(2000, 5, 1)),
-          TimeStamp(DateTime(2000, 6, 1)),
-          TimeStamp(DateTime(2000, 7, 1)),
-          TimeStamp(DateTime(2000, 8, 1)),
-          TimeStamp(DateTime(2000, 9, 1)),
-          TimeStamp(DateTime(2000, 10, 1)),
-          TimeStamp(DateTime(2000, 11, 1)),
-          TimeStamp(DateTime(2000, 12, 1)),
-          TimeStamp(DateTime(2001, 1, 1)),
-        ],
-        [2, 1, 1, 0, 0, 0, 0, 0, 1],
-      );
+      TimeSeriesData tdsExpected = TimeSeriesData([
+        TimeStamp(DateTime(2000, 5, 1)),
+        TimeStamp(DateTime(2000, 6, 1)),
+        TimeStamp(DateTime(2000, 7, 1)),
+        TimeStamp(DateTime(2000, 8, 1)),
+        TimeStamp(DateTime(2000, 9, 1)),
+        TimeStamp(DateTime(2000, 10, 1)),
+        TimeStamp(DateTime(2000, 11, 1)),
+        TimeStamp(DateTime(2000, 12, 1)),
+        TimeStamp(DateTime(2001, 1, 1)),
+      ], [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ], xUnit: xUnit, yUnit: yUnit);
       expect(resampled.isEqualTo(tdsExpected), true);
       expect(tdsExpected.isEqualTo(resampled), true);
+      expect(resampled.xUnit, equals(xUnit));
+      expect(resampled.yUnit, equals(yUnit));
     });
   });
 }

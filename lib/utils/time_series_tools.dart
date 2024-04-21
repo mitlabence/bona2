@@ -1,14 +1,16 @@
 import 'package:collection/collection.dart';
 
 class TimeSeriesData {
-  TimeSeriesData(this.t, this.y);
+  TimeSeriesData(this.t, this.y, {this.xUnit= "NaN", this.yUnit= "NaN"});
 
   List<TimeStamp> t;
   List<num> y;
+  String xUnit;
+  String yUnit;
 
   int get length => y.length;
 
-  TimeSeriesData.empty()
+  TimeSeriesData.empty({this.xUnit="NaN", this.yUnit="Nan"})
       : t = List<TimeStamp>.empty(),
         y = List<num>.empty();
 
@@ -23,7 +25,7 @@ class TimeSeriesData {
     if (!ascending) sortedIndices = sortedIndices.reversed.toList();
     List<TimeStamp> tSorted = sortedIndices.map((index) => t[index]).toList();
     List<num> ySorted = sortedIndices.map((index) => y[index]).toList();
-    return TimeSeriesData(tSorted, ySorted);
+    return TimeSeriesData(tSorted, ySorted, xUnit: xUnit, yUnit: yUnit);
   }
 
   TimeSeriesData resample(TimeStamp startDate, TimeStamp endDate,
@@ -39,7 +41,7 @@ class TimeSeriesData {
     /// [12:50, 13:50), [13:50, 14:50), [14:50, 15:50), [15:50, 15:50), i.e. last entry is 0. (nanValue).
     /// Note: if [endDate] <= [startDate], an empty TimeSeriesData is returned.
     if (endDate <= startDate) {
-      return TimeSeriesData.empty();
+      return TimeSeriesData.empty(xUnit: xUnit, yUnit: yUnit);
     }
     if (interval.inHours <= 0) {
       throw Exception(
@@ -64,7 +66,7 @@ class TimeSeriesData {
     /// The corresponding y values are aggregates of 2024.01.10 to 2024.01.31, 2024.02.1. to 2024.02.29, 2024.03.01. to 2024.03.29., all inclusive.
     /// That is, endDate specifies an exclusive upper limit to data used.
     if (endDate <= startDate) {
-      return TimeSeriesData.empty();
+      return TimeSeriesData.empty(xUnit: xUnit, yUnit: yUnit);
     }
     List<TimeStamp> tResampled = [];
     TimeStamp currentTimeStamp = TimeStamp(DateTime(startDate.dateTime.year,
@@ -115,7 +117,7 @@ class TimeSeriesData {
     }
     List<num> subList = y.sublist(iBeginList[iBeginList.length - 1], iEnd);
     yResampled.add(subList.isNotEmpty ? aggregateFunction(subList) : nanValue);
-    return TimeSeriesData(tResampled, yResampled);
+    return TimeSeriesData(tResampled, yResampled, xUnit: xUnit, yUnit: yUnit);
   }
 
   bool get isEmpty =>
@@ -124,12 +126,12 @@ class TimeSeriesData {
 
   bool isEqualTo(TimeSeriesData other) {
     /// Do a shallow equality check
-    return const ListEquality().equals(y, other.y) && const ListEquality().equals(t, other.t);
+    return const ListEquality().equals(y, other.y) && const ListEquality().equals(t, other.t) && xUnit == other.xUnit && yUnit == other.yUnit;
   }
   bool isDeepEqualTo(TimeSeriesData other) {
     /// Do a deep equality check
     //TODO: write tests!
-    return const DeepCollectionEquality().equals(y, other.y) && const DeepCollectionEquality().equals(t, other.t);
+    return const DeepCollectionEquality().equals(y, other.y) && const DeepCollectionEquality().equals(t, other.t) && xUnit == other.xUnit && yUnit == other.yUnit;
   }
 }
 
