@@ -86,11 +86,11 @@ class ReceiptItem {
 
   ReceiptItem.fromMap(Map<String, dynamic> map)
       : itemCategory = ItemCategory(itemName: map["shoppingitem"]),
-        rawText = map["rawtext"] ?? "NaN",
+        rawText = map["rawtext"] ?? kNullStringValue,
         // Allow None if we do not intend to save raw string
         totalPrice = map["totalprice"],
         quantity = map.containsKey("quantity") ? map["quantity"] : 1,
-        unit = map.containsKey("unit") ? map["unit"] : "NaN",
+        unit = map.containsKey("unit") ? map["unit"] : kNullStringValue,
         currency = map.containsKey("currency") ? map["currency"] : "EUR",
         uuid = map["uuid"];
 
