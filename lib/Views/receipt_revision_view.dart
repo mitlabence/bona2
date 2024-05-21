@@ -10,6 +10,7 @@ import '../DataStructures/receipt.dart';
 import '../DataStructures/receipt_item.dart';
 import '../Dialogs/all_receipt_items_edit_dialog.dart';
 import '../Dialogs/receipt_item_edit_dialog.dart';
+import '../Dialogs/select_location_dialog.dart';
 import '../constants.dart';
 import '../database_helper.dart';
 import 'package:bona2/firestore_helper.dart';
@@ -111,9 +112,9 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
               ),
               PopupMenuItem(
                 value: 1,
-                child: const Text("Change for all items..."),
+                child: const Text("Change receipt details"),
                 onTap: () async {
-                  Receipt modifiedReceipt = await showDialog(
+                  Receipt? modifiedReceipt = await showDialog(
                     context: context,
                     builder: (context) => AllReceiptItemsEditDialog(
                       receipt: receipt,
@@ -133,6 +134,14 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                   }
                 },
               ),
+              PopupMenuItem(
+                value: 2,
+                child: const Text("Set location"),
+                onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => SelectLocationDialog())                  );
+                },
+              )
             ],
             onSelected: (int result) {
               //TODO: implement undo and undo all.
@@ -143,9 +152,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
       body: Column(children: [
         Text(receipt.shopName),
         Text(receipt.dateTime.toString()),
-        SizedBox(
-          width: 400,
-          height: 600,
+        Expanded(
           child: ListView.builder(
             //FIXME: if empty list, throws error (deleting items for example)
             scrollDirection: Axis.vertical,
@@ -265,7 +272,9 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
         onPressed: () async {
           DataBaseHelper dbh = DataBaseHelper.instance;
           // Set total price to sum of receiptItem prices
-          num totalPrice = receipt.receiptItemsList.map((receiptItem) => receiptItem.totalPrice).reduce((value, element) => value + element);
+          num totalPrice = receipt.receiptItemsList
+              .map((receiptItem) => receiptItem.totalPrice)
+              .reduce((value, element) => value + element);
           receipt.totalPrice = totalPrice.toDouble();
           int responseReceipt = await dbh.addReceipt(receipt);
           int responseReceiptItem =
@@ -281,7 +290,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
             final String fname =
                 "${UuidValue.fromByteList(receipt.uuid).uuid}.json";
             // TODO: it should be uploaded into an own (uuid) folder per user!
-            await fireStoreHelper.uploadReceiptAndItems(receipt);
+            //await fireStoreHelper.uploadReceiptAndItems(receipt);
             //await fireStoreHelper.uploadSample();
             if (!mounted) {
               print("ReceiptRevisionView: not mounted.");

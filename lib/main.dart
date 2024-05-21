@@ -36,6 +36,7 @@ Future<void> main() async {
   final String apikeys = await rootBundle.loadString('assets/apikeys.json');
   final apiKeysJson = jsonDecode(apikeys);
   globals.OcrApiKey = apiKeysJson["ocrapi"]["key"];
+  globals.googleMapAPIKey = apiKeysJson["googlemapapi"]["key"]; // TODO: restrict permissions
   // TODO: https://www.youtube.com/watch?v=noi6aYsP7Go 8:07. Add functions for database operations, test them in ReceiptView screen.
   // FIXME: Unhandled Exception: PlatformException(sign_in_failed, com.google.android.gms.common.api.ApiException: 10: , null, null)
   // MAybe: https://stackoverflow.com/questions/54557479/flutter-and-google-sign-in-plugin-platformexceptionsign-in-failed-com-google

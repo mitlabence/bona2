@@ -55,6 +55,7 @@ dependencies:
   syncfusion_flutter_charts: ^23.1.44
   flutter_riverpod: ^2.4.6
   collection: ^1.18.0
+  google_maps_flutter: ^2.5.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

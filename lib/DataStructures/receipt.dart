@@ -4,6 +4,7 @@ import "package:bona2/DataStructures/shopping_item.dart";
 import "package:bona2/uuid_tools.dart";
 import "package:uuid/uuid.dart";
 import "package:uuid/uuid_util.dart";
+import "package:bona2/constants.dart";
 
 import "receipt_item.dart";
 
@@ -56,15 +57,15 @@ class Receipt {
     /// as values.
     return Receipt(
       receiptItemsList: [],
-      shopName: "",
+      shopName: kNullStringValue,
       dateTime: DateTime.now(),
       totalPrice: 0.0,
-      currency: "",
-      country: "",
-      address: "",
-      postalCode: "",
-      city: "",
-      paymentType: "",
+      currency: kNullStringValue,
+      country: kNullStringValue,
+      address: kNullStringValue,
+      postalCode: kNullStringValue,
+      city: kNullStringValue,
+      paymentType: kNullStringValue,
       uuid: Uint8List(0),
     );
   }

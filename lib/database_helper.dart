@@ -59,6 +59,16 @@ class DataBaseHelper {
     print(hex(receipt.uuid));
     return await db.insert(kReceiptDatabaseName, receipt.toMapSQL());
   }
+  Future<int> addReceipts(List<Receipt> receiptsList) async {
+    //TODO: misleading, as this function does not add the items in the receipt.
+    // Change the name or impelment alternative function which adds the items as well.
+    // TODO: handle re-adding same receipt: should not add duplicate. Use datetime, total price to compare.
+    int res = -1;
+    for (Receipt receipt in receiptsList){
+      res = await addReceipt(receipt);
+    }
+    return res;
+  }
 
   Future<int> addReceiptItem(ReceiptItem receiptItem) async {
     //TODO: handle re-adding same receipt item: do not add duplicate. What if two items bought in same session?

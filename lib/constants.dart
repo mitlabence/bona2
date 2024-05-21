@@ -11,7 +11,7 @@ bool compareDouble(double a, double b) {
   return (a - b).abs() < kEpsilon;
 }
 
-const String kNullStringValue = "NaN";
+const String kNullStringValue = "NULL";
 
 //TODO: change to list of String database keys and datatypes (or Map), to assure consistency between production and test databases with one modification
 const String kCreateReceiptItemDatabaseCommand =
@@ -162,15 +162,15 @@ const List<String> kReceiptItemUnitsList = [
   "oz",
   "lb",
   "gal",
-  "NaN",
+  kNullStringValue
 ];
 
 const List<String> kCurrenciesList = [
-  "NaN",
   "EUR",
   "USD",
   "HUF",
   "GBP",
+  kNullStringValue,
 ];
 
 enum EditStatus {

@@ -1,6 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:bona2/global.dart';
 import 'package:bona2/uuid_tools.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tuple/tuple.dart';
 
 import 'DataStructures/receipt.dart';
 import 'DataStructures/receipt_item.dart';
@@ -87,8 +90,55 @@ class FireStoreHelper {
   }
 
 
-
-
+  Future<Tuple2<List<Receipt>, List<ReceiptItem>>?> downloadAllReceipts() async {
+    // Download all receipts the user has.
+    // TODO: clean up this function... deal with the schema change (all fields lower case now), extract into functions (like Map keys to lower case)
+    List<Receipt> receiptsList = [];
+    List<ReceiptItem> receiptItemsList = [];
+    CollectionReference receiptsCollectionRef = firebase.collection('receipts');
+    final QuerySnapshot receiptsSnapshot = await receiptsCollectionRef.get();
+    if(receiptsSnapshot.docs.isNotEmpty){
+      for(var receiptDoc in receiptsSnapshot.docs){
+        var receiptMap = receiptDoc.data();
+        if(receiptMap is Map<String, dynamic>){
+          receiptMap["uuid"] = Uint8List.fromList(List<int>.from(receiptMap["uuid"].whereType<int>()));
+          Map<String, dynamic> lowerCaseMap = {};
+          for(var key in receiptMap.keys){
+            lowerCaseMap[key.toLowerCase()] = receiptMap[key];  // receipt takes lower case keys
+          }
+          receiptsList.add(Receipt.fromMap(lowerCaseMap));
+        }
+        else {
+          throw Exception("receiptsSnapshot: Map excepted, got other type: $receiptMap");
+        }
+        CollectionReference receiptItemsCollectionRef = receiptsCollectionRef.doc(receiptDoc.id).collection("receipt_items");
+        QuerySnapshot receiptItemsSnapshot = await receiptItemsCollectionRef.get();
+        for (var receiptItemDoc in receiptItemsSnapshot.docs){
+          var receiptItemMap = receiptItemDoc.data();
+          if(receiptItemMap is Map<String, dynamic>){
+            // TODO: define new list instead? See https://stackoverflow.com/questions/50245187/type-listdynamic-is-not-a-subtype-of-type-listint-where - initializing is preferred over casting
+            receiptItemMap["uuid"] = Uint8List.fromList(List<int>.from(receiptItemMap["uuid"].whereType<int>()));
+            Map<String, dynamic> lowerCaseMap = {};
+            for(var key in receiptItemMap.keys){
+              lowerCaseMap[key.toLowerCase()] = receiptItemMap[key];  // receipt takes lower case keys
+            }
+            receiptItemsList.add(ReceiptItem.fromMap(lowerCaseMap));
+          }
+          else {
+            throw Exception("receiptItemsSnapshot: Map excepted, got other type: $receiptItemMap");
+          }
+        }
+      }
+      return Tuple2(receiptsList, receiptItemsList);
+    }
+    else{
+      print("No entries found!");
+    }
+  }
+  // TODO: make an SQL database with receipt uuid and user uuid!
+  //Future<List<Receipt>> downloadReceipts() async {
+    // TODO: download for now all receipts in the folder...
+  //}
 // TODO: create two collections: receipts -> subcollection receiptItems, taggunResults
 // TODO: upon acquiring the uid (authentication) and uploading first json file,
 // put it in proper folder
