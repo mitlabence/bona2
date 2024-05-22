@@ -47,6 +47,7 @@ Future<void> main() async {
   } else {
     firebaseUid = userCredential.user!.uid;
     FireStoreHelper fsh = FireStoreHelper();
+    fsh.initializeUser();  // If user collection does not exist yet, create it
     await FirebaseAppCheck.instance.activate(
       webRecaptchaSiteKey: 'recaptcha-v3-site-key',
       // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose

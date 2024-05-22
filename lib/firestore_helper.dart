@@ -31,23 +31,40 @@ class FireStoreHelper {
 
   late String userUid;
   late final FirebaseFirestore firebase;
-  late final CollectionReference receiptsCollection;
+  late final CollectionReference userReceiptsCollection;
   late final CollectionReference taggunResultsCollection;
+  late final DocumentReference personalReceiptsDocument;
 
   FireStoreHelper._internal() {
     // Set root document in firestore
     userUid = firebaseUid;
     // Get instance of Firestore
     firebase = FirebaseFirestore.instance;
-    receiptsCollection = firebase.collection("receipts");
-    taggunResultsCollection = firebase.collection("taggunResults");
+    personalReceiptsDocument = firebase.collection(firebaseUid).doc("receipts");
+    userReceiptsCollection =
+        personalReceiptsDocument.collection("receipts");
+    taggunResultsCollection =
+        personalReceiptsDocument.collection("taggunResults");
+  }
+
+  Future<void> initializeUser() async {
+    /// If the user ID collection does not have "receipts" document, initialize this
+    personalReceiptsDocument.get().then((docSnapshot) {
+      if (!docSnapshot.exists) {
+        Map<String, dynamic> userData = {
+          "userId": firebaseUid,
+          "timeCreated": DateTime.now().toIso8601String()
+        };
+        personalReceiptsDocument.set(userData);
+      }
+    });
   }
 
   Future<void> uploadReceiptAndItems(Receipt receipt) async {
     final String fileName = uuidStringFromUint8List(receipt.uuid);
     // TODO: might convert to non-future function if I don't check for existence
     //    and not wait for batch.commit(). The question: is it worth it?
-    final receiptDocRef = receiptsCollection.doc(fileName);
+    final receiptDocRef = userReceiptsCollection.doc(fileName);
     WriteBatch batch = firebase.batch(); // create a batch of writes
     Map<String, dynamic> receiptMap = receipt.toMap();
     List<ReceiptItem> receiptItems = receiptMap.remove("receiptItemsList");
@@ -70,7 +87,7 @@ class FireStoreHelper {
 
   Future<void> updateReceipt(Receipt receipt) async {
     final String fileName = uuidStringFromUint8List(receipt.uuid);
-    final receiptDocRef = receiptsCollection.doc(fileName);
+    final receiptDocRef = userReceiptsCollection.doc(fileName);
     WriteBatch batch = firebase.batch();
     Map<String, dynamic> receiptMap = receipt.toMap();
     List<ReceiptItem> receiptItems = receiptMap.remove("receiptItemsList");
@@ -82,63 +99,68 @@ class FireStoreHelper {
       final ReceiptItem receiptItem = receiptItems[i];
       final receiptItemFileName = "${fileName}_$i";
       var receiptItemDocRef =
-      receiptItemsCollectionRef.doc(receiptItemFileName);
+          receiptItemsCollectionRef.doc(receiptItemFileName);
       final receiptItemMap = receiptItem.toMap();
       batch.update(receiptItemDocRef, receiptItemMap);
     }
     await batch.commit();
   }
 
-
-  Future<Tuple2<List<Receipt>, List<ReceiptItem>>?> downloadAllReceipts() async {
+  Future<Tuple2<List<Receipt>, List<ReceiptItem>>?>
+      downloadAllReceipts() async {
     // Download all receipts the user has.
     // TODO: clean up this function... deal with the schema change (all fields lower case now), extract into functions (like Map keys to lower case)
     List<Receipt> receiptsList = [];
     List<ReceiptItem> receiptItemsList = [];
-    CollectionReference receiptsCollectionRef = firebase.collection('receipts');
-    final QuerySnapshot receiptsSnapshot = await receiptsCollectionRef.get();
-    if(receiptsSnapshot.docs.isNotEmpty){
-      for(var receiptDoc in receiptsSnapshot.docs){
+    final QuerySnapshot receiptsSnapshot = await userReceiptsCollection.get();
+    if (receiptsSnapshot.docs.isNotEmpty) {
+      for (var receiptDoc in receiptsSnapshot.docs) {
         var receiptMap = receiptDoc.data();
-        if(receiptMap is Map<String, dynamic>){
-          receiptMap["uuid"] = Uint8List.fromList(List<int>.from(receiptMap["uuid"].whereType<int>()));
+        if (receiptMap is Map<String, dynamic>) {
+          receiptMap["uuid"] = Uint8List.fromList(
+              List<int>.from(receiptMap["uuid"].whereType<int>()));
           Map<String, dynamic> lowerCaseMap = {};
-          for(var key in receiptMap.keys){
-            lowerCaseMap[key.toLowerCase()] = receiptMap[key];  // receipt takes lower case keys
+          for (var key in receiptMap.keys) {
+            lowerCaseMap[key.toLowerCase()] =
+                receiptMap[key]; // receipt takes lower case keys
           }
           receiptsList.add(Receipt.fromMap(lowerCaseMap));
+        } else {
+          throw Exception(
+              "receiptsSnapshot: Map excepted, got other type: $receiptMap");
         }
-        else {
-          throw Exception("receiptsSnapshot: Map excepted, got other type: $receiptMap");
-        }
-        CollectionReference receiptItemsCollectionRef = receiptsCollectionRef.doc(receiptDoc.id).collection("receipt_items");
-        QuerySnapshot receiptItemsSnapshot = await receiptItemsCollectionRef.get();
-        for (var receiptItemDoc in receiptItemsSnapshot.docs){
+        CollectionReference receiptItemsCollectionRef = userReceiptsCollection
+            .doc(receiptDoc.id)
+            .collection("receipt_items");
+        QuerySnapshot receiptItemsSnapshot =
+            await receiptItemsCollectionRef.get();
+        for (var receiptItemDoc in receiptItemsSnapshot.docs) {
           var receiptItemMap = receiptItemDoc.data();
-          if(receiptItemMap is Map<String, dynamic>){
+          if (receiptItemMap is Map<String, dynamic>) {
             // TODO: define new list instead? See https://stackoverflow.com/questions/50245187/type-listdynamic-is-not-a-subtype-of-type-listint-where - initializing is preferred over casting
-            receiptItemMap["uuid"] = Uint8List.fromList(List<int>.from(receiptItemMap["uuid"].whereType<int>()));
+            receiptItemMap["uuid"] = Uint8List.fromList(
+                List<int>.from(receiptItemMap["uuid"].whereType<int>()));
             Map<String, dynamic> lowerCaseMap = {};
-            for(var key in receiptItemMap.keys){
-              lowerCaseMap[key.toLowerCase()] = receiptItemMap[key];  // receipt takes lower case keys
+            for (var key in receiptItemMap.keys) {
+              lowerCaseMap[key.toLowerCase()] =
+                  receiptItemMap[key]; // receipt takes lower case keys
             }
             receiptItemsList.add(ReceiptItem.fromMap(lowerCaseMap));
-          }
-          else {
-            throw Exception("receiptItemsSnapshot: Map excepted, got other type: $receiptItemMap");
+          } else {
+            throw Exception(
+                "receiptItemsSnapshot: Map excepted, got other type: $receiptItemMap");
           }
         }
       }
       return Tuple2(receiptsList, receiptItemsList);
-    }
-    else{
+    } else {
       print("No entries found!");
     }
   }
-  // TODO: make an SQL database with receipt uuid and user uuid!
-  //Future<List<Receipt>> downloadReceipts() async {
-    // TODO: download for now all receipts in the folder...
-  //}
+// TODO: make an SQL database with receipt uuid and user uuid!
+//Future<List<Receipt>> downloadReceipts() async {
+// TODO: download for now all receipts in the folder...
+//}
 // TODO: create two collections: receipts -> subcollection receiptItems, taggunResults
 // TODO: upon acquiring the uid (authentication) and uploading first json file,
 // put it in proper folder
