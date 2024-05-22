@@ -44,22 +44,22 @@ class ReceiptItem {
 
   Map<String, dynamic> toMap() {
     return {
-      'rawText': rawText ?? "NaN",
+      'rawText': rawText ?? kNullStringValue,
       'shoppingItem': itemCategory.itemName,
       'totalPrice': totalPrice,
       'uuid': uuid,
       'currency': currency,
       'quantity': quantity ?? -1.0,
-      'unit': unit ?? "NaN",
+      'unit': unit ?? kNullStringValue,
     };
   }
 
   ReceiptItem.empty({Uint8List? uuid})
       : itemCategory = ItemCategory.empty(),
-        rawText = "",
+        rawText = "",  // do not use the "null string", but an empty text
         totalPrice = 0.0,
         quantity = 1,
-        unit = "NaN",
+        unit = kNullStringValue,
         currency = "EUR",
         uuid = uuid ?? Uint8List.fromList([]);
 
@@ -75,7 +75,7 @@ class ReceiptItem {
     if (totalPrice != 0.0) {
       return false;
     }
-    if (unit != "NaN") {
+    if (unit != kNullStringValue) {
       return false;
     }
     if (uuid != null && uuid.isNotEmpty) {
