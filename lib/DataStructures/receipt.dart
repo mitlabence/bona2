@@ -9,7 +9,6 @@ import "package:bona2/constants.dart";
 import "receipt_item.dart";
 
 class Receipt {
-
   List<ReceiptItem> receiptItemsList;
   String shopName;
   DateTime dateTime;
@@ -20,33 +19,37 @@ class Receipt {
   String postalCode;
   String city;
   String paymentType;
+
   /// 0 - NaN (use 0 value to fill data with no data source info),
   /// 1 - taggun API
-  int dataSource;  // i.e. the way the receipt was scanned
+  int dataSource; // i.e. the way the receipt was scanned
   late final Uint8List
       uuid; // leave option to either define uuid or let Receipt class assign one
 
-  Receipt(
-      {required this.receiptItemsList,
-      required this.shopName,
-      required this.dateTime,
-      required this.totalPrice,
-      required this.currency,
-      required this.country,
-      required this.city,
-      required this.address,
-      required this.postalCode,
-      required this.paymentType,
-      uuid,
-      this.dataSource=0,}) {
+  Receipt({
+    required this.receiptItemsList,
+    required this.shopName,
+    required this.dateTime,
+    required this.totalPrice,
+    required this.currency,
+    required this.country,
+    required this.city,
+    required this.address,
+    required this.postalCode,
+    required this.paymentType,
+    uuid,
+    this.dataSource = 0,
+  }) {
     this.uuid = uuid ?? generateUuidUint8List();
   }
 
   int get numberOfItems => receiptItemsList.length;
 
-  num get detectedTotalPrice => numberOfItems==0 ? 0.0 : receiptItemsList
-      .map((receiptItem) => receiptItem.totalPrice)
-      .reduce((a, b) => a + b);
+  num get detectedTotalPrice => numberOfItems == 0
+      ? 0.0
+      : receiptItemsList
+          .map((receiptItem) => receiptItem.totalPrice)
+          .reduce((a, b) => a + b);
 
   factory Receipt.empty() {
     /// Create a Receipt instance with
@@ -143,19 +146,13 @@ class Receipt {
   /// WARNING: uuid (Uint8List) needs to be included in the map!
   /// If not present, use fromMapAndUuid()!
   /// Use ReceiptReader to convert scan results to a Receipt.
+  // TODO: make tests, especially to receiptItemsList!
   factory Receipt.fromMap(Map<String, dynamic> mapWithUuid) => Receipt(
-        receiptItemsList: [
-          ReceiptItem(
-              itemCategory: ItemCategory(
-                itemName: "asd",
-              ),
-              rawText: 'asd',
-              totalPrice: 1.0,
-              currency: mapWithUuid["currency"],
-              uuid: mapWithUuid["uuid"],
-              unit: "ml",
-              quantity: 500)
-        ],
+        receiptItemsList: mapWithUuid.containsKey("receiptItemsList")
+            ? mapWithUuid["receiptItemsList"]
+            : [
+                ReceiptItem.empty(),
+              ],
         shopName: mapWithUuid["shopname"],
         dateTime: DateTime.fromMillisecondsSinceEpoch(mapWithUuid["datetime"]),
         totalPrice: mapWithUuid["totalprice"],
@@ -166,7 +163,9 @@ class Receipt {
         postalCode: mapWithUuid["postalcode"],
         uuid: mapWithUuid["uuid"],
         paymentType: mapWithUuid["paymenttype"],
-        dataSource: mapWithUuid.containsKey("dataSource") ? mapWithUuid["dataSource"] : 0,
+        dataSource: mapWithUuid.containsKey("dataSource")
+            ? mapWithUuid["dataSource"]
+            : 0,
       );
 
   factory Receipt.fromMapAndUuid(Map<String, dynamic> map, Uint8List uuid) =>

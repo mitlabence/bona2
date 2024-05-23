@@ -18,11 +18,6 @@ class ReceiptsOverview extends StatefulWidget {
 
 class _ReceiptsOverviewState extends State<ReceiptsOverview> {
   final DataBaseHelper dbh = DataBaseHelper.instance;
-  final RandomReceiptGenerator rrg = RandomReceiptGenerator();
-
-  void addReceipt(int? nItems) {
-    Receipt r = rrg.randomReceipt(nItems);
-  }
 
   Future<void> _synchronizeDataBase() async {
     // Download all receipts and receipt items from FireStore.
@@ -60,7 +55,16 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                             // setState(
                             //     () {}); // TODO: there must be a better way of notifying the framework of the change!
                           },
-                          child: const Text("Clear local databases"))
+                          child: const Text("Clear local databases")),
+                  PopupMenuItem<int>(
+                      onTap: () async {
+                        final List<Receipt> allReceipts = await DataBaseHelper.instance.getReceipts();
+                        final FireStoreHelper fsh = FireStoreHelper();
+                        for (Receipt receipt in allReceipts){
+                         await fsh.uploadReceiptAndItems(receipt);
+                        }
+                      },
+                      child: const Text("Upload all receipts"))
                     ])
           ],
         ),
@@ -71,7 +75,7 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
               flex: 10,
               child: FutureBuilder<List<Receipt>>(
                 // TODO: with increasing number of receipts, need to make smaller queries, updating with scrolling
-                future: DataBaseHelper.instance.getReceipts(),
+                future: DataBaseHelper.instance.getReceiptsWithoutItems(),  // No need to fetch receipt items, only when clicking on one receipt.
                 builder: (BuildContext context,
                     AsyncSnapshot<List<Receipt>> snapshot) {
                   if (!snapshot.hasData) {
@@ -114,20 +118,6 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                             });
                   }
                 },
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text("Add receipt"),
-              ),
-            ),
-            const Expanded(
-              flex: 1,
-              child: TextButton(
-                onPressed: null,
-                child: Text("Remove receipt"),
               ),
             ),
           ]),

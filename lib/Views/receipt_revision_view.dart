@@ -283,14 +283,11 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
-                  'Added receipt number $responseReceipt, receipt items $responseReceiptItem'),
+                  'Added receipt uuid ${receipt.uuid}, receipt items $responseReceiptItem'),
               duration: const Duration(seconds: 2),
             ));
             print("Uploading to cloud...");
-            final String fname =
-                "${UuidValue.fromByteList(receipt.uuid).uuid}.json";
-            // TODO: it should be uploaded into an own (uuid) folder per user!
-            //await fireStoreHelper.uploadReceiptAndItems(receipt);
+            await fireStoreHelper.uploadReceiptAndItems(receipt);
             //await fireStoreHelper.uploadSample();
             if (!mounted) {
               print("ReceiptRevisionView: not mounted.");

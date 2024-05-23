@@ -126,14 +126,20 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
               ),
             ),
           ]),
-      Checkbox(
-        checkColor: Colors.white,
-        value: markedForDelete,
-        onChanged: (bool? value) {
-          setState(() {
-            markedForDelete = value!;
-          });
-        },
+      Row(
+        children:
+          [
+            const Text("Delete?"),
+            Checkbox(
+              checkColor: Colors.white,
+              value: markedForDelete,
+              onChanged: (bool? value) {
+                setState(() {
+                  markedForDelete = value!;
+                });
+              },
+            ),
+          ],
       ),
         ],
       ),

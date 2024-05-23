@@ -101,6 +101,9 @@ class _ImageRevisionViewState extends State<ImageRevisionView> {
                 onPressed: submitted
                     ? null
                     : () async {
+                  // TODO: need to test this thoroughly! No internet connection -> save to cache? (at any given step... before upload, during upload...)
+                  // TODO: when moving to receipt review, receipt is already in Firebase Storage.... so should cache it too, in case user accidentally cancels, they could still
+                  // open the edit when clicking on scan, as long as they don't press Discard there( Then remove from CLoud Storage). Could achieve by checking if a global cache receipt exists.
                         if (!submitted) {
                           // TODO: test! (replace api call with simple print)
                           setState(() {

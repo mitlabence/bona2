@@ -7,7 +7,7 @@ import 'package:tuple/tuple.dart';
 
 import 'DataStructures/receipt.dart';
 import 'DataStructures/receipt_item.dart';
-
+// TODO: test that it is a singleton
 class FireStoreHelper {
   /// The structure of firestore:
   /// root-level collections: receipts, taggunResults
@@ -64,15 +64,15 @@ class FireStoreHelper {
     final String fileName = uuidStringFromUint8List(receipt.uuid);
     // TODO: might convert to non-future function if I don't check for existence
     //    and not wait for batch.commit(). The question: is it worth it?
-    final receiptDocRef = userReceiptsCollection.doc(fileName);
     WriteBatch batch = firebase.batch(); // create a batch of writes
     Map<String, dynamic> receiptMap = receipt.toMap();
     List<ReceiptItem> receiptItems = receiptMap.remove("receiptItemsList");
     // Write receipt into receipts collection
-    var receiptsFileRef = firebase.collection("receipts").doc(fileName);
+    var receiptsFileRef = userReceiptsCollection.doc(fileName);
+    // TODO: test if document exists! Do not update then... https://stackoverflow.com/questions/57877154/flutter-dart-how-can-check-if-a-document-exists-in-firestore
     batch.set(receiptsFileRef, receiptMap);
     // Create collection for new receipt document
-    var receiptItemsCollectionRef = receiptDocRef.collection("receipt_items");
+    var receiptItemsCollectionRef = receiptsFileRef.collection("receipt_items");
     //batch-write receipt items
     for (int i = 0; i < receiptItems.length; i++) {
       final ReceiptItem receiptItem = receiptItems[i];
@@ -83,6 +83,7 @@ class FireStoreHelper {
       batch.set(receiptItemDocRef, receiptItemMap);
     }
     await batch.commit();
+    print("Uploaded receipt (with items) as file ${fileName}");
   }
 
   Future<void> updateReceipt(Receipt receipt) async {
@@ -110,6 +111,7 @@ class FireStoreHelper {
       downloadAllReceipts() async {
     // Download all receipts the user has.
     // TODO: clean up this function... deal with the schema change (all fields lower case now), extract into functions (like Map keys to lower case)
+    // TODO: need to test this... make up debug API key, create a Firestore collection with sample data?
     List<Receipt> receiptsList = [];
     List<ReceiptItem> receiptItemsList = [];
     final QuerySnapshot receiptsSnapshot = await userReceiptsCollection.get();
