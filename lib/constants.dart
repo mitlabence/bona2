@@ -54,9 +54,11 @@ String getReceiptItemColumnName(ReceiptItemField receiptItemField) {
   }
 }
 
-
+// TODO: add other NOT NULL columns?
+// uuid, total price and currency are required. Reason: these are the minimal
+// amount of information in order for the receipt to be of any use at all.
 const String kCreateReceiptDatabaseCommand =
-    'CREATE TABLE Receipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL, currency TEXT, country TEXT, address TEXT, postalcode TEXT, city TEXT, paymenttype TEXT, uuid BLOB, datasource INT)';
+    'CREATE TABLE Receipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL NOT NULL, currency TEXT NOT NULL, country TEXT, address TEXT, postalcode TEXT, city TEXT, paymenttype TEXT, uuid BLOB NOT NULL, datasource INT, placeid TEXT)';
 const String kReceiptDatabaseName =
     "Receipts"; // should match with name defined in kCreateReceiptDatabaseCommand
 enum ReceiptField {
@@ -73,6 +75,7 @@ enum ReceiptField {
   paymentType,
   uuid,
   dataSource,
+  placeId, // the Google Maps API place_id
 }
 
 String getReceiptColumnName(ReceiptField receiptField) {
@@ -102,6 +105,8 @@ String getReceiptColumnName(ReceiptField receiptField) {
       return "uuid";
     case ReceiptField.dataSource:
       return "datasource";
+    case ReceiptField.placeId:
+      return "placeid";
     default:
       throw Exception("Unknown field $receiptField");
   }
@@ -128,7 +133,7 @@ const String kTestReceiptItemDatabaseName =
     "testReceiptItems"; // Has to match with table name in creation command
 
 const String kCreateTestReceiptDatabaseCommand =
-    'CREATE TABLE testReceipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL, currency TEXT, country TEXT, address TEXT, postalcode TEXT, city TEXT, paymenttype TEXT, uuid BLOB, datasource INT)';
+    'CREATE TABLE testReceipts (pk INTEGER PRIMARY KEY, shopname TEXT, datetime INT, totalprice REAL NOT NULL, currency TEXT NOT NULL, country TEXT, address TEXT, postalcode TEXT, city TEXT, paymenttype TEXT, uuid BLOB NOT NULL, datasource INT, placeid TEXT)';
 const String kTestReceiptDatabaseName =
     "testReceipts"; // Has to match with table name in creation command
 
@@ -148,7 +153,7 @@ const String kReceiptItemAdditionSeparator = "\n";
 const int kUuidUint8ListLength = 16;
 
 // Firestore-related constants
-const String kFireStoreRootUsersCollection = "users";
+//const String kFireStoreRootUsersCollection = "users";
 
 const List<String> kReceiptItemUnitsList = [
   "g",

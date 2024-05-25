@@ -158,8 +158,8 @@ class _ReceiptItemEditDialogState extends State<ReceiptItemEditDialog> {
                 itemCategory:
                     ItemCategory(itemName: _itemCategoryController.text),
                 rawText: _rawTextController.text,
-                totalPrice: num.parse(_totalPriceController.text),
-                quantity: num.parse(_quantityController.text),
+                totalPrice: num.parse(_totalPriceController.text), // TODO: replace "," with "." if needed!
+                quantity: num.parse(_quantityController.text), // TODO: ditto
                 unit: unit,
                 currency: currency,
                 uuid: widget.receiptItem.uuid);

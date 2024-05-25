@@ -1,5 +1,6 @@
 import 'package:bona2/Views/receipt_item_list_view.dart';
 import 'package:bona2/database_helper.dart';
+import 'package:bona2/uuid_tools.dart';
 import 'package:flutter/material.dart';
 import "package:bona2/firestore_helper.dart";
 
@@ -56,15 +57,15 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                             //     () {}); // TODO: there must be a better way of notifying the framework of the change!
                           },
                           child: const Text("Clear local databases")),
-                  PopupMenuItem<int>(
-                      onTap: () async {
-                        final List<Receipt> allReceipts = await DataBaseHelper.instance.getReceipts();
-                        final FireStoreHelper fsh = FireStoreHelper();
-                        for (Receipt receipt in allReceipts){
-                         await fsh.uploadReceiptAndItems(receipt);
-                        }
-                      },
-                      child: const Text("Upload all receipts"))
+                  // PopupMenuItem<int>(
+                  //     onTap: () async {
+                  //       final List<Receipt> allReceipts = await DataBaseHelper.instance.getReceipts();
+                  //       final FireStoreHelper fsh = FireStoreHelper();
+                  //       for (Receipt receipt in allReceipts){
+                  //        await fsh.uploadReceiptAndItems(receipt);
+                  //       }
+                  //     },
+                  //     child: const Text("Upload all receipts"))
                     ])
           ],
         ),
@@ -104,6 +105,7 @@ class _ReceiptsOverviewState extends State<ReceiptsOverview> {
                                 subtitle:
                                     "${formatDateTimeToMinutes(snapshot.data![index].dateTime)}, ${snapshot.data![index].totalPrice.toStringAsFixed(2)} ${snapshot.data![index].currency}",
                                 onTapCallback: () {
+                                  print("Opening receipt ${uuidStringFromUint8List(snapshot.data![index].uuid)}");
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

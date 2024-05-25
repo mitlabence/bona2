@@ -8,13 +8,16 @@ import 'package:tuple/tuple.dart';
 import 'package:uuid/uuid.dart';
 import '../DataStructures/receipt.dart';
 import '../DataStructures/receipt_item.dart';
+import '../DataStructures/store_location.dart';
 import '../Dialogs/all_receipt_items_edit_dialog.dart';
 import '../Dialogs/receipt_item_edit_dialog.dart';
-import '../Dialogs/select_location_dialog.dart';
+import 'select_location_view.dart';
 import '../constants.dart';
 import '../database_helper.dart';
 import 'package:bona2/firestore_helper.dart';
 import 'package:riverpod/riverpod.dart';
+
+import '../uuid_tools.dart';
 
 const kClassName = "ReceiptRevisionView";
 
@@ -52,6 +55,7 @@ class ReceiptRevisionView extends StatefulWidget {
   final Receipt receipt;
   final Uint8List? imageData;
 
+
   @override
   State<ReceiptRevisionView> createState() => _ReceiptRevisionViewState();
 }
@@ -61,7 +65,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
   late FireStoreHelper fireStoreHelper;
   late Provider<Receipt> receiptProvider;
   Queue<EditHistoryQueueItem> history = Queue();
-
+  late StoreLocation storeLocation;
   int getReceiptItemsLength(ProviderRef<Receipt> ref) {
     return ref.read(receiptProvider).receiptItemsList.length;
   }
@@ -79,6 +83,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
   void initState() {
     super.initState();
     receipt = widget.receipt;
+    storeLocation = StoreLocation.fromReceipt(receipt);
     fireStoreHelper = FireStoreHelper(); // get instance
     receiptProvider = Provider<Receipt>((ref) => receipt);
   }
@@ -138,8 +143,15 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                 value: 2,
                 child: const Text("Set location"),
                 onTap: () async {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => SelectLocationDialog())                  );
+                  // TODO: need to assign storeLocation data to Receipt data (add function readFromStoreLocation to Receipt?)
+                  storeLocation = await Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => SelectLocationView(storeLocation:storeLocation)));
+                  if (storeLocation != null) {
+                    setState(() {
+                      receipt.updateFromStoreLocation(storeLocation);
+                    });
+                  }
                 },
               )
             ],
@@ -276,14 +288,14 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
               .map((receiptItem) => receiptItem.totalPrice)
               .reduce((value, element) => value + element);
           receipt.totalPrice = totalPrice.toDouble();
-          int responseReceipt = await dbh.addReceipt(receipt);
+          int responseReceipt = await dbh.addReceiptWithoutItems(receipt);
           int responseReceiptItem =
               await dbh.addReceiptItems(receipt.receiptItemsList);
 
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
-                  'Added receipt uuid ${receipt.uuid}, receipt items $responseReceiptItem'),
+                  'Added receipt uuid ${uuidStringFromUint8List(receipt.uuid)}, receipt items $responseReceiptItem'),
               duration: const Duration(seconds: 2),
             ));
             print("Uploading to cloud...");
@@ -320,6 +332,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
 
   void mergeUpAddToHistory(int index) {
     if (index > 0) {
+      // TODO: remove \n, write tests
       receipt.receiptItemsList[index - 1] += receipt.receiptItemsList[index];
       ReceiptItem mergedItem = receipt.receiptItemsList.removeAt(index);
       history.addLast(EditHistoryQueueItem(

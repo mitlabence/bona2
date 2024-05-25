@@ -1,6 +1,7 @@
 import "dart:typed_data";
 
 import "package:bona2/DataStructures/shopping_item.dart";
+import "package:bona2/DataStructures/store_location.dart";
 import "package:bona2/uuid_tools.dart";
 import "package:uuid/uuid.dart";
 import "package:uuid/uuid_util.dart";
@@ -19,6 +20,7 @@ class Receipt {
   String postalCode;
   String city;
   String paymentType;
+  String? placeId;
 
   /// 0 - NaN (use 0 value to fill data with no data source info),
   /// 1 - taggun API
@@ -39,6 +41,7 @@ class Receipt {
     required this.paymentType,
     uuid,
     this.dataSource = 0,
+    placeId, // Google Maps API place_id
   }) {
     this.uuid = uuid ?? generateUuidUint8List();
   }
@@ -70,6 +73,7 @@ class Receipt {
       city: kNullStringValue,
       paymentType: kNullStringValue,
       uuid: Uint8List(0),
+      placeId: kNullStringValue,
     );
   }
 
@@ -85,6 +89,9 @@ class Receipt {
 
   @override
   bool operator ==(Object other) {
+    // TODO: improve equality, as uuid might not be reliable, especially if manually created for this or other
+    //  check number of items?
+    //  check date and time?
     return (other is Receipt) && (uuid == other.uuid);
   }
 
@@ -102,6 +109,7 @@ class Receipt {
       'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
       'dataSource': dataSource,
+      'placeId': placeId ?? kNullStringValue,
     };
   }
 
@@ -120,6 +128,7 @@ class Receipt {
       'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
       'dataSource': dataSource,
+      'placeId': placeId ?? kNullStringValue,
     };
   }
 
@@ -138,6 +147,7 @@ class Receipt {
       'paymentType': paymentType,
       'uuid': uuid, // keep it as blob (Uint8List) for SQLite
       'dataSource': dataSource,
+      'placeId': placeId ?? kNullStringValue,
     };
   }
 
@@ -166,6 +176,9 @@ class Receipt {
         dataSource: mapWithUuid.containsKey("dataSource")
             ? mapWithUuid["dataSource"]
             : 0,
+        placeId: mapWithUuid.containsKey("placeId")
+            ? mapWithUuid["placeId"]
+            : kNullStringValue,
       );
 
   factory Receipt.fromMapAndUuid(Map<String, dynamic> map, Uint8List uuid) =>
@@ -193,5 +206,18 @@ class Receipt {
         uuid: uuid,
         paymentType: map["paymenttype"],
         dataSource: map.containsKey("dataSource") ? map["dataSource"] : 0,
+        placeId: map.containsKey("placeId") ? map["placeId"] : kNullStringValue,
       );
+
+  void updateFromStoreLocation(StoreLocation storeLocation) {
+    // TODO: decide what to do with null entries in storeLocation? Overwrite
+    //  receipt fields?
+    country = storeLocation.country;
+    city = storeLocation.city;
+    address = storeLocation.address;
+    postalCode = storeLocation.postalCode ?? kNullStringValue;
+
+    shopName = storeLocation.name; // The name of the store
+    placeId = storeLocation.placeId ?? kNullStringValue;
+  }
 }

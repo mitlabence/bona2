@@ -9,6 +9,7 @@ import 'DataStructures/receipt.dart';
 import 'constants.dart';
 import 'package:path_provider/path_provider.dart';
 
+// Databases should be stored in /data/data/*mypackage*.*app-name*/app_flutter/flutter_assets/
 // TODO: refactor with new name "DBProvider"
 // TODO: test that it is a singleton
 class DataBaseHelper {
@@ -89,8 +90,7 @@ class DataBaseHelper {
     return receiptsList;
   }
 
-  Future<int> addReceipt(Receipt receipt) async {
-    //TODO: misleading, as this function does not add the items in the receipt.
+  Future<int> addReceiptWithoutItems(Receipt receipt) async {
     // Change the name or impelment alternative function which adds the items as well.
     // TODO: handle re-adding same receipt: should not add duplicate. Use datetime, total price to compare.
     Database db = await instance.db;
@@ -105,7 +105,7 @@ class DataBaseHelper {
     // TODO: handle re-adding same receipt: should not add duplicate. Use datetime, total price to compare.
     int res = -1;
     for (Receipt receipt in receiptsList) {
-      res = await addReceipt(receipt);
+      res = await addReceiptWithoutItems(receipt);
     }
     return res;
   }
