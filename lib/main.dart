@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import "package:cloud_firestore/cloud_firestore.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Views/camera_view.dart';
 import 'Views/image_upload_view.dart';
 import 'Views/receipts_overview.dart';
+import 'constants.dart';
 import 'firestore_helper.dart';
 import 'global.dart' as globals;
 import 'Views/visualization_view.dart';
@@ -35,6 +37,22 @@ Future<void> main() async {
   _cameras = await availableCameras();
   final String apikeys = await rootBundle.loadString('assets/apikeys.json');
   final apiKeysJson = jsonDecode(apikeys);
+  SharedPreferences.getInstance().then((sharedPreferences) {
+    if (sharedPreferences.containsKey("defaultCurrency") & (sharedPreferences.getString("defaultCurrency") != null)){
+      gDefaultCurrency = sharedPreferences.getString("defaultCurrency")!;
+    }
+    else{
+     gDefaultCurrency = kCurrenciesList[0];
+     sharedPreferences.setString("defaultCurrency", gDefaultCurrency);
+    }
+    if (sharedPreferences.containsKey("defaultQuantity") & (sharedPreferences.getString("defaultQuantity") != null)){
+      gDefaultQuantity = sharedPreferences.getString("defaultQuantity")!;
+    }
+    else{
+      gDefaultQuantity = kReceiptItemUnitsList[0];
+      sharedPreferences.setString("defaultQuantity", gDefaultQuantity);
+    }
+  });
   globals.OcrApiKey = apiKeysJson["ocrapi"]["key"];
   globals.googleMapAPIKey = apiKeysJson["googlemapapi"]["key"]; // TODO: restrict permissions
   // TODO: https://www.youtube.com/watch?v=noi6aYsP7Go 8:07. Add functions for database operations, test them in ReceiptView screen.

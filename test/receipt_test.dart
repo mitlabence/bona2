@@ -3,7 +3,7 @@ import 'package:bona2/DataStructures/receipt_item.dart';
 import 'package:bona2/constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bona2/DataStructures/receipt.dart';
-
+// TODO: test uuid required (does it always get passed to receipt items? etc)
 void main() {
   group("test receipt creation functions for testing", () {
     test("test receipt creation functions for testing", (){

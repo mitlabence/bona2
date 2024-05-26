@@ -174,7 +174,7 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
                 title:
                     Text(receipt.receiptItemsList[index].itemCategory.itemName),
                 subtitle: Text(
-                    "${receipt.receiptItemsList[index].totalPrice} ${receipt.currency}"),
+                    "${receipt.receiptItemsList[index].totalPrice} ${receipt.receiptItemsList[index].currency}"),
                 onTap: () async {
                   //final data = ref.watch(receiptProvider);
                   // TODO: think about how to modify receipt items from a pop-up window
@@ -315,7 +315,8 @@ class _ReceiptRevisionViewState extends State<ReceiptRevisionView> {
 
   void addEmptyItemAddToHistory() {
     print(receipt.receiptItemsList.length);
-    ReceiptItem emptyReceiptItem = ReceiptItem.empty();
+    ReceiptItem emptyReceiptItem = ReceiptItem.empty(uuid:receipt.uuid);
+    emptyReceiptItem.currency = receipt.currency;
     setState(() {
       receipt.receiptItemsList.add(emptyReceiptItem);
     });

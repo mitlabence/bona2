@@ -175,7 +175,6 @@ const List<String> kCurrenciesList = [
   "USD",
   "HUF",
   "GBP",
-  kNullStringValue,
 ];
 
 enum EditStatus {

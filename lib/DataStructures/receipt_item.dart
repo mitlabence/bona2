@@ -2,6 +2,8 @@ import 'dart:typed_data';
 import 'package:bona2/DataStructures/shopping_item.dart';
 import 'package:bona2/constants.dart';
 
+import '../global.dart';
+
 /// Contains an item with various properties.
 class ReceiptItem {
   /// the text that was used to infer this item
@@ -54,14 +56,14 @@ class ReceiptItem {
     };
   }
 
-  ReceiptItem.empty({Uint8List? uuid})
+  ReceiptItem.empty({required Uint8List uuid})
       : itemCategory = ItemCategory.empty(),
         rawText = "",  // do not use the "null string", but an empty text
         totalPrice = 0.0,
         quantity = 1,
-        unit = kNullStringValue,
-        currency = "EUR",
-        uuid = uuid ?? Uint8List.fromList([]);
+        unit = gDefaultQuantity,
+        currency = gDefaultCurrency,
+        uuid = uuid;
 
   // TODO: add isNotEmpty (also to ItemCategory)
   @override

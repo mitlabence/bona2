@@ -7,6 +7,7 @@ import "package:uuid/uuid.dart";
 import "package:uuid/uuid_util.dart";
 import "package:bona2/constants.dart";
 
+import "../global.dart";
 import "receipt_item.dart";
 
 class Receipt {
@@ -66,13 +67,13 @@ class Receipt {
       shopName: kNullStringValue,
       dateTime: DateTime.now(),
       totalPrice: 0.0,
-      currency: kNullStringValue,
+      currency: gDefaultCurrency,
       country: kNullStringValue,
       address: kNullStringValue,
       postalCode: kNullStringValue,
       city: kNullStringValue,
       paymentType: kNullStringValue,
-      uuid: Uint8List(0),
+      uuid: generateUuidUint8List(),  // As uuid should be final, needs to be created upon creation...
       placeId: kNullStringValue,
     );
   }
@@ -161,7 +162,7 @@ class Receipt {
         receiptItemsList: mapWithUuid.containsKey("receiptItemsList")
             ? mapWithUuid["receiptItemsList"]
             : [
-                ReceiptItem.empty(),
+                ReceiptItem.empty(uuid:mapWithUuid["uuid"]),
               ],
         shopName: mapWithUuid["shopname"],
         dateTime: DateTime.fromMillisecondsSinceEpoch(mapWithUuid["datetime"]),
